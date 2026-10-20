@@ -609,6 +609,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 - Where is technical debt tracked, and when was it last reviewed as a group?
 - Can you name the three biggest pieces of debt right now and what each is costing the team?
 - Has debt ever been prioritized over a feature, or does feature work always win by default?
+- How does the team decide whether known bugs are fixed before or alongside new feature work, and what justifies deferring them?
 - What's the last piece of debt that caused an incident before anyone acted on it?
 
 **Red flags:** debt lives only in tribal memory or scattered TODO comments; debt is never paid down until it causes a production incident; every retro mentions the same unaddressed debt as last time.
