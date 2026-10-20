@@ -856,6 +856,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 **Questions to ask:**
 - What environments exist today, and can everyone on the team name the purpose of each without hesitation?
 - How different is staging's configuration, data, and scale from production — and does that difference ever cause surprises?
+- How is non-secret configuration defined, versioned, reviewed, and supplied to each environment without mixing it with secrets?
 - What's the last bug that only showed up in production because an earlier environment didn't catch it?
 - Is there an environment that's supposed to mirror production but has quietly drifted out of sync?
 
