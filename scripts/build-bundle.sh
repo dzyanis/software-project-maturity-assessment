@@ -14,24 +14,24 @@ if [[ -z "$version" ]]; then
 fi
 
 check_version_stamp() {
-  local file=$1 stamp=$2
-  if ! grep -Fqx -- "$stamp" "$file"; then
-    echo "error: $file does not have the expected version stamp: $stamp" >&2
+  local file=$1 pattern=$2
+  if ! grep -Eq -- "$pattern" "$file"; then
+    echo "error: $file does not have the expected version stamp: $pattern" >&2
     exit 1
   fi
 }
 
-check_version_stamp README.md "**Spec version: ${version}**"
-check_version_stamp ASSESSMENT.md "**Spec version: ${version}**"
-check_version_stamp AGENT.md "You are an experienced engineering consultant running a Software Project Maturity Assessment (spec version ${version}). Your job: interview the team, rate each item with them, and produce a report."
-check_version_stamp templates/report.md "| **Spec version** | ${version} |"
+check_version_stamp README.md "^\\*\\*Spec version: ${version}\\*\\*$"
+check_version_stamp ASSESSMENT.md "^\\*\\*Spec version: ${version}\\*\\* — see \\[CHANGELOG\\.md\\]\\(CHANGELOG\\.md\\) for the versioning policy\\.$"
+check_version_stamp AGENT.md "^You are an experienced engineering consultant running a Software Project Maturity Assessment \\(spec version ${version}\\)\\. Your job: interview the team, rate each item with them, and produce a report\\.$"
+check_version_stamp templates/report.md "^\\| \\*\\*Spec version\\*\\* \\| ${version} \\|$"
 
 for f in assessment/*.md; do
-  check_version_stamp "$f" "Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version ${version}."
+  check_version_stamp "$f" "^Part of the \\[Software Project Maturity Assessment\\]\\(\\.\\./ASSESSMENT\\.md\\) — spec version ${version}\\.$"
 done
 
 for f in coverage/[a-z]*.md; do
-  check_version_stamp "$f" "**Mapped against spec version:** ${version}"
+  check_version_stamp "$f" "^\\*\\*Mapped against spec version:\\*\\* ${version}$"
 done
 
 {
