@@ -44,7 +44,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** ceremonies happen because the calendar says to, not because they produce a decision; the process was copied from a book or a previous company without adaptation; the team can't explain why they do it this way.
 
-### 2.4 Communications
+### 2.4 Communication
 
 **Why it matters:** Information that doesn't reach the people who need it might as well not exist; poor communication cadence and channel hygiene quietly recreates silos even on a small team.
 

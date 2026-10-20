@@ -2,7 +2,7 @@
 
 Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.2.0.
 
-### 4.1 Relevance of Codebase
+### 4.1 Codebase Relevance
 
 **Why it matters:** Code that no longer reflects current requirements or domain understanding forces every change to fight the existing structure instead of building on it.
 

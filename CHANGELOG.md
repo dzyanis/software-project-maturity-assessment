@@ -18,6 +18,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 - Fictional full sample report with checked weighted scores and gap priorities, including N/A and unknown answers.
 
 ### Changed
+- Completed a wording consistency review across all seven category files. Clarified four item titles while preserving item IDs, questions, and scoring meaning.
 - Clarified that importance weights express team priorities while state 4 remains the common score reference. Defined confirmed, unknown, deferred, unconfirmed, N/A, and skipped answers; incomplete category scores are provisional, include coverage counts, and exclude unconfirmed rows from calculations.
 - Added report context for system boundary, environment, selected profile/items, and evidence date, plus rules for changed weights and scope. Existing calculations for complete assessments remain unchanged. Release impact: MINOR; 0.1.1 incomplete reports are not comparable to provisional scores because their missing-answer behavior was undefined.
 - Clarified the boundaries between review interaction and ownership, unit-test quality and release regression confidence, and regression confidence and CI/CD enforcement. Item IDs and assessed practices are unchanged.

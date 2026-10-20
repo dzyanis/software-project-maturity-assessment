@@ -240,7 +240,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** ceremonies happen because the calendar says to, not because they produce a decision; the process was copied from a book or a previous company without adaptation; the team can't explain why they do it this way.
 
-### 2.4 Communications
+### 2.4 Communication
 
 **Why it matters:** Information that doesn't reach the people who need it might as well not exist; poor communication cadence and channel hygiene quietly recreates silos even on a small team.
 
@@ -512,7 +512,7 @@ Anything important to this category that the items above did not cover. Record i
 
 Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.2.0.
 
-### 4.1 Relevance of Codebase
+### 4.1 Codebase Relevance
 
 **Why it matters:** Code that no longer reflects current requirements or domain understanding forces every change to fight the existing structure instead of building on it.
 
@@ -816,7 +816,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** automation scripts nobody currently on the team understands or maintains; the same manual, error-prone task performed by hand every single release; bots or automation that fail silently with no alerting.
 
-### 5.7 Optimizations
+### 5.7 Performance and Efficiency
 
 **Why it matters:** Without deliberate attention, systems tend toward accumulating waste — slow paths, redundant work, unnecessary resource use — that compounds as the system grows.
 
@@ -830,7 +830,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** optimization work driven entirely by anecdote rather than profiling or metrics; a known-slow critical path nobody has scheduled time to address; premature optimization that added complexity without measurable benefit.
 
-### 5.8 Multiple Environments
+### 5.8 Environment Parity
 
 **Why it matters:** The gap between staging (or any pre-production environment) and production is where "it worked in testing" bugs come from; the closer the parity, the more the team can trust results from earlier environments.
 

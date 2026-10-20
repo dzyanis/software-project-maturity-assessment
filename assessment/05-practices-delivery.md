@@ -86,7 +86,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** automation scripts nobody currently on the team understands or maintains; the same manual, error-prone task performed by hand every single release; bots or automation that fail silently with no alerting.
 
-### 5.7 Optimizations
+### 5.7 Performance and Efficiency
 
 **Why it matters:** Without deliberate attention, systems tend toward accumulating waste — slow paths, redundant work, unnecessary resource use — that compounds as the system grows.
 
@@ -100,7 +100,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** optimization work driven entirely by anecdote rather than profiling or metrics; a known-slow critical path nobody has scheduled time to address; premature optimization that added complexity without measurable benefit.
 
-### 5.8 Multiple Environments
+### 5.8 Environment Parity
 
 **Why it matters:** The gap between staging (or any pre-production environment) and production is where "it worked in testing" bugs come from; the closer the parity, the more the team can trust results from earlier environments.
 
