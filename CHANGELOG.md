@@ -8,6 +8,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 ## [Unreleased]
 
 ### Added
+- Added item 1.10 on user experience and accessibility; existing item IDs remain unchanged. Release impact: MINOR.
 - Defined report-local custom practice IDs and separate supplemental scoring under “Other,” so custom rows cannot inflate standard category scores.
 - Standalone score calculator with inputs generated from assessment item headings, score summaries, top gaps, and comparison warnings.
 - Optional 15-item lite assessment profile with a 30–60 minute planning target for discovery and focused re-checks.

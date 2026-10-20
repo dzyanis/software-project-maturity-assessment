@@ -117,3 +117,18 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 ### 1.9 Other
 
 Anything important to this category that the items above did not cover. Record it here with an importance and state rating like any other item.
+
+### 1.10 User Experience & Accessibility
+
+**Why it matters:** A product can meet its functional goals and still exclude people or make important tasks difficult. Understanding usability and accessibility needs early reduces barriers for users and costly redesign later.
+
+**What good looks like:** The team understands the needs of its target users, evaluates important workflows with representative users or equivalent evidence, and checks that people with disabilities can complete them using relevant assistive technologies. Findings inform product decisions and are revisited as the product changes.
+
+**Questions to ask:**
+- How does the team learn whether users can complete the product's most important tasks?
+- Which users, including people with disabilities, have been represented in that evidence, and whose needs may be missing?
+- How are keyboard access, screen-reader support, and other relevant accessibility needs evaluated for the product?
+- What usability or accessibility issue most recently changed a product decision, and how was the fix checked?
+- Which accessibility standards or legal requirements apply, and how is that obligation tracked? Product obligations are assessed in [1.8](01-product-vision.md#18-compliance--legal-requirements); this item focuses on the user experience and product behavior.
+
+**Red flags:** product decisions rely only on internal assumptions; important workflows have not been checked with users or representative evidence; accessibility is treated as a final checklist rather than part of design and development; known barriers have no owner or plan.
