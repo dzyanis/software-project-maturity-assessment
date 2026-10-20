@@ -45,6 +45,28 @@ Derived values:
 
 Scores show the weighted distance between current state and the common state-4 reference. Importance makes the score reflect the team's priorities; it does not change the target. Scores are not for comparing teams or grading people.
 
+### Custom practices under “Other”
+
+An “Other” item can be rated as one standard item when the team has one general
+practice to record. If the team identifies multiple distinct practices, record
+each as a custom row with a stable report-local ID (`custom-01`, `custom-02`,
+...). In that case, mark the category's “Other” prompt Skipped and do not rate it;
+this avoids counting a practice in both the parent row and a custom row. Do not
+reuse an ID for a different practice in a later report.
+
+Custom rows use the same importance, state, gap priority, and answer-status
+rules as standard rows. Report their confirmed gap priorities in a separate
+custom-practices table. Exclude custom rows from standard category scores and
+report a separate supplemental custom score, using the same weighted formula,
+only when at least one custom row is confirmed. Show confirmed/applicable
+coverage and mark the supplemental score provisional when any applicable
+custom row is not confirmed. Custom rows do not change a standard category's
+score or coverage.
+
+Compare supplemental custom scores only when the custom ID and title sets,
+ratings, and weights match. If the set changes, mark the supplemental scores
+not directly comparable and compare shared custom IDs individually.
+
 ## Worked scoring examples
 
 | Case | Calculation or report entry | Interpretation |
@@ -60,6 +82,7 @@ Scores show the weighted distance between current state and the common state-4 r
 | Changed importance weights | Two unchanged states are 1 and 4. Weights change from 3/1 to 1/3: score changes from 7/16 = 43.75% to 13/16 = 81.25%. | The team's priorities changed, not the practices. Report the weight change; do not call the score movement practice improvement. |
 | Changed scope or profile | The assessed system boundary or selected item set differs from the prior report. | Mark aggregate results not directly comparable. State which items overlap and describe state changes for those items separately. |
 | Urgent action overrides gap order | A high-risk state-3 issue is scheduled before a larger low-risk gap. Keep both raw gap values and state why the action sequence differs. | Gap priority is a consistent rating calculation; the team may sequence work by urgency or dependency with an explanation. |
+| Multiple “Other” practices | Category 2 identifies two distinct practices. Mark 2.14 Skipped; record `custom-01` at importance/state 3/1 and `custom-02` at 2/3. | Custom gaps are 9 and 2. Supplemental score = (3×1 + 2×3) / (3×4 + 2×4) = 9/20 = 45%. The standard category score excludes both custom rows. |
 
 For repeat assessments, record the system boundary, environment, selected
 profile/categories/items, assessment date, and evidence date. Evidence references

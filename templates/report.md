@@ -46,6 +46,23 @@ Up to 10 items, sorted by gap priority descending.
 |---|---|---|---|---|---|
 | 1 | {{ID_AND_TITLE}} | {{1-3}} | {{0-4}} | {{N}} | {{ONE_LINE}} |
 
+## Custom practices (supplemental)
+
+Custom rows use stable report-local IDs such as `custom-01`; do not reuse an ID
+for a different practice. When custom rows are present for a category, mark its
+standard “Other” prompt Skipped. Custom rows do not affect standard category
+scores or coverage. Report their gap priorities here and calculate the
+supplemental score from confirmed custom rows only. Show coverage and whether
+the supplemental score is provisional. If no custom rows were identified, write
+“None identified.”
+
+| ID | Category | Practice | Importance | State | Status | Gap priority | Note |
+|---|---|---|---:|---:|---|---:|---|
+| {{CUSTOM_ID}} | {{CATEGORY}} | {{PRACTICE}} | {{1-3}} | {{0-4}} | {{STATUS}} | {{N_OR_NOT_SCORED}} | {{NOTE}} |
+
+- **Supplemental custom score:** {{PERCENT_OR_NO_SCORE}} ({{CONFIRMED}} / {{APPLICABLE}} confirmed; {{COMPLETE_OR_PROVISIONAL}})
+- **Custom comparison limits:** {{MATCHING_SET_OR_CHANGED_IDS_AND_WEIGHTS}}
+
 ## Recommendations
 
 3–5 short narrative recommendations, each tied to the gaps above: what to do first, why, and what "better" would look like in 3–6 months. Combine related gaps into one action when a single fix addresses them, and list all related item IDs.

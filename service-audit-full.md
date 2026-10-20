@@ -43,7 +43,7 @@ For each chosen category, in order, read its file in `assessment/` and go item b
 2. Ask for **importance**: 1 Low, 2 Medium, 3 Critical, or N/A (record the reason). N/A means the practice does not apply; if so, mark N/A and move to the next item. Mark an item skipped only when it is outside the selected scope/profile.
 3. Interview using the item's "Questions to ask". Skip questions already answered implicitly. For importance 1, ask at most one question.
 4. Compare answers against "What good looks like" and "Red flags", then **propose a current-state rating** — 0 Absent, 1 Ad-hoc, 2 Defined, 3 Managed, 4 Optimizing — with a one-sentence rationale. Ask the person to confirm or correct. Until confirmed, mark the rating unconfirmed and do not calculate its gap or score contribution.
-5. At the category's "Other" item, ask whether anything important was missed; if yes, record it with its own importance/state ratings.
+5. At the category's "Other" item, ask whether anything important was missed. If there is one general practice, rate the standard "Other" item. If there are multiple distinct practices, mark the standard "Other" item Skipped, record each in a separate custom row with a stable report-local ID (`custom-01`, `custom-02`, ...), and never reuse an ID for a different practice.
 
 If reasonable follow-up does not establish a rating, mark it **unknown**; if the team chooses to return later, mark it **deferred**. Neither means state 0 or N/A. Keep any known field and evidence, but do not calculate a score contribution unless both importance and state are confirmed.
 
@@ -60,6 +60,7 @@ Fill in `templates/report.md` exactly:
 - Calculate gap priority = importance × (4 − state) only for rows with confirmed importance and state. Calculate category score = Σ(importance × state) / Σ(importance × 4) using confirmed rows only.
 - For each category, report confirmed applicable items / applicable items in scope. Applicable items include unknown, deferred, and unconfirmed answers; exclude N/A and skipped items. Mark a category provisional if any applicable item is not confirmed. If none is confirmed, show "no score (provisional)". All-N/A categories are "not assessed"; categories excluded at setup are "skipped".
 - Show max 10 confirmed rows in Top gaps, sorted by raw gap priority descending, ties broken by importance. An action plan can sequence work differently for urgency or dependencies, but preserve the raw gaps and explain the reason.
+- Keep custom rows out of standard category scores and coverage. Report their confirmed gaps in a separate custom-practices table and calculate a supplemental custom score from confirmed custom rows only; show coverage and provisional status using the same rules as categories. Compare supplemental scores only when custom ID/title sets and weights match; otherwise report the set change and compare shared IDs individually.
 - Record the system boundary, environment, selected profile/categories/items, assessment date, and evidence date in the report. Evidence references are optional; do not include secrets or private personnel records.
 - Treat aggregate scores as directly comparable only when both reports are complete and spec version, scope, selected items, and importance weights match. Provisional scores are not directly comparable; compare shared confirmed item states and disclose coverage. If weights change, disclose that and compare confirmed item states separately. If scope or item selection changes, mark aggregate scores not directly comparable.
 - Write 3–5 recommendations tied to the top gaps: what to do first, why, what "better" looks like in 3–6 months.
@@ -1228,6 +1229,23 @@ Up to 10 items, sorted by gap priority descending.
 | Rank | Item | Importance | State | Gap priority | Note |
 |---|---|---|---|---|---|
 | 1 | {{ID_AND_TITLE}} | {{1-3}} | {{0-4}} | {{N}} | {{ONE_LINE}} |
+
+## Custom practices (supplemental)
+
+Custom rows use stable report-local IDs such as `custom-01`; do not reuse an ID
+for a different practice. When custom rows are present for a category, mark its
+standard “Other” prompt Skipped. Custom rows do not affect standard category
+scores or coverage. Report their gap priorities here and calculate the
+supplemental score from confirmed custom rows only. Show coverage and whether
+the supplemental score is provisional. If no custom rows were identified, write
+“None identified.”
+
+| ID | Category | Practice | Importance | State | Status | Gap priority | Note |
+|---|---|---|---:|---:|---|---:|---|
+| {{CUSTOM_ID}} | {{CATEGORY}} | {{PRACTICE}} | {{1-3}} | {{0-4}} | {{STATUS}} | {{N_OR_NOT_SCORED}} | {{NOTE}} |
+
+- **Supplemental custom score:** {{PERCENT_OR_NO_SCORE}} ({{CONFIRMED}} / {{APPLICABLE}} confirmed; {{COMPLETE_OR_PROVISIONAL}})
+- **Custom comparison limits:** {{MATCHING_SET_OR_CHANGED_IDS_AND_WEIGHTS}}
 
 ## Recommendations
 

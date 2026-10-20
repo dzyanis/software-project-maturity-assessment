@@ -8,6 +8,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 ## [Unreleased]
 
 ### Added
+- Defined report-local custom practice IDs and separate supplemental scoring under “Other,” so custom rows cannot inflate standard category scores.
 - Standalone score calculator with inputs generated from assessment item headings, score summaries, top gaps, and comparison warnings.
 - Optional 15-item lite assessment profile with a 30–60 minute planning target for discovery and focused re-checks.
 - Markdown checkpoint template and agent guidance for pausing and resuming interviews with confirmed answers, notes, and evidence references preserved.
@@ -19,6 +20,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 
 ### Changed
 - Completed a wording consistency review across all seven category files. Clarified four item titles while preserving item IDs, questions, and scoring meaning.
+- Release impact: MINOR. Custom practices use a supplemental score and do not alter the standard score formula; prior reports that scored multiple practices through a single “Other” row are not directly comparable to the supplemental custom score.
 - Clarified that importance weights express team priorities while state 4 remains the common score reference. Defined confirmed, unknown, deferred, unconfirmed, N/A, and skipped answers; incomplete category scores are provisional, include coverage counts, and exclude unconfirmed rows from calculations.
 - Added report context for system boundary, environment, selected profile/items, and evidence date, plus rules for changed weights and scope. Existing calculations for complete assessments remain unchanged. Release impact: MINOR; 0.1.1 incomplete reports are not comparable to provisional scores because their missing-answer behavior was undefined.
 - Clarified the boundaries between review interaction and ownership, unit-test quality and release regression confidence, and regression confidence and CI/CD enforcement. Item IDs and assessed practices are unchanged.
