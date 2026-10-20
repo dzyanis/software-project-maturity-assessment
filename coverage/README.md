@@ -13,6 +13,7 @@ about gaps.
 | [OWASP SAMM (OpenSAMM)](opensamm.md) | 6/15 full, 9/15 partial |
 | [ISO 25010 Software Quality Model](iso-25010.md) | 5/8 full, 3/8 partial |
 | [AWS Well-Architected Framework](aws-well-architected.md) | 1/6 full, 5/6 partial |
+| [CMMI V3.0 Development and Services](cmmi.md) | 0/23 full, 23/23 partial |
 
 ## Template for new mappings
 

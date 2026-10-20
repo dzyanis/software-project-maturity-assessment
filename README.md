@@ -68,8 +68,9 @@ How this assessment covers each framework is documented point-by-point in [cover
 - [OWASP SAMM (OpenSAMM)](https://owaspsamm.org/) ([coverage](coverage/opensamm.md))
 - [ISO 25010 Software Quality Model](https://iso25000.com/en/iso-25000-standards/iso-25010) ([coverage](coverage/iso-25010.md))
 - [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/) ([coverage](coverage/aws-well-architected.md))
+- [CMMI V3.0 Development and Services](https://cmmiinstitute.com/products/cmmi) ([coverage](coverage/cmmi.md))
 
-Planned mappings (DORA/Accelerate, CMMI, SPACE, and OPM3) are tracked in [the `area:coverage` issues](https://github.com/dzyanis/service_audit/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage).
+Planned mappings (DORA/Accelerate, SPACE, and OPM3) are tracked in [the `area:coverage` issues](https://github.com/dzyanis/service_audit/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage).
 
 ## Website development
 
