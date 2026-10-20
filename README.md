@@ -53,8 +53,9 @@ For a 30–60 minute first pass or focused re-check, use the [lite assessment
 profile](profiles/lite.md). It samples 15 items and is not a substitute for a
 full assessment.
 
-To calculate category scores and gap priorities from confirmed answers, use the
-[score calculator](tools/calculator.html). After changing item headings in
+To calculate standard category scores, supplemental custom scores, and gap
+priorities from confirmed answers, use the [score calculator](tools/calculator.html).
+After changing item headings in
 `assessment/`, regenerate it with `python3 scripts/build-calculator.py`.
 
 See the [fictional sample report](examples/sample-report.md) for a full run,

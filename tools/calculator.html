@@ -83,6 +83,15 @@
     <div id="categories"></div>
   </section>
 
+  <section class="card" aria-labelledby="custom-heading">
+    <h2 id="custom-heading">Custom practices (supplemental)</h2>
+    <p class="hint small">Optional. Give each practice a stable report-local ID. Custom rows have separate gaps and a supplemental score; they do not change standard category scores or coverage. When adding custom rows for a category, mark that category's standard “Other” item Skipped.</p>
+    <div class="actions"><button id="add-custom" type="button" class="secondary">Add custom practice</button></div>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Category</th><th>Practice</th><th>Importance</th><th>State</th><th>Status</th><th>Note / reason</th><th></th></tr></thead><tbody id="custom-rows"></tbody></table></div>
+    <div id="custom-summary" class="summary-grid"></div>
+    <div id="custom-gaps" class="table-wrap"></div>
+  </section>
+
   <section class="card" aria-labelledby="results-heading">
     <h2 id="results-heading">Results</h2>
     <div id="validation"></div>
@@ -105,6 +114,7 @@ document.getElementById("spec").value = SPEC_VERSION;
 document.getElementById("date").value = new Date().toISOString().slice(0, 10);
 const statusOptions = ["Confirmed", "Unknown", "Deferred", "Unconfirmed", "N/A", "Skipped"];
 let prior = null;
+let nextCustomId = 1;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
@@ -169,11 +179,43 @@ function readRows() {
     };
   });
 }
+function addCustomRow() {
+  const id = `custom-${String(nextCustomId++).padStart(2, "0")}`;
+  const categories = [...new Set(ITEMS.map(item => item.category))];
+  const row = document.createElement("tr");
+  row.dataset.customId = id;
+  row.innerHTML = `<td><strong>${id}</strong></td>
+    <td><select class="custom-category" aria-label="Category for ${id}">${categories.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("")}</select></td>
+    <td class="item"><input class="custom-title" type="text" aria-label="Practice for ${id}" placeholder="Describe the practice"></td>
+    <td><select class="custom-importance" aria-label="Importance for ${id}">${makeOptions([1,2,3], "")}</select></td>
+    <td><select class="custom-state" aria-label="State for ${id}">${makeOptions([0,1,2,3,4], "")}</select></td>
+    <td class="status"><select class="custom-status" aria-label="Status for ${id}">${statusOptions.map(s => `<option value="${s}" ${s === "Unconfirmed" ? "selected" : ""}>${s}</option>`).join("")}</select></td>
+    <td class="note"><input class="custom-note" type="text" aria-label="Note for ${id}" placeholder="Optional rationale"></td>
+    <td><button type="button" class="secondary remove-custom" aria-label="Remove ${id}">Remove</button></td>`;
+  document.getElementById("custom-rows").append(row);
+  calculate();
+}
+function readCustomRows() {
+  return [...document.querySelectorAll("#custom-rows tr")].map(row => ({
+    id: row.dataset.customId,
+    title: row.querySelector(".custom-title").value.trim(),
+    category: row.querySelector(".custom-category").value,
+    importance: row.querySelector(".custom-importance").value === "" ? null : Number(row.querySelector(".custom-importance").value),
+    state: row.querySelector(".custom-state").value === "" ? null : Number(row.querySelector(".custom-state").value),
+    status: row.querySelector(".custom-status").value,
+    note: row.querySelector(".custom-note").value.trim(),
+  }));
+}
 function card(value, label) { return `<div class="metric"><b>${esc(value)}</b><span>${esc(label)}</span></div>`; }
 function calculate() {
   const rows = readRows();
+  const customRows = readCustomRows();
   const errors = [];
   for (const row of rows) {
+    if (row.status === "Confirmed" && (row.importance === null || row.state === null)) errors.push(`${row.id} is Confirmed but needs both importance and state.`);
+  }
+  for (const row of customRows) {
+    if (!row.title) errors.push(`${row.id} needs a practice description.`);
     if (row.status === "Confirmed" && (row.importance === null || row.state === null)) errors.push(`${row.id} is Confirmed but needs both importance and state.`);
   }
   const categoryNames = [...new Set(ITEMS.map(i => i.category))];
@@ -197,24 +239,38 @@ function calculate() {
   const allApplicable = rows.filter(r => r.inScope && r.status !== "N/A" && r.status !== "Skipped");
   const allConfirmed = allApplicable.filter(r => r.status === "Confirmed" && r.importance !== null && r.state !== null);
   const totalGaps = allConfirmed.map(r => ({...r, gap: r.importance * (4 - r.state)})).sort(gapSort);
+  const customApplicable = customRows.filter(r => r.status !== "N/A" && r.status !== "Skipped");
+  const customConfirmed = customApplicable.filter(r => r.status === "Confirmed" && r.title && r.importance !== null && r.state !== null);
+  const customNumerator = customConfirmed.reduce((sum, r) => sum + r.importance * r.state, 0);
+  const customDenominator = customConfirmed.reduce((sum, r) => sum + r.importance * 4, 0);
+  const customStatus = customRows.length === 0 ? "None identified" : customApplicable.length === 0 ? (customRows.every(r=>r.status === "Skipped") ? "Skipped" : "Not assessed") : customConfirmed.length === customApplicable.length ? "Complete" : "Provisional";
+  const customScore = customDenominator > 0 ? customNumerator / customDenominator : null;
+  const customGaps = customConfirmed.map(r => ({...r, gap:r.importance * (4-r.state)})).sort(gapSort);
   document.getElementById("validation").innerHTML = errors.map(e => `<div class="warning error">${esc(e)}</div>`).join("");
   document.getElementById("summary").innerHTML = [card(`${allConfirmed.length}`, "Confirmed applicable items"),card(`${allConfirmed.length}/${allApplicable.length}`, "Coverage: confirmed / applicable"),card(`${totalGaps.length}`, "Confirmed items with scores"),card(`${rows.filter(r => r.inScope && r.status === "N/A").length}`, "N/A items")].join("");
   document.getElementById("category-results").innerHTML = summaries.map(s => `<tr><td>${esc(s.category)}</td><td>${s.score === null ? esc(s.status === "Provisional" ? "No score · provisional" : s.status) : `${(s.score*100).toFixed(1)}%${s.status === "Provisional" ? " · provisional" : " · complete"}`}</td><td>${s.confirmed}/${s.applicable}</td><td>${s.topGap ? `${esc(s.topGap.id)} · ${s.topGap.gap}` : "—"}</td></tr>`).join("");
   document.getElementById("gaps").innerHTML = totalGaps.slice(0,10).map((r,i) => `<tr><td>${i+1}</td><td>${esc(r.id)} ${esc(r.title)}</td><td>${r.importance}</td><td>${r.state}</td><td>${r.gap}</td><td>${esc(r.note)}</td></tr>`).join("") || `<tr><td colspan="6">No confirmed gap ratings yet.</td></tr>`;
-  window.currentAssessment = makeAssessment(rows, summaries);
-  renderComparison(rows, summaries);
+  document.getElementById("custom-summary").innerHTML = [
+    card(customScore === null ? customStatus : `${(customScore*100).toFixed(1)}% · ${customStatus.toLowerCase()}`, "Supplemental custom score"),
+    card(`${customConfirmed.length}/${customApplicable.length}`, "Custom coverage: confirmed / applicable"),
+    card(`${customGaps.length}`, "Confirmed custom gaps"),
+  ].join("");
+  document.getElementById("custom-gaps").innerHTML = customGaps.length ? `<table class="score-table"><thead><tr><th>ID</th><th>Category</th><th>Practice</th><th>Importance</th><th>State</th><th>Gap priority</th><th>Note</th></tr></thead><tbody>${customGaps.map(r=>`<tr><td>${esc(r.id)}</td><td>${esc(r.category)}</td><td>${esc(r.title)}</td><td>${r.importance}</td><td>${r.state}</td><td>${r.gap}</td><td>${esc(r.note)}</td></tr>`).join("")}</tbody></table>` : "";
+  const customSummary = {confirmed:customConfirmed.length, applicable:customApplicable.length, numerator:customNumerator, denominator:customDenominator, score:customScore, status:customStatus};
+  window.currentAssessment = makeAssessment(rows, summaries, customRows, customSummary);
+  renderComparison(rows, summaries, customRows, customSummary);
 }
 function gapSort(a,b) { return b.gap-a.gap || b.importance-a.importance || a.id.localeCompare(b.id, undefined, {numeric:true}); }
 function context() {
   return {team:document.getElementById("team").value.trim(), specVersion:document.getElementById("spec").value.trim(), profile:document.getElementById("profile").value.trim(), systemBoundary:document.getElementById("boundary").value.trim(), environment:document.getElementById("environment").value.trim(), date:document.getElementById("date").value};
 }
-function makeAssessment(rows, summaries) {
-  return {calculatorVersion:1, context:context(), selectedItems:rows.filter(r=>r.inScope).map(r=>r.id), rows:rows.map(({id,title,category,inScope,importance,state,status,note})=>({id,title,category,inScope,importance,state,status,note})), categories:summaries.map(({category,inScope,applicable,confirmed,numerator,denominator,status,score})=>({category,inScope,applicable,confirmed,numerator,denominator,status,score}))};
+function makeAssessment(rows, summaries, customRows, customSummary) {
+  return {calculatorVersion:1, context:context(), selectedItems:rows.filter(r=>r.inScope).map(r=>r.id), rows:rows.map(({id,title,category,inScope,importance,state,status,note})=>({id,title,category,inScope,importance,state,status,note})), categories:summaries.map(({category,inScope,applicable,confirmed,numerator,denominator,status,score})=>({category,inScope,applicable,confirmed,numerator,denominator,status,score})), customRows:customRows.map(({id,title,category,importance,state,status,note})=>({id,title,category,importance,state,status,note})), customSummary};
 }
-function renderComparison(rows, summaries) {
+function renderComparison(rows, summaries, customRows, customSummary) {
   const target = document.getElementById("comparison");
   if (!prior) { target.innerHTML = ""; return; }
-  const now = makeAssessment(rows, summaries);
+  const now = makeAssessment(rows, summaries, customRows, customSummary);
   const warnings = [];
   const prevCtx = prior.context || {};
   for (const [key,label] of [["specVersion","spec version"],["systemBoundary","system boundary"],["environment","environment"],["profile","profile"]]) if ((now.context[key]||"") !== (prevCtx[key]||"")) warnings.push(`Reports use a different ${label}.`);
@@ -222,16 +278,27 @@ function renderComparison(rows, summaries) {
   const nowIds = now.selectedItems.slice().sort().join(",");
   const prevIds = (prior.selectedItems||[]).slice().sort().join(",");
   if (nowIds !== prevIds) warnings.push("Reports use a different selected item scope.");
+  const prevCustom = new Map((prior.customRows||[]).map(r=>[r.id,r]));
+  const nowCustomIds = customRows.map(r=>`${r.id}:${r.title}`).sort().join(",");
+  const prevCustomIds = (prior.customRows||[]).map(r=>`${r.id}:${r.title}`).sort().join(",");
+  const customSetMatches = nowCustomIds === prevCustomIds;
+  if (!customSetMatches) warnings.push("Custom supplemental scores are not directly comparable because the custom ID/title set changed.");
   const shared = rows.filter(r=>r.inScope && r.status === "Confirmed" && r.state !== null && prevRows.has(r.id) && prevRows.get(r.id).status === "Confirmed" && prevRows.get(r.id).state !== null);
   const weightChanges = shared.filter(r=>r.importance !== prevRows.get(r.id).importance);
   if (weightChanges.length) warnings.push(`Importance weights differ for ${weightChanges.length} shared confirmed item(s).`);
+  const sharedCustom = customRows.filter(r=>r.status === "Confirmed" && r.title && prevCustom.has(r.id) && prevCustom.get(r.id).title === r.title && prevCustom.get(r.id).status === "Confirmed");
+  const customWeightChanges = sharedCustom.filter(r=>r.importance !== prevCustom.get(r.id).importance);
+  if (customWeightChanges.length) warnings.push(`Custom supplemental scores are not directly comparable because importance weights differ for ${customWeightChanges.length} shared practice(s).`);
+  const priorCustomStatus = prior.customSummary?.status || ((prior.customRows||[]).length ? "Provisional" : "None identified");
+  if (customSummary.status === "Provisional" || priorCustomStatus === "Provisional") warnings.push("At least one custom supplemental score is provisional; compare shared confirmed custom practices individually.");
   const prevCats = prior.categories || [];
   const prevComplete = prevCats.length > 0 && prevCats.every(c=>["Complete","Not assessed","Skipped"].includes(c.status));
   const currentComplete = now.categories.every(c=>["Complete","Not assessed","Skipped"].includes(c.status));
   if (!prevComplete || !currentComplete) warnings.push("At least one report is provisional; compare shared confirmed item states, not aggregate scores.");
-  if (warnings.length === 0) warnings.push("Spec version, scope, profile, environment, and importance weights match; both reports are complete. Aggregate scores can be compared.");
+  if (!warnings.some(w=>w.includes("Spec version") || w.includes("system boundary") || w.includes("environment") || w.includes("profile") || w.includes("selected item scope") || w.includes("weight") || w.includes("provisional"))) warnings.push("Spec version, scope, profile, environment, and importance weights match; both standard reports are complete. Aggregate standard scores can be compared.");
   const stateChanges = shared.filter(r=>r.state !== prevRows.get(r.id).state).length;
-  target.innerHTML = `<h3>Comparison with prior assessment</h3>${warnings.map(w=>`<div class="warning">${esc(w)}</div>`).join("")}<p class="small">Shared confirmed items: ${shared.length}. Changed confirmed states: ${stateChanges}. Compare state changes item by item if scope or weights differ.</p>`;
+  const customStateChanges = sharedCustom.filter(r=>r.state !== prevCustom.get(r.id).state).length;
+  target.innerHTML = `<h3>Comparison with prior assessment</h3>${warnings.map(w=>`<div class="warning">${esc(w)}</div>`).join("")}<p class="small">Shared confirmed standard items: ${shared.length}; changed states: ${stateChanges}. Shared confirmed custom practices: ${sharedCustom.length}; changed states: ${customStateChanges}. Compare standard and custom scores separately.</p>`;
 }
 function loadAssessment(data) {
   if (!data || data.calculatorVersion !== 1 || !Array.isArray(data.rows)) throw new Error("This file is not a supported calculator export.");
@@ -252,6 +319,10 @@ document.getElementById("lite-profile").addEventListener("click",()=>{
   calculate();
 });
 document.getElementById("export").addEventListener("click",exportAssessment);
+document.getElementById("add-custom").addEventListener("click",addCustomRow);
+document.getElementById("custom-rows").addEventListener("input",event=>{ if(event.target.matches("input,select")) calculate(); });
+document.getElementById("custom-rows").addEventListener("change",event=>{ if(event.target.matches("input,select")) calculate(); });
+document.getElementById("custom-rows").addEventListener("click",event=>{ if(event.target.closest(".remove-custom")){event.target.closest("tr").remove();calculate();} });
 document.getElementById("import-prior").addEventListener("change",async event=>{
   const file=event.target.files[0]; if(!file)return;
   try { loadAssessment(JSON.parse(await file.text())); calculate(); }
