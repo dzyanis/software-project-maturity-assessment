@@ -102,6 +102,7 @@ nav:
       - With an LLM agent: AGENT.md
       - Report template: templates/report.md
       - Interview checkpoint: templates/checkpoint.md
+      - Pilot record: templates/pilot-record.md
       - Fictional sample report: examples/sample-report.md
   - Project:
       - Contributing: CONTRIBUTING.md
