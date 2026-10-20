@@ -8,6 +8,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 ## [Unreleased]
 
 ### Added
+- Added 6.1 questions on communicating security priorities, tracking security measures, and reinforcing secure-coding practices. Existing item IDs remain unchanged. Release impact: MINOR.
 - Added a 5.8 question on managing and injecting non-secret configuration per environment. Existing item IDs remain unchanged. Release impact: MINOR.
 - Added a 5.4 question on artifact integrity, signing, and provenance. Existing item IDs remain unchanged. Release impact: MINOR.
 - Added item 1.10 on user experience and accessibility; existing item IDs remain unchanged. Release impact: MINOR.

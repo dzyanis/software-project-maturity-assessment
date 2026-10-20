@@ -13,6 +13,9 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 - Can you point to a specific control that exists because of an identified threat, not just as a generic best practice?
 - When a new feature touches sensitive functionality, does threat modeling happen before or after it ships?
 - Who owns security requirements — is it a named responsibility or does it fall through the cracks between product and engineering?
+- How are security priorities and responsibilities communicated to the teams building and operating the system?
+- Which security measures or outcomes does the team track, and how do those measures influence decisions?
+- What secure-coding guidance or training is available to engineers, and how is it reinforced in day-to-day work?
 
 **Red flags:** no threat model exists in any form, written or verbal; security is "whatever the framework does by default"; security requirements are discovered retroactively, after an incident or audit.
 
