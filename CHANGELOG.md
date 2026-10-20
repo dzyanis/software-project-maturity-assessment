@@ -8,6 +8,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 ## [Unreleased]
 
 ### Added
+- Standalone score calculator with inputs generated from assessment item headings, score summaries, top gaps, and comparison warnings.
 - Optional 15-item lite assessment profile with a 30–60 minute planning target for discovery and focused re-checks.
 - Markdown checkpoint template and agent guidance for pausing and resuming interviews with confirmed answers, notes, and evidence references preserved.
 - `coverage/` directory documenting point-by-point coverage of external frameworks, starting with the Joel Test (9/12 full, 3/12 partial), plus a template for future mappings.

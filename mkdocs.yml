@@ -91,9 +91,16 @@ nav:
       - OWASP SAMM: coverage/opensamm.md
       - ISO 25010: coverage/iso-25010.md
       - AWS Well-Architected: coverage/aws-well-architected.md
+      - CMMI V3.0: coverage/cmmi.md
+      - PMI OPM3: coverage/opm3.md
+      - DORA and Google SRE: coverage/dora.md
+      - SPACE: coverage/space.md
   - Running it:
+      - Score calculator: tools/calculator.html
+      - Lite profile: profiles/lite.md
       - With an LLM agent: AGENT.md
       - Report template: templates/report.md
+      - Interview checkpoint: templates/checkpoint.md
       - Fictional sample report: examples/sample-report.md
   - Project:
       - Contributing: CONTRIBUTING.md

@@ -117,3 +117,4 @@ print(f"updated {len(updates)} files from {old_version} to {new_version}")
 PY
 
 ./scripts/build-bundle.sh
+python3 scripts/build-calculator.py

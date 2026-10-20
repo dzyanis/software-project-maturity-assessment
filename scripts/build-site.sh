@@ -6,11 +6,13 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+python3 scripts/build-calculator.py
+
 stage=".site-src"
 raw_base="https://raw.githubusercontent.com/dzyanis/software-project-maturity-assessment/main"
 
 rm -rf "$stage"
-mkdir -p "$stage/assessment" "$stage/coverage" "$stage/templates" "$stage/examples"
+mkdir -p "$stage/assessment" "$stage/coverage" "$stage/templates" "$stage/examples" "$stage/tools" "$stage/profiles"
 
 # Relative paths are preserved so that every existing link between these files
 # keeps resolving with no rewriting. MkDocs turns a .md link target into that
@@ -18,8 +20,10 @@ mkdir -p "$stage/assessment" "$stage/coverage" "$stage/templates" "$stage/exampl
 cp ASSESSMENT.md AGENT.md CONTRIBUTING.md CHANGELOG.md "$stage/"
 cp assessment/*.md "$stage/assessment/"
 cp coverage/*.md "$stage/coverage/"
-cp templates/report.md "$stage/templates/"
+cp templates/*.md "$stage/templates/"
 cp examples/*.md "$stage/examples/"
+cp tools/calculator.html "$stage/tools/calculator.html"
+cp profiles/*.md "$stage/profiles/"
 cp site-assets/robots.txt "$stage/"
 
 # LICENSE is not a documentation page, but index.md (from README.md) links to
