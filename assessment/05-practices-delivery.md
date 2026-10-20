@@ -54,6 +54,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 - Can you rebuild last month's release artifact byte-for-byte from source, or has that become impossible?
 - How long does a full build take, and has that time been trending up?
 - Where are built artifacts stored, and how far back can you retrieve one?
+- How is a built artifact's provenance recorded and verified before deployment—for example, with a signature or build attestation—and how can it be tied to reviewed source?
 - What's the last time a build succeeded locally but failed — or behaved differently — in CI or production?
 
 **Red flags:** builds that only work on one person's machine; no artifact retention beyond the current release; build steps that silently depend on external network state or unpinned tool versions.
