@@ -40,6 +40,8 @@ For each chosen category, in order, read its file in `assessment/` and go item b
 
 If reasonable follow-up does not establish a rating, mark it **unknown**; if the team chooses to return later, mark it **deferred**. Neither means state 0 or N/A. Keep any known field and evidence, but do not calculate a score contribution unless both importance and state are confirmed.
 
+Reuse evidence across items when it genuinely answers more than one question; do not repeat the same interview question. Explain which part of the evidence applies to each item. A single underlying problem may be linked to multiple item IDs, but combine it into one action when one fix addresses it.
+
 After each category, give a two-sentence summary of what you heard before moving on.
 
 ## Phase 3 — Report
@@ -52,6 +54,7 @@ Fill in `templates/report.md` exactly:
 - Record the system boundary, environment, selected profile/categories/items, assessment date, and evidence date in the report. Evidence references are optional; do not include secrets or private personnel records.
 - Treat aggregate scores as directly comparable only when both reports are complete and spec version, scope, selected items, and importance weights match. Provisional scores are not directly comparable; compare shared confirmed item states and disclose coverage. If weights change, disclose that and compare confirmed item states separately. If scope or item selection changes, mark aggregate scores not directly comparable.
 - Write 3–5 recommendations tied to the top gaps: what to do first, why, what "better" looks like in 3–6 months.
+- Combine related gaps into one recommendation when the same action addresses them, and list every related item ID.
 - Keep the evidence needed to support ratings in Detailed results. Avoid unnecessary identifying details, and never include secrets or private personnel records.
 - Record spec version 0.2.0, the date, and participants in the header.
 
@@ -287,7 +290,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Why it matters:** Code review is often the only point where a second engineer engages deeply with a change before it ships; when it's a rubber stamp, the team loses its main defense against design mistakes and knowledge silos.
 
-**What good looks like:** Reviews happen promptly, reviewers engage with design and correctness rather than just style, and the process catches real problems often enough that people take it seriously.
+**What good looks like:** Reviews happen promptly, reviewers engage with design and correctness rather than just style, and the process catches real problems often enough that people take it seriously. This item assesses the review interaction and feedback; ownership and reviewer assignment are assessed in 4.13.
 
 **Questions to ask:**
 - How long does a typical pull request wait for its first review comment?
@@ -599,17 +602,17 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 ### 4.8 Unit Tests
 
-**Why it matters:** Tests are the only scalable defense against regressions; without them every change carries hidden risk and refactoring stalls.
+**Why it matters:** Unit tests give fast feedback on logic and edge cases in individual components; without them, small regressions are harder to find and refactoring stalls.
 
-**What good looks like:** Tests run on every commit, fail the build, finish in minutes, and the team trusts them. Coverage is tracked but not worshipped.
+**What good looks like:** Unit tests exercise meaningful behavior and edge cases, finish quickly, and fail reliably when that behavior regresses. Coverage is tracked but not worshipped. Release-level regression confidence is assessed in 5.5; pipeline enforcement is assessed in 5.13.
 
 **Questions to ask:**
-- Can you run all tests locally with one command? How long does it take?
-- When a test fails, do people fix it or re-run it? How are flaky tests handled?
-- Can someone merge with failing tests — is it technically possible?
-- What was the last bug that tests *should* have caught but didn't?
+- Can you run the unit test suite locally with one command, and how long does it take?
+- Do unit tests assert business behavior and edge cases, or are they mostly coupled to implementation details?
+- When a unit test fails, do people investigate it or re-run it? How are flaky tests handled?
+- What was the last logic bug a unit test should have caught but did not?
 
-**Red flags:** tests skipped in CI; coverage targets without enforcement; "we test manually before release"; flaky tests tolerated for months.
+**Red flags:** unit tests are too slow or flaky to provide useful feedback; tests assert implementation details but miss important behavior; failures are routinely re-run without investigation.
 
 ### 4.9 Integration & E2E Testing
 
@@ -669,17 +672,17 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 ### 4.13 Code Ownership & Review Process Quality
 
-**Why it matters:** Clear ownership means someone is accountable for a piece of code's health; meaningful review is the primary mechanism for catching problems and spreading knowledge before code ships.
+**Why it matters:** Clear ownership makes someone accountable for a piece of code's health and helps route changes to people with the right context. Review speed and the substance of feedback are assessed in 2.8.
 
-**What good looks like:** Every part of the codebase has a clear owner or owning team, reviews are substantive rather than rubber-stamped, and review feedback covers correctness and design, not just style.
+**What good looks like:** Every part of the codebase has a clear owner or owning team, and changes are routed to an owner or qualified reviewer. Ownership includes responsibility for maintenance, not just approval rights.
 
 **Questions to ask:**
-- For any given file, could you name who owns it or who to ask about it?
-- How long does a typical review take, and what kind of feedback does it actually contain?
+- For a given file or service, could you name its owner or owning team and how a change gets routed to them?
+- What happens when the owner is unavailable or a change crosses ownership boundaries?
 - Is there a part of the codebase nobody wants to own or touch?
-- What's the last bug that review should have caught but didn't, and why did it slip through?
+- Who is accountable for the health and maintenance of code their team owns?
 
-**Red flags:** reviews routinely approved within minutes with no comments; large areas of the codebase have no clear owner; review feedback is almost entirely style nitpicks rather than logic or design concerns.
+**Red flags:** large areas have no clear owner; ownership records are stale; changes routinely bypass the owning team without an agreed reason; nobody accepts responsibility for maintaining inherited code.
 
 ### 4.14 Dependency Security & Updates
 
@@ -777,17 +780,17 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 ### 5.5 Project Testing
 
-**Why it matters:** Regression and pre-release testing is the last line of defense before code reaches users, catching what unit and integration tests upstream in the codebase didn't — including interactions across the whole system as it will actually run.
+**Why it matters:** Release-level regression testing checks that critical user paths still work across the system as it will run. Unit and integration test design is assessed in 4.8 and 4.9; this item focuses on the confidence the release candidate provides.
 
-**What good looks like:** A defined regression suite runs automatically before every release, covers the paths that matter most to users, and a release doesn't ship until it passes — with clear ownership for maintaining and triaging it.
+**What good looks like:** The team knows which critical user paths and system interactions its release-level regression checks cover, how representative their environment and data are, and what gaps remain. The results inform a deliberate release-confidence decision. Automated gates and deployment enforcement are assessed in 5.13.
 
 **Questions to ask:**
-- What runs automatically between "code is merged" and "release goes out," and what still requires a human to click through manually?
-- Has a release ever shipped with the regression suite red, and if so, under what justification?
-- How is this regression testing different from the unit/integration tests that already run in CI — what does it catch that they don't?
-- What's the last regression that reached production because pre-release testing didn't cover that path?
+- Which critical user journeys and system interactions are covered by release-level regression checks, and which important paths remain untested?
+- How closely do the test environment and data represent the release environment and data?
+- How does the team decide whether regression results provide enough confidence in a release candidate?
+- What was the last production regression that unit or integration tests did not catch, and what did it reveal about the release-level checks?
 
-**Red flags:** "we do a manual pass before every release" as the entire strategy; regression suite is stale and no longer reflects current critical paths; releases proceed regardless of test results because "it's probably fine."
+**Red flags:** critical user paths have no release-level regression evidence; the suite is stale or unlike production; known test gaps are not considered in release decisions.
 
 ### 5.6 Automation
 
@@ -891,7 +894,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Why it matters:** The CI/CD pipeline is the automated gate between a commit and a deployed change; how much it actually enforces — versus how much it merely reports — determines how much the team can trust "green" to mean "safe to ship."
 
-**What good looks like:** Every change passes through automated quality gates (tests, linting, security checks) before merge, deployment is automated and repeatable rather than a manual sequence of commands, and pipeline failures block progress rather than being routinely overridden.
+**What good looks like:** Every change passes through automated quality gates (tests, linting, security checks) before merge, deployment is automated and repeatable rather than a manual sequence of commands, and pipeline failures block progress rather than being routinely overridden. Test-suite quality is assessed in 4.8 and 4.9; release regression confidence is assessed in 5.5.
 
 **Questions to ask:**
 - What quality gates actually block a merge or deploy, versus which ones just report status that people ignore?
@@ -1215,7 +1218,7 @@ Up to 10 items, sorted by gap priority descending.
 
 ## Recommendations
 
-3–5 short narrative recommendations, each tied to the gaps above: what to do first, why, and what "better" would look like in 3–6 months.
+3–5 short narrative recommendations, each tied to the gaps above: what to do first, why, and what "better" would look like in 3–6 months. Combine related gaps into one action when a single fix addresses them, and list all related item IDs.
 
 1. {{RECOMMENDATION}}
 

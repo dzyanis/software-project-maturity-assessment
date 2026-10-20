@@ -34,6 +34,8 @@ For each chosen category, in order, read its file in `assessment/` and go item b
 
 If reasonable follow-up does not establish a rating, mark it **unknown**; if the team chooses to return later, mark it **deferred**. Neither means state 0 or N/A. Keep any known field and evidence, but do not calculate a score contribution unless both importance and state are confirmed.
 
+Reuse evidence across items when it genuinely answers more than one question; do not repeat the same interview question. Explain which part of the evidence applies to each item. A single underlying problem may be linked to multiple item IDs, but combine it into one action when one fix addresses it.
+
 After each category, give a two-sentence summary of what you heard before moving on.
 
 ## Phase 3 — Report
@@ -46,6 +48,7 @@ Fill in `templates/report.md` exactly:
 - Record the system boundary, environment, selected profile/categories/items, assessment date, and evidence date in the report. Evidence references are optional; do not include secrets or private personnel records.
 - Treat aggregate scores as directly comparable only when both reports are complete and spec version, scope, selected items, and importance weights match. Provisional scores are not directly comparable; compare shared confirmed item states and disclose coverage. If weights change, disclose that and compare confirmed item states separately. If scope or item selection changes, mark aggregate scores not directly comparable.
 - Write 3–5 recommendations tied to the top gaps: what to do first, why, what "better" looks like in 3–6 months.
+- Combine related gaps into one recommendation when the same action addresses them, and list every related item ID.
 - Keep the evidence needed to support ratings in Detailed results. Avoid unnecessary identifying details, and never include secrets or private personnel records.
 - Record spec version 0.2.0, the date, and participants in the header.
 

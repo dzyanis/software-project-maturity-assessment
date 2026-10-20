@@ -45,7 +45,7 @@ Up to 10 items, sorted by gap priority descending.
 
 ## Recommendations
 
-3–5 short narrative recommendations, each tied to the gaps above: what to do first, why, and what "better" would look like in 3–6 months.
+3–5 short narrative recommendations, each tied to the gaps above: what to do first, why, and what "better" would look like in 3–6 months. Combine related gaps into one action when a single fix addresses them, and list all related item IDs.
 
 1. {{RECOMMENDATION}}
 

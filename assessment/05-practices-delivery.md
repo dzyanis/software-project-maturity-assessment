@@ -60,17 +60,17 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 ### 5.5 Project Testing
 
-**Why it matters:** Regression and pre-release testing is the last line of defense before code reaches users, catching what unit and integration tests upstream in the codebase didn't — including interactions across the whole system as it will actually run.
+**Why it matters:** Release-level regression testing checks that critical user paths still work across the system as it will run. Unit and integration test design is assessed in 4.8 and 4.9; this item focuses on the confidence the release candidate provides.
 
-**What good looks like:** A defined regression suite runs automatically before every release, covers the paths that matter most to users, and a release doesn't ship until it passes — with clear ownership for maintaining and triaging it.
+**What good looks like:** The team knows which critical user paths and system interactions its release-level regression checks cover, how representative their environment and data are, and what gaps remain. The results inform a deliberate release-confidence decision. Automated gates and deployment enforcement are assessed in 5.13.
 
 **Questions to ask:**
-- What runs automatically between "code is merged" and "release goes out," and what still requires a human to click through manually?
-- Has a release ever shipped with the regression suite red, and if so, under what justification?
-- How is this regression testing different from the unit/integration tests that already run in CI — what does it catch that they don't?
-- What's the last regression that reached production because pre-release testing didn't cover that path?
+- Which critical user journeys and system interactions are covered by release-level regression checks, and which important paths remain untested?
+- How closely do the test environment and data represent the release environment and data?
+- How does the team decide whether regression results provide enough confidence in a release candidate?
+- What was the last production regression that unit or integration tests did not catch, and what did it reveal about the release-level checks?
 
-**Red flags:** "we do a manual pass before every release" as the entire strategy; regression suite is stale and no longer reflects current critical paths; releases proceed regardless of test results because "it's probably fine."
+**Red flags:** critical user paths have no release-level regression evidence; the suite is stale or unlike production; known test gaps are not considered in release decisions.
 
 ### 5.6 Automation
 
@@ -174,7 +174,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Why it matters:** The CI/CD pipeline is the automated gate between a commit and a deployed change; how much it actually enforces — versus how much it merely reports — determines how much the team can trust "green" to mean "safe to ship."
 
-**What good looks like:** Every change passes through automated quality gates (tests, linting, security checks) before merge, deployment is automated and repeatable rather than a manual sequence of commands, and pipeline failures block progress rather than being routinely overridden.
+**What good looks like:** Every change passes through automated quality gates (tests, linting, security checks) before merge, deployment is automated and repeatable rather than a manual sequence of commands, and pipeline failures block progress rather than being routinely overridden. Test-suite quality is assessed in 4.8 and 4.9; release regression confidence is assessed in 5.5.
 
 **Questions to ask:**
 - What quality gates actually block a merge or deploy, versus which ones just report status that people ignore?

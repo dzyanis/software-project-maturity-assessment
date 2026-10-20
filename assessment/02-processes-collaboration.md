@@ -104,7 +104,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Why it matters:** Code review is often the only point where a second engineer engages deeply with a change before it ships; when it's a rubber stamp, the team loses its main defense against design mistakes and knowledge silos.
 
-**What good looks like:** Reviews happen promptly, reviewers engage with design and correctness rather than just style, and the process catches real problems often enough that people take it seriously.
+**What good looks like:** Reviews happen promptly, reviewers engage with design and correctness rather than just style, and the process catches real problems often enough that people take it seriously. This item assesses the review interaction and feedback; ownership and reviewer assignment are assessed in 4.13.
 
 **Questions to ask:**
 - How long does a typical pull request wait for its first review comment?

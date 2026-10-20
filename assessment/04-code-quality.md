@@ -102,17 +102,17 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 ### 4.8 Unit Tests
 
-**Why it matters:** Tests are the only scalable defense against regressions; without them every change carries hidden risk and refactoring stalls.
+**Why it matters:** Unit tests give fast feedback on logic and edge cases in individual components; without them, small regressions are harder to find and refactoring stalls.
 
-**What good looks like:** Tests run on every commit, fail the build, finish in minutes, and the team trusts them. Coverage is tracked but not worshipped.
+**What good looks like:** Unit tests exercise meaningful behavior and edge cases, finish quickly, and fail reliably when that behavior regresses. Coverage is tracked but not worshipped. Release-level regression confidence is assessed in 5.5; pipeline enforcement is assessed in 5.13.
 
 **Questions to ask:**
-- Can you run all tests locally with one command? How long does it take?
-- When a test fails, do people fix it or re-run it? How are flaky tests handled?
-- Can someone merge with failing tests — is it technically possible?
-- What was the last bug that tests *should* have caught but didn't?
+- Can you run the unit test suite locally with one command, and how long does it take?
+- Do unit tests assert business behavior and edge cases, or are they mostly coupled to implementation details?
+- When a unit test fails, do people investigate it or re-run it? How are flaky tests handled?
+- What was the last logic bug a unit test should have caught but did not?
 
-**Red flags:** tests skipped in CI; coverage targets without enforcement; "we test manually before release"; flaky tests tolerated for months.
+**Red flags:** unit tests are too slow or flaky to provide useful feedback; tests assert implementation details but miss important behavior; failures are routinely re-run without investigation.
 
 ### 4.9 Integration & E2E Testing
 
@@ -172,17 +172,17 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 ### 4.13 Code Ownership & Review Process Quality
 
-**Why it matters:** Clear ownership means someone is accountable for a piece of code's health; meaningful review is the primary mechanism for catching problems and spreading knowledge before code ships.
+**Why it matters:** Clear ownership makes someone accountable for a piece of code's health and helps route changes to people with the right context. Review speed and the substance of feedback are assessed in 2.8.
 
-**What good looks like:** Every part of the codebase has a clear owner or owning team, reviews are substantive rather than rubber-stamped, and review feedback covers correctness and design, not just style.
+**What good looks like:** Every part of the codebase has a clear owner or owning team, and changes are routed to an owner or qualified reviewer. Ownership includes responsibility for maintenance, not just approval rights.
 
 **Questions to ask:**
-- For any given file, could you name who owns it or who to ask about it?
-- How long does a typical review take, and what kind of feedback does it actually contain?
+- For a given file or service, could you name its owner or owning team and how a change gets routed to them?
+- What happens when the owner is unavailable or a change crosses ownership boundaries?
 - Is there a part of the codebase nobody wants to own or touch?
-- What's the last bug that review should have caught but didn't, and why did it slip through?
+- Who is accountable for the health and maintenance of code their team owns?
 
-**Red flags:** reviews routinely approved within minutes with no comments; large areas of the codebase have no clear owner; review feedback is almost entirely style nitpicks rather than logic or design concerns.
+**Red flags:** large areas have no clear owner; ownership records are stale; changes routinely bypass the owning team without an agreed reason; nobody accepts responsibility for maintaining inherited code.
 
 ### 4.14 Dependency Security & Updates
 

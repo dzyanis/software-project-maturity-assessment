@@ -25,8 +25,8 @@ Each note gives a short evidence-based reason for the current state. Importance
 changes the weight and gap priority; state 4 remains the common score reference.
 
 Category 4 is **provisional**: 14 of 15 applicable items are confirmed, while
-item 4.13 is unknown because the team could not verify whether review feedback
-is consistently substantive. The unknown answer is excluded from the numeric
+item 4.13 is unknown because the team could not verify ownership and reviewer
+routing for shared components. The unknown answer is excluded from the numeric
 score and remains visible in coverage. Item 7.3 is N/A because the team has no
 recruiting authority. The seven “Other” prompts are N/A because no additional
 practice was identified.
@@ -147,7 +147,7 @@ ties after gap priority and importance.
 | 4.10 Scaffolding / Project Layout | 2 | 3 | Confirmed | 2 | Medium: service scaffolds are documented; new projects sometimes diverge. |
 | 4.11 Documentation & Domain Language | 2 | 2 | Confirmed | 4 | Medium: glossary exists; operational examples are stale. |
 | 4.12 Static Analysis / Linting | 2 | 3 | Confirmed | 2 | Medium: lint and type checks are required in CI. |
-| 4.13 Code Ownership & Review Process Quality | 3 | — | Unknown | — | Critical: the team could not confirm whether reviews routinely catch substantive issues. |
+| 4.13 Code Ownership & Review Process Quality | 3 | — | Unknown | — | Critical: ownership and reviewer routing for shared components could not be confirmed. |
 | 4.14 Dependency Security & Updates | 3 | 2 | Confirmed | 6 | Critical: alerts are reviewed monthly; urgent-fix timing is not agreed. |
 | 4.15 Copyright & Licenses | 2 | 3 | Confirmed | 2 | Medium: dependency licenses are inventoried during builds. |
 | 4.16 Other | N/A | — | N/A | — | No additional code or quality practice was identified. |
@@ -223,7 +223,7 @@ Gap priorities in the top-ten table use importance × (4 − state). The unknown
 
 - **N/A items and reasons:** 1.9, 2.14, 3.9, 4.16, 5.16, 6.11, and 7.6: no
   additional practice was identified; 7.3: the team has no recruiting authority.
-- **Unknown items:** 4.13; review feedback quality could not be confirmed.
+- **Unknown items:** 4.13; ownership and reviewer routing for shared components could not be confirmed.
 - **Skipped categories or items:** None.
 - **Free-form “Other” items:** None identified.
 - **Comparison limits:** This report is fictional. A real comparison requires
