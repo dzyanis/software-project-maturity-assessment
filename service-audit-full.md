@@ -486,6 +486,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 - What happens right now if the system's most critical dependency goes down for five minutes?
 - Are there timeouts and retries on external calls, and were they set deliberately or left at library defaults?
 - What's the last outage caused by a single point of failure, and has that class of failure been addressed since?
+- How does the service handle initialization, readiness, and shutdown—for example, draining in-flight work—and how does the team verify those transitions complete safely?
 - Has failure injection or chaos testing ever been run, or is resilience purely theoretical?
 
 **Red flags:** a single dependency failing takes down unrelated functionality; retries with no backoff turn a blip into a self-inflicted overload; nobody knows what the actual blast radius of a given failure would be.
