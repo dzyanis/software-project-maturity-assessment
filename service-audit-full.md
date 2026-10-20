@@ -1162,6 +1162,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 - Who sets the technical hiring bar — is it engineering, or does HR run the process largely independently?
 - If someone on the team were flight-risk right now, would people ops know before they resigned?
 - How closely does the actual job match what was advertised or promised at hiring time?
+- Are interviews structured around consistent, role-relevant criteria, and do interviewers have guidance to assess candidates consistently and fairly?
 
 **Red flags:** engineers learn about org changes affecting them from HR announcements rather than any prior conversation; hiring bar is set unilaterally by whichever function runs the process; exit interviews surface the same complaint repeatedly with no visible change.
 
