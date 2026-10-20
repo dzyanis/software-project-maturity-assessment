@@ -98,6 +98,7 @@ nav:
   - Running it:
       - Score calculator: tools/calculator.html
       - Lite profile: profiles/lite.md
+      - Future guided UI scope: docs/guided-interview-ui-scope.md
       - With an LLM agent: AGENT.md
       - Report template: templates/report.md
       - Interview checkpoint: templates/checkpoint.md

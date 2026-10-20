@@ -58,6 +58,10 @@ priorities from confirmed answers, use the [score calculator](tools/calculator.h
 After changing item headings in
 `assessment/`, regenerate it with `python3 scripts/build-calculator.py`.
 
+The optional future guided interview interface is scoped in
+[`docs/guided-interview-ui-scope.md`](docs/guided-interview-ui-scope.md); it has
+not been built.
+
 See the [fictional sample report](examples/sample-report.md) for a full run,
 including rating rationale, calculations, an N/A item, and an unknown answer.
 
