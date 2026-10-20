@@ -1,6 +1,6 @@
 # 2. Processes & Collaboration
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.2.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.3.0.
 
 ### 2.1 Onboarding Process
 

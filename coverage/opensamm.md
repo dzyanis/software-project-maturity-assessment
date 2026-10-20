@@ -1,7 +1,7 @@
 # Coverage: OWASP SAMM (OpenSAMM)
 
 **Source:** https://owaspsamm.org/
-**Mapped against spec version:** 0.2.0
+**Mapped against spec version:** 0.3.0
 **Last reviewed:** 2026-07-18
 
 Mapped against OWASP SAMM v2 (the current successor of OpenSAMM 1.x): 5

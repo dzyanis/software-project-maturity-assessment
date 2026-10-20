@@ -1,7 +1,7 @@
 # Coverage: The Joel Test — 12 Steps to Better Code
 
 **Source:** https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
-**Mapped against spec version:** 0.2.0
+**Mapped against spec version:** 0.3.0
 **Last reviewed:** 2026-07-18
 
 The assessment covers 9 of the 12 steps in full (three of those through the

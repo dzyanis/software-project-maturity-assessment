@@ -1,7 +1,7 @@
 # Coverage: PMI Organizational Project Management Maturity Model (OPM3)
 
 **Sources:** [OPM3 Third Edition (PMI, 2013)](https://www.pmi.org/shop/p-/book/organizational-project-management-maturity-model-%28opm3%29-%E2%80%93-third-edition/00101463501), [PMI overview of OPM3's domains and improvement stages](https://www.pmi.org/learning/library/opm3-achieve-strategic-business-improvement-7290), and [The Standard for Organizational Project Management (PMI, 2018)](https://www.pmi.org/shop/p-/book/the-standard-for-organizational-project-management-%28opm%29/00101605801)
-**Mapped against spec version:** 0.2.0
+**Mapped against spec version:** 0.3.0
 **Last reviewed:** 2026-10-20
 
 OPM3 Third Edition is PMI's organizational project management maturity model.

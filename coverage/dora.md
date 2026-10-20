@@ -1,7 +1,7 @@
 # Coverage: DORA / Accelerate and Google SRE
 
 **Sources:** [DORA software delivery performance metrics](https://dora.dev/guides/dora-metrics/), [DORA capability catalog](https://dora.dev/capabilities/), [Google SRE: Service Level Objectives](https://sre.google/sre-book/service-level-objectives/), [Google SRE: Error Budgets](https://sre.google/sre-book/embracing-risk/), and [Google SRE: Eliminating Toil](https://sre.google/sre-book/eliminating-toil/)
-**Mapped against spec version:** 0.2.0
+**Mapped against spec version:** 0.3.0
 **Last reviewed:** 2026-10-20
 
 DORA measures software delivery performance and studies the capabilities

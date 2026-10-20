@@ -9,7 +9,7 @@
 |---|---|
 | **Team / Product** | Harborlight Order Desk |
 | **Date** | 2026-10-18 |
-| **Spec version** | 0.2.0 |
+| **Spec version** | 0.3.0 |
 | **Participants** | Fictional product manager; engineering lead; two engineers (role labels only) |
 | **Intended audience / sharing** | Fictional engineering and product leadership; shared internally after participant review |
 | **System boundary** | Customer web app, public API, and order-processing workers |

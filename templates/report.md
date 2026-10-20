@@ -4,7 +4,7 @@
 |---|---|
 | **Team / Product** | {{TEAM_NAME}} |
 | **Date** | {{DATE}} |
-| **Spec version** | 0.2.0 |
+| **Spec version** | 0.3.0 |
 | **Participants** | {{NAMES_OR_ROLE_LABELS_AS_AGREED}} |
 | **Intended audience / sharing** | {{AUDIENCE_AND_STORAGE_OR_SHARING_EXPECTATIONS}} |
 | **System boundary** | {{SYSTEMS_AND_SERVICES_IN_SCOPE}} |

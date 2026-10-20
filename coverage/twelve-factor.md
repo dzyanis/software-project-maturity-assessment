@@ -1,7 +1,7 @@
 # Coverage: The Twelve-Factor Methodology
 
 **Source:** https://www.12factor.net/
-**Mapped against spec version:** 0.2.0
+**Mapped against spec version:** 0.3.0
 **Last reviewed:** 2026-07-18
 
 The assessment covers 5 of the 12 factors in full, 6 partially, and 1 not at

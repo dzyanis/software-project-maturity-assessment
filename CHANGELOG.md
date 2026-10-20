@@ -7,6 +7,8 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-20
+
 ### Added
 - Added a pilot record template for session timing, completion, interview friction, independent ratings, and cross-session findings.
 - Score calculator now supports separately scored custom practices, exports their report-local IDs, and warns when custom sets or weights change between reports.

@@ -1,6 +1,6 @@
 # Software Project Maturity Assessment
 
-**Spec version: 0.2.0**
+**Spec version: 0.3.0**
 
 Read it on the web: **<https://dzyanis.github.io/software-project-maturity-assessment/>**
 

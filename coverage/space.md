@@ -1,7 +1,7 @@
 # Coverage: SPACE Developer Productivity Framework
 
 **Source:** [The SPACE of Developer Productivity: There's more to it than you think (ACM Queue, 2021)](https://doi.org/10.1145/3454122.3454124)
-**Mapped against spec version:** 0.2.0
+**Mapped against spec version:** 0.3.0
 **Last reviewed:** 2026-10-20
 
 SPACE describes developer productivity through five connected dimensions:

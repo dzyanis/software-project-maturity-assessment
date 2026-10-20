@@ -1,7 +1,7 @@
 # Lite assessment profile
 
 **Profile version:** lite-v1
-**Spec version:** 0.2.0
+**Spec version:** 0.3.0
 
 The lite profile is a 30–60 minute first pass for discovery or a focused
 re-check. It selects 15 items across all seven categories to sample product

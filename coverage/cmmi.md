@@ -2,7 +2,7 @@
 
 **Sources:** [CMMI Model Domain Differentiation (ISACA PDF)](https://cmmiinstitute.com/getattachment/4addb5b3-12ee-4f05-8aee-1d61e2b45e50/ISACA-CMMI-Domain-Chart_fnl.pdf), [CMMI Development](https://cmmiinstitute.com/products/cmmi/cmmi-dev), and [CMMI Services](https://www.cmmiinstitute.com/products/cmmi/cmmi-services)
 **Model:** CMMI V3.0
-**Mapped against spec version:** 0.2.0
+**Mapped against spec version:** 0.3.0
 **Last reviewed:** 2026-10-20
 
 CMMI V3.0 organizes common practice areas as Core and adds two Development and

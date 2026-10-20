@@ -1,6 +1,6 @@
 # 5. Engineering Practices & Delivery
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.2.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.3.0.
 
 ### 5.1 Version Control System
 
