@@ -41,6 +41,17 @@ send a PR directly.
 
 ## Before you send a PR
 
+To update the current version stamps across the assessment, coverage mappings,
+agent instructions, report template, and sample report, run:
+
+```bash
+./scripts/bump-version.sh X.Y.Z
+```
+
+The script checks that existing stamps agree with `README.md` and rebuilds the
+single-file bundle after updating them. Update the changelog release heading
+and notes separately when preparing a release.
+
 If you changed anything under `assessment/`, `templates/`, or `AGENT.md`,
 regenerate the single-file bundle:
 
