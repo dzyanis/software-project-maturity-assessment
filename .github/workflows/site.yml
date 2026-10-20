@@ -27,6 +27,11 @@ jobs:
       - name: Build and verify the site
         run: ./scripts/test-site.sh
 
+      - name: Verify assessment version stamps and bundle
+        run: |
+          ./scripts/build-bundle.sh
+          git diff --exit-code -- service-audit-full.md
+
       # The Markdown files are also consumed directly by AGENT.md,
       # build-bundle.sh, and the documented download command. Building the
       # website must never rewrite those source files in place.

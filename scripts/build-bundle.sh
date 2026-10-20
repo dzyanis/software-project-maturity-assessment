@@ -6,26 +6,32 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 out="service-audit-full.md"
-version=$(sed -n 's/.*Spec version: \([0-9.]*\).*/\1/p' README.md | head -1)
+version=$(sed -nE 's/^\*\*Spec version: ([0-9]+\.[0-9]+\.[0-9]+)\*\*$/\1/p' README.md | head -1)
 
 if [[ -z "$version" ]]; then
   echo "error: could not find spec version in README.md" >&2
   exit 1
 fi
 
-version_files=(
-  ASSESSMENT.md
-  AGENT.md
-  templates/report.md
-  assessment/*.md
-  coverage/[a-z]*.md
-)
-
-for f in "${version_files[@]}"; do
-  if ! grep -Fq "$version" "$f"; then
-    echo "error: $f does not contain spec version $version" >&2
+check_version_stamp() {
+  local file=$1 stamp=$2
+  if ! grep -Fqx -- "$stamp" "$file"; then
+    echo "error: $file does not have the expected version stamp: $stamp" >&2
     exit 1
   fi
+}
+
+check_version_stamp README.md "**Spec version: ${version}**"
+check_version_stamp ASSESSMENT.md "**Spec version: ${version}**"
+check_version_stamp AGENT.md "You are an experienced engineering consultant running a Software Project Maturity Assessment (spec version ${version}). Your job: interview the team, rate each item with them, and produce a report."
+check_version_stamp templates/report.md "| **Spec version** | ${version} |"
+
+for f in assessment/*.md; do
+  check_version_stamp "$f" "Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version ${version}."
+done
+
+for f in coverage/[a-z]*.md; do
+  check_version_stamp "$f" "**Mapped against spec version:** ${version}"
 done
 
 {
