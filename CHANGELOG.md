@@ -10,6 +10,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 ## [0.3.0] - 2026-10-20
 
 ### Added
+- Added illustrative evidence examples for states 1–4 on code review and recovery planning; they are explicitly unvalidated pending pilot sessions.
 - Added a pilot record template for session timing, completion, interview friction, independent ratings, and cross-session findings.
 - Score calculator now supports separately scored custom practices, exports their report-local IDs, and warns when custom sets or weights change between reports.
 - Added a 7.4 question on access to coaching and mentoring relationships. Existing item IDs remain unchanged. Release impact: MINOR.

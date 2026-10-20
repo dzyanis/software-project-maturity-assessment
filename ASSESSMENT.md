@@ -23,6 +23,8 @@ state. The score uses state 4 as the common reference for every item.
 | **Importance** — how much this matters for *your* team | 1 Low · 2 Medium · 3 Critical · N/A not applicable (record the reason) |
 | **Current state** — where you are today | 0 Absent · 1 Ad-hoc · 2 Defined · 3 Managed · 4 Optimizing |
 
+See [illustrative evidence examples for states 1–4](docs/rating-examples.md).
+
 Record the answer status separately from the rating:
 
 - **Confirmed:** the team has confirmed both an importance and a state rating.
