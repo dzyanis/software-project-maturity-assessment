@@ -90,6 +90,7 @@ nav:
       - The Twelve-Factor Methodology: coverage/twelve-factor.md
       - OWASP SAMM: coverage/opensamm.md
       - ISO 25010: coverage/iso-25010.md
+      - AWS Well-Architected: coverage/aws-well-architected.md
   - Running it:
       - With an LLM agent: AGENT.md
       - Report template: templates/report.md
