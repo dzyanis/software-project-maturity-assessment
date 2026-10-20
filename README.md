@@ -71,8 +71,9 @@ How this assessment covers each framework is documented point-by-point in [cover
 - [CMMI V3.0 Development and Services](https://cmmiinstitute.com/products/cmmi) ([coverage](coverage/cmmi.md))
 - [PMI Organizational Project Management Maturity Model (OPM3), Third Edition](https://www.pmi.org/shop/p-/book/organizational-project-management-maturity-model-%28opm3%29-%E2%80%93-third-edition/00101463501) ([coverage](coverage/opm3.md))
 - [DORA / Accelerate and Google SRE](https://dora.dev/) ([coverage](coverage/dora.md))
+- [SPACE Developer Productivity Framework](https://doi.org/10.1145/3454122.3454124) ([coverage](coverage/space.md))
 
-Planned mappings (SPACE) are tracked in [the `area:coverage` issues](https://github.com/dzyanis/software-project-maturity-assessment/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage).
+Planned mappings are tracked in [the `area:coverage` issues](https://github.com/dzyanis/software-project-maturity-assessment/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage).
 
 ## Website development
 

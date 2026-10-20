@@ -16,6 +16,7 @@ about gaps.
 | [CMMI V3.0 Development and Services](cmmi.md) | 0/23 full, 23/23 partial |
 | [PMI OPM3 Third Edition](opm3.md) | 0/10 full, 10/10 partial |
 | [DORA / Accelerate and Google SRE](dora.md) | 0/20 full, 20/20 partial |
+| [SPACE Developer Productivity Framework](space.md) | 0/5 full, 5/5 partial |
 
 ## Template for new mappings
 
