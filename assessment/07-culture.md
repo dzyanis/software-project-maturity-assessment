@@ -54,6 +54,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 **Questions to ask:**
 - When did you last use a training budget, attend a conference, or take a course on work time — and was it easy to get approved?
 - Do you know what it would take to get promoted or move to a different track, or is that opaque?
+- How can team members access coaching or mentoring, and how are those relationships helping them develop skills or pursue career goals?
 - Is there a recurring guild, brown-bag, or knowledge-sharing session, and do people actually show up?
 - What's something you learned recently that you had to pursue entirely on your own time and dime?
 

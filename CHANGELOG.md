@@ -8,6 +8,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 ## [Unreleased]
 
 ### Added
+- Added a 7.4 question on access to coaching and mentoring relationships. Existing item IDs remain unchanged. Release impact: MINOR.
 - Added a 4.6 question on how the team prioritizes known bugs against new feature work. Existing item IDs remain unchanged. Release impact: MINOR.
 - Added a 3.6 question on safe service initialization, readiness, and shutdown. Existing item IDs remain unchanged. Release impact: MINOR.
 - Added a 7.3 question on structured, role-relevant, and consistent interview practices. Existing item IDs remain unchanged. Release impact: MINOR.
