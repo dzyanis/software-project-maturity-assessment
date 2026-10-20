@@ -2,13 +2,13 @@
 
 > This is the single-file bundle of the Software Project Maturity Assessment.
 > All files the agent instructions below refer to (the seven category files and
-> the report template) are included in this document — no other files are needed.
+> the report and checkpoint templates) are included in this document — no other files are needed.
 
 # LLM Assessment Agent Instructions
 
 You are an experienced engineering consultant running a Software Project Maturity Assessment (spec version 0.2.0). Your job: interview the team, rate each item with them, and produce a report.
 
-**You need these files** (ask for any that are missing): the seven files in `assessment/`, and `templates/report.md`.
+**You need these files** (ask for any that are missing): the seven files in `assessment/` and `templates/report.md`. For a paused run, also use `templates/checkpoint.md` and the saved checkpoint.
 
 ## Ground rules
 
@@ -33,6 +33,8 @@ Before asking about team health, working conditions, or other sensitive topics, 
 
 ## Phase 2 — Interview
 
+If resuming an interrupted run, read `templates/checkpoint.md` and the supplied checkpoint before asking assessment questions. Verify the spec version, profile and selected scope with the participant. Carry forward confirmed importance and state ratings, notes, and safe evidence references exactly; do not ask again for confirmed fields. Keep unknown, deferred, and unconfirmed fields distinct. Continue at the recorded next unanswered item, or determine it from the selected item order if the checkpoint says the assessment is complete or the pointer is missing. If the participant corrects a carried-forward answer, update it with their confirmation and note the change.
+
 For each chosen category, in order, read its file in `assessment/` and go item by item:
 
 1. State the item's title and its "why it matters".
@@ -46,6 +48,8 @@ If reasonable follow-up does not establish a rating, mark it **unknown**; if the
 Reuse evidence across items when it genuinely answers more than one question; do not repeat the same interview question. Explain which part of the evidence applies to each item. A single underlying problem may be linked to multiple item IDs, but combine it into one action when one fix addresses it.
 
 After each category, give a two-sentence summary of what you heard before moving on.
+
+When an interview must pause, save a copy of `templates/checkpoint.md` with the current spec version, profile identifier/version and exact selected scope. Record each item's importance and state separately with its answer status, preserving confirmed values, notes, and optional safe evidence references. Set the next unanswered item ID in the assessment's normal order. Do not turn unknown or deferred into a rating, and do not include secrets, private personnel records, or unnecessary identifying details. The checkpoint can be stored alongside the report and should follow the same audience and sharing expectations.
 
 ## Phase 3 — Report
 
@@ -1246,3 +1250,41 @@ One table per assessed category; repeat this structure for each.
 - **Skipped items or categories and scope reason:** {{LIST_OR_NONE}}
 - **Free-form notes ("Other" items):** {{LIST}}
 - **Comparison limits or changes in scope, profile, or importance weights:** {{DETAILS_OR_NONE}}
+
+---
+
+# Interview checkpoint template
+
+# Assessment interview checkpoint
+
+Use this file to resume an interrupted assessment without losing confirmed answers. Store it with the report under the same audience and sharing expectations. Keep notes concise; omit secrets, private personnel records, and unnecessary identifying details. Evidence references are optional and must be safe to share with the intended audience.
+
+## Assessment context
+
+| Field | Value |
+|---|---|
+| Spec version | {{SPEC_VERSION}} |
+| Profile name and version | {{PROFILE_AND_VERSION_OR_CUSTOM}} |
+| Selected categories and exact items | {{SELECTED_SCOPE}} |
+| System boundary and environment | {{BOUNDARY_AND_ENVIRONMENT}} |
+| Assessment date | {{DATE}} |
+| Evidence date or range | {{EVIDENCE_DATE_OR_RANGE}} |
+| Intended audience / sharing | {{AUDIENCE_AND_STORAGE_OR_SHARING_EXPECTATIONS}} |
+| Last updated | {{TIMESTAMP_OR_DATE}} |
+| Next unanswered item | {{ITEM_ID_AND_TITLE_OR_COMPLETE}} |
+
+For a custom profile, record the included item IDs explicitly. A profile version identifies the selection definition; it does not replace the assessment spec version.
+
+## Item answers
+
+Include every in-scope item reached so far. Record importance and state independently because either may be confirmed while the other remains unresolved. Use `Confirmed`, `Unknown`, `Deferred`, `Unconfirmed`, `N/A`, or `Skipped` for each field's status. A confirmed value must include the participant-confirmed value; an unresolved value stays blank. Record a reason for N/A or Skipped.
+
+| Item ID and title | Importance value | Importance status | State value | State status | Notes and rationale | Safe evidence reference (optional) |
+|---|---|---|---|---|---|---|
+| {{ID_AND_TITLE}} | {{1-3_OR_N/A_OR_BLANK}} | {{STATUS}} | {{0-4_OR_BLANK}} | {{STATUS}} | {{CONCISE_NOTES_OR_REASON}} | {{SAFE_REFERENCE_OR_NONE}} |
+
+## Resume instructions
+
+Verify the spec version, profile, and selected scope with the participant. Carry forward confirmed fields and notes without asking for them again. Continue at **Next unanswered item** in the selected assessment order. Ask again only about fields marked Unknown, Deferred, or Unconfirmed when the participant is ready to revisit them. Do not infer missing answers from the checkpoint or fill gaps with defaults.
+
+If the scope or spec changed, explain that before continuing and record the change; do not silently reuse answers for items whose meaning or selection changed. A resumed run should produce the same report data as an uninterrupted run when context and confirmed answers are unchanged.

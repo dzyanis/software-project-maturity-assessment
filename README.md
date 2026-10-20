@@ -44,7 +44,7 @@ This is a self-assessment, not a grade. It weights maturity gaps by the importan
 1. Read [ASSESSMENT.md](ASSESSMENT.md): the index, scoring scales, and links to the seven category files in [assessment/](assessment/).
 2. Run the assessment:
     - **Manually:** walk the categories with your team and fill in [templates/report.md](templates/report.md).
-    - **With an LLM:** give your AI assistant [AGENT.md](AGENT.md) and the `assessment/` files; it interviews the team one question at a time and produces the report.
+    - **With an LLM:** give your AI assistant [AGENT.md](AGENT.md) and the `assessment/` files; it interviews the team one question at a time and produces the report. To pause and resume later, save the current answers in the [interview checkpoint](templates/checkpoint.md).
 3. Re-run it periodically (e.g. every 6–12 months). Keep the spec version,
    scope, selected items, and importance weights the same when comparing
    aggregate scores.

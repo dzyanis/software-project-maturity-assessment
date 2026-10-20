@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds service-audit-full.md: the whole assessment (agent instructions,
-# all category files, report template) as a single file for attaching to
+# all category files, report and checkpoint templates) as a single file for attaching to
 # web-based LLM chats. Run from anywhere; output lands in the repo root.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -39,7 +39,7 @@ done
   echo ""
   echo "> This is the single-file bundle of the Software Project Maturity Assessment."
   echo "> All files the agent instructions below refer to (the seven category files and"
-  echo "> the report template) are included in this document — no other files are needed."
+  echo "> the report and checkpoint templates) are included in this document — no other files are needed."
   echo ""
   cat AGENT.md
   for f in assessment/0*.md; do
@@ -54,6 +54,12 @@ done
   echo "# Report template"
   echo ""
   cat templates/report.md
+  echo ""
+  echo "---"
+  echo ""
+  echo "# Interview checkpoint template"
+  echo ""
+  cat templates/checkpoint.md
 } > "$out"
 
 echo "wrote $out ($(wc -l < "$out" | tr -d ' ') lines, spec version ${version})"
