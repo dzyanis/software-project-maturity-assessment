@@ -24,7 +24,7 @@ cp templates/*.md "$stage/templates/"
 cp examples/*.md "$stage/examples/"
 cp tools/calculator.html "$stage/tools/calculator.html"
 cp profiles/*.md "$stage/profiles/"
-cp docs/guided-interview-ui-scope.md "$stage/docs/"
+cp docs/guided-interview-ui-scope.md docs/pilot-method.md "$stage/docs/"
 cp site-assets/robots.txt "$stage/"
 
 # LICENSE is not a documentation page, but index.md (from README.md) links to

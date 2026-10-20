@@ -103,6 +103,7 @@ nav:
       - Report template: templates/report.md
       - Interview checkpoint: templates/checkpoint.md
       - Pilot record: templates/pilot-record.md
+      - Pilot method: docs/pilot-method.md
       - Fictional sample report: examples/sample-report.md
   - Project:
       - Contributing: CONTRIBUTING.md

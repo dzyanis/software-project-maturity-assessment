@@ -62,6 +62,9 @@ The optional future guided interview interface is scoped in
 [`docs/guided-interview-ui-scope.md`](docs/guided-interview-ui-scope.md); it has
 not been built.
 
+The [pilot method and current prompt count](docs/pilot-method.md) explain how
+to measure real interview time and rating differences.
+
 See the [fictional sample report](examples/sample-report.md) for a full run,
 including rating rationale, calculations, an N/A item, and an unknown answer.
 
