@@ -22,6 +22,7 @@ exclude_docs: |
 
 theme:
   name: material
+  custom_dir: site-overrides
   features:
     - navigation.sections
     - navigation.top
@@ -43,6 +44,13 @@ theme:
 
 plugins:
   - search
+
+# Public ownership tokens supplied by Google Search Console / Bing Webmaster
+# Tools. Copy only the content attribute from each provider's HTML meta tag.
+extra:
+  search_engine_verification:
+    google: "526wdvryr0nziEhdxlKmW0mTJgJf5pCqJKjvMrqCaXA"
+    bing: ""
 
 markdown_extensions:
   - tables

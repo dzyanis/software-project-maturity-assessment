@@ -96,6 +96,9 @@ changing
   --output-file requirements-docs.txt requirements-docs.in
 ```
 
+Website maintainers: see the [search engine registration guide](https://github.com/dzyanis/service_audit/blob/main/docs/search-engines.md)
+for Google Search Console and Bing Webmaster Tools setup.
+
 ## Roadmap
 
 Planned work lives in [GitHub issues](https://github.com/dzyanis/service_audit/issues),
