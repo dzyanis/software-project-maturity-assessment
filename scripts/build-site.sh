@@ -10,7 +10,7 @@ stage=".site-src"
 raw_base="https://raw.githubusercontent.com/dzyanis/service_audit/main"
 
 rm -rf "$stage"
-mkdir -p "$stage/assessment" "$stage/coverage" "$stage/templates"
+mkdir -p "$stage/assessment" "$stage/coverage" "$stage/templates" "$stage/examples"
 
 # Relative paths are preserved so that every existing link between these files
 # keeps resolving with no rewriting. MkDocs turns a .md link target into that
@@ -19,6 +19,7 @@ cp ASSESSMENT.md AGENT.md CONTRIBUTING.md CHANGELOG.md "$stage/"
 cp assessment/*.md "$stage/assessment/"
 cp coverage/*.md "$stage/coverage/"
 cp templates/report.md "$stage/templates/"
+cp examples/*.md "$stage/examples/"
 cp site-assets/robots.txt "$stage/"
 
 # LICENSE is not a documentation page, but index.md (from README.md) links to

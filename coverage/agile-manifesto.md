@@ -1,7 +1,7 @@
 # Coverage: The Agile Manifesto
 
 **Source:** https://agilemanifesto.org/
-**Mapped against spec version:** 0.1.1
+**Mapped against spec version:** 0.2.0
 **Last reviewed:** 2026-07-31
 
 The assessment covers 7 of the 12 principles in full (one of those through the

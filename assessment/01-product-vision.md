@@ -1,6 +1,6 @@
 # 1. Product & Vision
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.1.1.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.2.0.
 
 ### 1.1 Product Overview
 

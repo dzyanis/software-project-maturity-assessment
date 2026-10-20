@@ -1,7 +1,7 @@
 # Coverage: AWS Well-Architected Framework
 
 **Source:** https://docs.aws.amazon.com/wellarchitected/latest/framework/
-**Mapped against spec version:** 0.1.1
+**Mapped against spec version:** 0.2.0
 **Last reviewed:** 2026-10-20
 
 The AWS Well-Architected Framework evaluates cloud workloads through six

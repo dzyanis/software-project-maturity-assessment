@@ -1,6 +1,6 @@
 # Software Project Maturity Assessment
 
-**Spec version: 0.1.1**
+**Spec version: 0.2.0**
 
 Read it on the web: **<https://dzyanis.github.io/service_audit/>**
 
@@ -45,7 +45,12 @@ This is a self-assessment, not a grade. It weights maturity gaps by the importan
 2. Run the assessment:
     - **Manually:** walk the categories with your team and fill in [templates/report.md](templates/report.md).
     - **With an LLM:** give your AI assistant [AGENT.md](AGENT.md) and the `assessment/` files; it interviews the team one question at a time and produces the report.
-3. Re-run it periodically (e.g. every 6–12 months) with the same spec version to track progress.
+3. Re-run it periodically (e.g. every 6–12 months). Keep the spec version,
+   scope, selected items, and importance weights the same when comparing
+   aggregate scores.
+
+See the [fictional sample report](examples/sample-report.md) for a full run,
+including rating rationale, calculations, an N/A item, and an unknown answer.
 
 ## Versioning
 

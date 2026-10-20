@@ -4,7 +4,7 @@
 |---|---|
 | **Team / Product** | {{TEAM_NAME}} |
 | **Date** | {{DATE}} |
-| **Spec version** | 0.1.1 |
+| **Spec version** | 0.2.0 |
 | **Participants** | {{NAMES_AND_ROLES}} |
 | **System boundary** | {{SYSTEMS_AND_SERVICES_IN_SCOPE}} |
 | **Environment(s)** | {{ENVIRONMENTS_IN_SCOPE}} |
@@ -53,7 +53,7 @@ Up to 10 items, sorted by gap priority descending.
 
 One table per assessed category; repeat this structure for each.
 
-### {{N}}. {{CATEGORY_NAME}} — {{PCT_OR_NOT_ASSESSED}}
+### {{N}}. {{CATEGORY_NAME}} — {{SCORE_STATUS_AND_COVERAGE}}
 
 | Item | Importance | State | Answer status | Gap priority | Notes |
 |---|---|---|---|---|---|
