@@ -4,7 +4,7 @@
 
 Read it on the web: **<https://dzyanis.github.io/service_audit/>**
 
-A structured framework for auditing the maturity of a software project. The team first sets its own bar: how important each engineering practice is for this project. Then it measures where it currently stands against that bar. The gap between the two becomes a scored, prioritized improvement roadmap. The audit can be conducted manually by an assessor, or an LLM agent can take the assessor's role: it interviews the team and produces the report.
+A structured framework for auditing the maturity of a software project. The team rates how important each engineering practice is for this project, then measures its current state on a common 0–4 scale. The weighted gap becomes a prioritized improvement roadmap. Incomplete ratings remain visible and make scores provisional. The audit can be conducted manually by an assessor, or an LLM agent can take the assessor's role: it interviews the team and produces the report.
 
 ## Quick start
 
@@ -31,13 +31,13 @@ The agent interviews your team one question at a time and produces a report you 
 
 Engineering leaders and the people writing the code rarely have a shared way to talk about the state of a project. One side asks about dates and risk, the other answers in tech debt and missing tests, and neither has evidence the other can act on. This assessment is meant to be that shared interface: one artifact both sides can point at.
 
-That works because the team sets its own bar before it measures anything.
+That works because the team sets the importance of each practice before measuring its current state. The importance weight reflects local priorities; the score reference remains level 4 for every item.
 
-**For engineers**, the bar is theirs. A low score on something the team deliberately deprioritized is a decision, not a failure. What remains is a structured case for work they already know is needed, plus the blind spots a checklist surfaces that nobody thought to ask about. It also forces the team to agree on what "good" means here, instead of everyone carrying a private standard.
+**For engineers**, the priorities are theirs. A lower gap priority on something the team deliberately deprioritized is a decision, not a failure. What remains is a structured case for work they already know is needed, plus the blind spots a checklist surfaces that nobody thought to ask about. It also forces the team to agree on what "good" means here, instead of everyone carrying a private standard.
 
-**For engineering leaders**, it is a read on the project that does not require sitting in every standup or pulling it out of people one by one. Re-run it with the same spec version and progress becomes visible rather than inferred.
+**For engineering leaders**, it is a read on the project that does not require sitting in every standup or pulling it out of people one by one. Re-run it with the same spec version, scope, selected items, and importance weights to make progress visible rather than inferred.
 
-This is a self-assessment, not a grade. It measures a project against the bar that project's own team set, and nothing else.
+This is a self-assessment, not a grade. It weights maturity gaps by the importance the team assigns to each practice, using the same state-4 reference for every item.
 
 ## How to use it
 
@@ -49,7 +49,7 @@ This is a self-assessment, not a grade. It measures a project against the bar th
 
 ## Versioning
 
-The spec follows [SemVer](https://semver.org/): MAJOR versions change or remove items (reports stop being comparable), MINOR versions add items or questions, PATCH versions fix wording. See [CHANGELOG.md](CHANGELOG.md). Reports record the spec version they were produced with.
+The spec follows [SemVer](https://semver.org/): MAJOR versions change, remove, or renumber items in ways that break report comparability; MINOR versions add items, questions, or additive scoring/report behavior; PATCH versions fix wording without changing meaning. See [CHANGELOG.md](CHANGELOG.md). Reports record the spec version they were produced with.
 
 After changing any assessment content, regenerate the single-file bundle with `./scripts/build-bundle.sh`.
 

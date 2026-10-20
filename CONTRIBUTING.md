@@ -9,8 +9,14 @@ Reports record the spec version they were produced with, and teams compare their
 own reports across runs. That only works if item numbering is stable, so:
 
 - **MAJOR** changes or removes an existing item. Old reports stop being comparable.
-- **MINOR** adds an item or a question. Existing numbering is untouched.
+- **MINOR** adds an item, question, or additive scoring/report behavior. Existing item numbering and calculations for complete reports remain compatible.
 - **PATCH** fixes wording without changing what is being asked.
+
+Changes that define how incomplete answers are reported or scored need an
+explicit comparison rule. If complete-report calculations remain unchanged,
+record the new report behavior as a MINOR change and state which older reports
+cannot be compared. Changes that alter existing complete-report calculations
+need a MAJOR release decision.
 
 Anything that changes what an item asks, or how items are numbered, gets the
 `spec-change` label and needs agreement on the release impact before the PR is

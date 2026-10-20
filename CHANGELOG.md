@@ -2,8 +2,8 @@
 
 All notable changes to this assessment are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [SemVer](https://semver.org/) —
-MAJOR = items removed/renumbered/restructured (breaks report comparability),
-MINOR = items or questions added, PATCH = wording fixes.
+MAJOR = breaking item or scoring/report changes, MINOR = items, questions, or
+additive scoring/report behavior, PATCH = wording fixes without semantic change.
 
 ## [Unreleased]
 
@@ -12,6 +12,10 @@ MINOR = items or questions added, PATCH = wording fixes.
 - Twelve-Factor Methodology coverage mapping (5/12 full, 6/12 partial, 1 deliberately not covered).
 - OWASP SAMM (OpenSAMM) coverage mapping against SAMM v2's 15 practices (6/15 full, 9/15 partial).
 - ISO 25010 coverage mapping against the eight product quality characteristics (5/8 full, 3/8 partial), with a note on the 2023 revision's Safety characteristic.
+
+### Changed
+- Clarified that importance weights express team priorities while state 4 remains the common score reference. Defined confirmed, unknown, deferred, unconfirmed, N/A, and skipped answers; incomplete category scores are provisional, include coverage counts, and exclude unconfirmed rows from calculations.
+- Added report context for system boundary, environment, selected profile/items, and evidence date, plus rules for changed weights and scope. Existing calculations for complete assessments remain unchanged. Planned release impact: MINOR (0.2.0); 0.1.1 incomplete reports are not comparable to provisional scores because their missing-answer behavior was undefined.
 
 ## [0.1.1] - 2026-07-18
 

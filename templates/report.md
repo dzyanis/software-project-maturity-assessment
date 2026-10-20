@@ -6,25 +6,34 @@
 | **Date** | {{DATE}} |
 | **Spec version** | 0.1.1 |
 | **Participants** | {{NAMES_AND_ROLES}} |
-| **Categories assessed** | {{LIST_OR_ALL}} |
+| **System boundary** | {{SYSTEMS_AND_SERVICES_IN_SCOPE}} |
+| **Environment(s)** | {{ENVIRONMENTS_IN_SCOPE}} |
+| **Profile / categories / items** | {{SELECTED_SCOPE}} |
+| **Evidence date or range** | {{EVIDENCE_DATE_OR_RANGE}} |
 
 ## Scoring key
 
-Importance: 1 Low, 2 Medium, 3 Critical, N/A skipped (reason recorded).
+Importance: 1 Low, 2 Medium, 3 Critical, N/A not applicable (reason recorded).
 Current state: 0 Absent, 1 Ad-hoc, 2 Defined, 3 Managed, 4 Optimizing.
-Gap priority = importance × (4 − state), max 12. Category score = Σ(importance × state) / Σ(importance × 4), as a percentage. A category where every item is N/A is "not assessed". Top gaps are sorted by gap priority descending, ties broken by importance. Categories excluded at setup are marked "skipped" — distinct from "not assessed", which means every item was rated N/A.
+Importance sets the team's priorities; the common score reference is state 4 for every item. Gap priority = importance × (4 − state), max 12. Category score = Σ(importance × state) / Σ(importance × 4), using confirmed ratings only. An item contributes only when both its importance and state are confirmed.
+
+Answer status is **Confirmed**, **Unknown**, **Deferred**, **Unconfirmed**, **N/A**, or **Skipped**. Unknown, deferred, and unconfirmed items are not zero or N/A and do not contribute to scores. Show confirmed applicable items / applicable items in scope; the latter includes unknown, deferred, and unconfirmed items but excludes N/A and skipped items. Mark a category **provisional** if any applicable item is not confirmed. If no item is confirmed, show "no score (provisional)". If all items are N/A, show "not assessed"; categories excluded at setup are "skipped".
+
+Top gaps include confirmed ratings only and are sorted by raw gap priority descending, ties broken by importance. An action plan may sequence work differently for urgency or dependencies; preserve the raw gap values and explain the reason.
+
+Aggregate scores are directly comparable only when both reports are complete and spec version, system boundary, environment, selected items, and importance weights match. Provisional scores are not directly comparable; compare shared confirmed item states and disclose coverage. If weights change, disclose this and compare confirmed item states separately. If scope or item selection changes, mark aggregate scores not directly comparable. Evidence references are optional; do not include secrets or private personnel records.
 
 ## Summary
 
-| Category | Score | Top gap |
-|---|---|---|
-| 1. Product & Vision | {{PCT_OR_NOT_ASSESSED}} | {{ITEM}} |
-| 2. Processes & Collaboration | {{PCT_OR_NOT_ASSESSED}} | {{ITEM}} |
-| 3. Architecture & Systems Design | {{PCT_OR_NOT_ASSESSED}} | {{ITEM}} |
-| 4. Code & Quality | {{PCT_OR_NOT_ASSESSED}} | {{ITEM}} |
-| 5. Engineering Practices & Delivery | {{PCT_OR_NOT_ASSESSED}} | {{ITEM}} |
-| 6. Security & Compliance | {{PCT_OR_NOT_ASSESSED}} | {{ITEM}} |
-| 7. Culture & External Factors | {{PCT_OR_NOT_ASSESSED}} | {{ITEM}} |
+| Category | Score / status | Coverage | Top gap |
+|---|---|---|---|
+| 1. Product & Vision | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
+| 2. Processes & Collaboration | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
+| 3. Architecture & Systems Design | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
+| 4. Code & Quality | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
+| 5. Engineering Practices & Delivery | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
+| 6. Security & Compliance | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
+| 7. Culture & External Factors | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
 
 ## Top gaps (improvement roadmap)
 
@@ -46,11 +55,14 @@ One table per assessed category; repeat this structure for each.
 
 ### {{N}}. {{CATEGORY_NAME}} — {{PCT_OR_NOT_ASSESSED}}
 
-| Item | Importance | State | Gap | Notes |
-|---|---|---|---|---|
-| {{ID_AND_TITLE}} | {{1-3_OR_N/A}} | {{0-4_OR_DASH}} | {{N_OR_DASH}} | {{NOTES}} |
+| Item | Importance | State | Answer status | Gap priority | Notes |
+|---|---|---|---|---|---|
+| {{ID_AND_TITLE}} | {{1-3_OR_N/A_OR_UNSET}} | {{0-4_OR_UNSET}} | {{CONFIRMED_UNKNOWN_DEFERRED_UNCONFIRMED_N/A_SKIPPED}} | {{N_OR_NOT_SCORED}} | {{NOTES}} |
 
 ## Appendix
 
 - **N/A items and reasons:** {{LIST}}
+- **Unknown, deferred, or unconfirmed items and missing evidence:** {{LIST_OR_NONE}}
+- **Skipped items or categories and scope reason:** {{LIST_OR_NONE}}
 - **Free-form notes ("Other" items):** {{LIST}}
+- **Comparison limits or changes in scope, profile, or importance weights:** {{DETAILS_OR_NONE}}
