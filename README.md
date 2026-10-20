@@ -49,6 +49,10 @@ This is a self-assessment, not a grade. It weights maturity gaps by the importan
    scope, selected items, and importance weights the same when comparing
    aggregate scores.
 
+For a 30–60 minute first pass or focused re-check, use the [lite assessment
+profile](profiles/lite.md). It samples 15 items and is not a substitute for a
+full assessment.
+
 See the [fictional sample report](examples/sample-report.md) for a full run,
 including rating rationale, calculations, an N/A item, and an unknown answer.
 

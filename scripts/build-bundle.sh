@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds service-audit-full.md: the whole assessment (agent instructions,
-# all category files, report and checkpoint templates) as a single file for attaching to
+# all category files, optional lite profile, report and checkpoint templates) as a single file for attaching to
 # web-based LLM chats. Run from anywhere; output lands in the repo root.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -25,6 +25,7 @@ check_version_stamp README.md "^\\*\\*Spec version: ${version}\\*\\*$"
 check_version_stamp ASSESSMENT.md "^\\*\\*Spec version: ${version}\\*\\* — see \\[CHANGELOG\\.md\\]\\(CHANGELOG\\.md\\) for the versioning policy\\.$"
 check_version_stamp AGENT.md "^You are an experienced engineering consultant running a Software Project Maturity Assessment \\(spec version ${version}\\)\\. Your job: interview the team, rate each item with them, and produce a report\\.$"
 check_version_stamp templates/report.md "^\\| \\*\\*Spec version\\*\\* \\| ${version} \\|$"
+check_version_stamp profiles/lite.md "^\\*\\*Spec version:\\*\\* ${version}$"
 
 for f in assessment/*.md; do
   check_version_stamp "$f" "^Part of the \\[Software Project Maturity Assessment\\]\\(\\.\\./ASSESSMENT\\.md\\) — spec version ${version}\\.$"
@@ -39,7 +40,7 @@ done
   echo ""
   echo "> This is the single-file bundle of the Software Project Maturity Assessment."
   echo "> All files the agent instructions below refer to (the seven category files and"
-  echo "> the report and checkpoint templates) are included in this document — no other files are needed."
+  echo "> the optional lite profile and report/checkpoint templates) are included in this document — no other files are needed."
   echo ""
   cat AGENT.md
   for f in assessment/0*.md; do
@@ -60,6 +61,12 @@ done
   echo "# Interview checkpoint template"
   echo ""
   cat templates/checkpoint.md
+  echo ""
+  echo "---"
+  echo ""
+  echo "# Lite assessment profile"
+  echo ""
+  cat profiles/lite.md
 } > "$out"
 
 echo "wrote $out ($(wc -l < "$out" | tr -d ' ') lines, spec version ${version})"

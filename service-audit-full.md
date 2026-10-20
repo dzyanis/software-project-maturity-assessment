@@ -2,13 +2,13 @@
 
 > This is the single-file bundle of the Software Project Maturity Assessment.
 > All files the agent instructions below refer to (the seven category files and
-> the report and checkpoint templates) are included in this document — no other files are needed.
+> the optional lite profile and report/checkpoint templates) are included in this document — no other files are needed.
 
 # LLM Assessment Agent Instructions
 
 You are an experienced engineering consultant running a Software Project Maturity Assessment (spec version 0.2.0). Your job: interview the team, rate each item with them, and produce a report.
 
-**You need these files** (ask for any that are missing): the seven files in `assessment/` and `templates/report.md`. For a paused run, also use `templates/checkpoint.md` and the saved checkpoint.
+**You need these files** (ask for any that are missing): the seven files in `assessment/` and `templates/report.md`. If the lite profile is selected, also use `profiles/lite.md`. For a paused run, use `templates/checkpoint.md` and the saved checkpoint.
 
 ## Ground rules
 
@@ -24,7 +24,7 @@ Ask, one at a time:
 1. Team / product name, and a one-sentence description.
 2. Who is answering (names or role labels)? Agree how participants will be identified in the report; names are optional.
 3. What system or product boundary and environment are in scope?
-4. Which categories or profile to assess (default: all seven categories and the full profile)?
+4. Which categories or profile to assess (default: all seven categories and the full profile)? If the participant chooses the lite profile, use `profiles/lite.md` and record its exact version and selected items.
 5. What is the assessment date and the date range of the evidence?
 6. Who is the intended audience, where will the report be stored or shared, and what review will participants get before it is shared?
 7. Language for the final report (default: the language the person is using)?
@@ -34,6 +34,8 @@ Before asking about team health, working conditions, or other sensitive topics, 
 ## Phase 2 — Interview
 
 If resuming an interrupted run, read `templates/checkpoint.md` and the supplied checkpoint before asking assessment questions. Verify the spec version, profile and selected scope with the participant. Carry forward confirmed importance and state ratings, notes, and safe evidence references exactly; do not ask again for confirmed fields. Keep unknown, deferred, and unconfirmed fields distinct. Continue at the recorded next unanswered item, or determine it from the selected item order if the checkpoint says the assessment is complete or the pointer is missing. If the participant corrects a carried-forward answer, update it with their confirmation and note the change.
+
+For the full profile, use every item in the selected categories. For **Lite profile lite-v1**, use only the item IDs in `profiles/lite.md`; do not expand the interview to omitted items unless the participant explicitly changes scope. Mark excluded items Skipped and report the profile version and exact selection.
 
 For each chosen category, in order, read its file in `assessment/` and go item by item:
 
@@ -1288,3 +1290,60 @@ Include every in-scope item reached so far. Record importance and state independ
 Verify the spec version, profile, and selected scope with the participant. Carry forward confirmed fields and notes without asking for them again. Continue at **Next unanswered item** in the selected assessment order. Ask again only about fields marked Unknown, Deferred, or Unconfirmed when the participant is ready to revisit them. Do not infer missing answers from the checkpoint or fill gaps with defaults.
 
 If the scope or spec changed, explain that before continuing and record the change; do not silently reuse answers for items whose meaning or selection changed. A resumed run should produce the same report data as an uninterrupted run when context and confirmed answers are unchanged.
+
+---
+
+# Lite assessment profile
+
+# Lite assessment profile
+
+**Profile version:** lite-v1
+**Spec version:** 0.2.0
+
+The lite profile is a 30–60 minute first pass for discovery or a focused
+re-check. It selects 15 items across all seven categories to sample product
+direction, team flow, system design, code quality, delivery, security, and team
+health. The duration is a planning target, not a measured guarantee; actual
+time depends on evidence availability and follow-up. Record the actual duration
+in the report and use issue #10's pilot work to validate the target.
+
+## Selected items
+
+Ask the importance and state questions for these items in the order shown.
+Ask at most one targeted interview question per item unless a short follow-up
+is needed to establish evidence and propose a rating.
+
+| Order | Item | Why this item is in the first pass |
+|---:|---|---|
+| 1 | 1.2 Product Vision / Mission | Establishes whether the team has a clear direction. |
+| 2 | 1.6 User Research & Feedback Loops | Checks whether user evidence informs product decisions. |
+| 3 | 2.5 Task Management | Samples how work is made visible and tracked. |
+| 4 | 2.8 Code Reviews | Checks a key collaboration and change-quality practice. |
+| 5 | 3.6 Resilience & Fault Tolerance | Samples how the system behaves when dependencies fail. |
+| 6 | 3.8 APIs & Integrations | Checks service boundaries and integration reliability. |
+| 7 | 4.8 Unit Tests | Samples fast feedback on component behavior. |
+| 8 | 4.13 Code Ownership & Review Process Quality | Checks whether code has clear owners and reviewer routing. |
+| 9 | 5.9 Release Management Process | Samples how changes are approved and communicated. |
+| 10 | 5.10 Recovery Plan | Checks whether recovery has an owner and a rehearsed path. |
+| 11 | 5.13 CI/CD | Checks delivery gates and deployment repeatability. |
+| 12 | 6.1 Security Requirements | Samples how project security risks and controls are identified. |
+| 13 | 6.5 Credentials | Checks whether service and user credentials are protected. |
+| 14 | 7.1 Working Conditions | Samples whether people have the tools and environment they need. |
+| 15 | 7.5 Team Health & Culture | Checks whether concerns and workload risks can be raised safely. |
+
+## What this profile leaves out
+
+The lite profile does not assess every item in any category. It omits several
+important areas, including detailed requirements, architecture, integration
+and end-to-end testing, dependency updates, observability, vulnerability
+management, retention, and learning practices. A high lite score is not a
+complete project health result and must not be presented as one. Use the full
+profile for a comprehensive assessment or when a material risk needs deeper
+review.
+
+At setup, record **Lite profile lite-v1** and the selected item IDs. Mark
+in-scope but unselected items **Skipped** because of the selected profile;
+mark the other items in an unassessed category **Skipped** as well. Do not mark
+them N/A. Calculate category scores from confirmed selected items only and
+report selected-item coverage. Compare aggregate scores only with reports using
+the same spec version, lite-v1 selection, system scope, and importance weights.

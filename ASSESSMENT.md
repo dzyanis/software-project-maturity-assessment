@@ -76,5 +76,6 @@ scores not directly comparable.
 
 - **Manually:** walk the category files with the team, record ratings and notes in a copy of [templates/report.md](templates/report.md).
 - **With an LLM:** give your AI assistant [AGENT.md](AGENT.md) plus the `assessment/` files and let it interview the team and produce the report. See AGENT.md for instructions.
+- **Lite first pass:** use the optional [15-item lite profile](profiles/lite.md) for a 30–60 minute discovery or focused re-check; the full assessment remains the default.
 
 Every report records the spec version it was produced against.

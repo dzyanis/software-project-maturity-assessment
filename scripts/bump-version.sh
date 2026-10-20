@@ -75,6 +75,12 @@ stage(
     "report template spec version",
 )
 stage(
+    Path("profiles/lite.md"),
+    re.compile(r"(?m)^(\*\*Spec version:\*\* )(\d+\.\d+\.\d+)()$"),
+    1,
+    "lite profile spec version",
+)
+stage(
     Path("examples/sample-report.md"),
     re.compile(r"(?m)^(\| \*\*Spec version\*\* \| )(\d+\.\d+\.\d+)( \|)$"),
     1,
