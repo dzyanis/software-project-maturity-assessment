@@ -1,12 +1,12 @@
 site_name: Software Project Maturity Assessment
-site_url: https://dzyanis.github.io/service_audit/
+site_url: https://dzyanis.github.io/software-project-maturity-assessment/
 site_description: >-
   A structured framework for auditing the maturity of a software project. The
   team sets its own bar for each engineering practice, measures where it stands
   today, and turns the gap between the two into a scored improvement roadmap.
 site_author: dzyanis
-repo_url: https://github.com/dzyanis/service_audit
-repo_name: dzyanis/service_audit
+repo_url: https://github.com/dzyanis/software-project-maturity-assessment
+repo_name: dzyanis/software-project-maturity-assessment
 edit_uri: ""
 copyright: Licensed CC BY 4.0
 

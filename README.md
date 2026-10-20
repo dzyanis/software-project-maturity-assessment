@@ -2,7 +2,7 @@
 
 **Spec version: 0.2.0**
 
-Read it on the web: **<https://dzyanis.github.io/service_audit/>**
+Read it on the web: **<https://dzyanis.github.io/software-project-maturity-assessment/>**
 
 A structured framework for auditing the maturity of a software project. The team rates how important each engineering practice is for this project, then measures its current state on a common 0–4 scale. The weighted gap becomes a prioritized improvement roadmap. Incomplete ratings remain visible and make scores provisional. The audit can be conducted manually by an assessor, or an LLM agent can take the assessor's role: it interviews the team and produces the report.
 
@@ -11,8 +11,8 @@ A structured framework for auditing the maturity of a software project. The team
 **With a coding agent (Claude Code, Cursor, etc.):**
 
 ```bash
-git clone https://github.com/dzyanis/service_audit.git
-cd service_audit
+git clone https://github.com/dzyanis/software-project-maturity-assessment.git
+cd software-project-maturity-assessment
 claude "Read AGENT.md and run the assessment interview with me"
 ```
 
@@ -22,7 +22,7 @@ repository and point it at this checkout's `AGENT.md`.
 **With a web chat (claude.ai, ChatGPT, etc.):** attach [service-audit-full.md](service-audit-full.md), the whole assessment in one file, to a conversation and say "Run this assessment with me." To download it directly:
 
 ```bash
-curl -O https://raw.githubusercontent.com/dzyanis/service_audit/main/service-audit-full.md
+curl -O https://raw.githubusercontent.com/dzyanis/software-project-maturity-assessment/main/service-audit-full.md
 ```
 
 The agent interviews your team one question at a time and produces a report you can keep next to your repo and compare against future runs.
@@ -71,7 +71,7 @@ How this assessment covers each framework is documented point-by-point in [cover
 - [CMMI V3.0 Development and Services](https://cmmiinstitute.com/products/cmmi) ([coverage](coverage/cmmi.md))
 - [PMI Organizational Project Management Maturity Model (OPM3), Third Edition](https://www.pmi.org/shop/p-/book/organizational-project-management-maturity-model-%28opm3%29-%E2%80%93-third-edition/00101463501) ([coverage](coverage/opm3.md))
 
-Planned mappings (DORA/Accelerate and SPACE) are tracked in [the `area:coverage` issues](https://github.com/dzyanis/service_audit/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage).
+Planned mappings (DORA/Accelerate and SPACE) are tracked in [the `area:coverage` issues](https://github.com/dzyanis/software-project-maturity-assessment/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage).
 
 ## Website development
 
@@ -96,7 +96,7 @@ Build the site into `site/`, run all verification checks, or preview it locally:
 The preview is available at <http://127.0.0.1:8000/>. Run the staging command
 again after editing source Markdown. To update the dependency lock after
 changing
-[requirements-docs.in](https://github.com/dzyanis/service_audit/blob/main/requirements-docs.in):
+[requirements-docs.in](https://github.com/dzyanis/software-project-maturity-assessment/blob/main/requirements-docs.in):
 
 ```bash
 .venv/bin/python -m pip install "pip==25.3" "pip-tools==7.5.2"
@@ -104,18 +104,18 @@ changing
   --output-file requirements-docs.txt requirements-docs.in
 ```
 
-Website maintainers: see the [search engine registration guide](https://github.com/dzyanis/service_audit/blob/main/docs/search-engines.md)
+Website maintainers: see the [search engine registration guide](https://github.com/dzyanis/software-project-maturity-assessment/blob/main/docs/search-engines.md)
 for Google Search Console and Bing Webmaster Tools setup.
 
 ## Roadmap
 
-Planned work lives in [GitHub issues](https://github.com/dzyanis/service_audit/issues),
+Planned work lives in [GitHub issues](https://github.com/dzyanis/software-project-maturity-assessment/issues),
 grouped by area label and by release milestone:
 
-- [`area:adoption`](https://github.com/dzyanis/service_audit/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Aadoption): worked examples, a lite profile, scoring tools
-- [`area:content`](https://github.com/dzyanis/service_audit/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acontent): item wording and overlap, plus new items and questions for the next release
-- [`area:coverage`](https://github.com/dzyanis/service_audit/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage): mappings to other frameworks
-- [`area:tooling`](https://github.com/dzyanis/service_audit/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Atooling): scripts, CI, releases, repo admin
+- [`area:adoption`](https://github.com/dzyanis/software-project-maturity-assessment/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Aadoption): worked examples, a lite profile, scoring tools
+- [`area:content`](https://github.com/dzyanis/software-project-maturity-assessment/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acontent): item wording and overlap, plus new items and questions for the next release
+- [`area:coverage`](https://github.com/dzyanis/software-project-maturity-assessment/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Acoverage): mappings to other frameworks
+- [`area:tooling`](https://github.com/dzyanis/software-project-maturity-assessment/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%3Atooling): scripts, CI, releases, repo admin
 
 Issues labelled `spec-change` alter the assessment items themselves and ship as a
 MINOR or MAJOR release. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose

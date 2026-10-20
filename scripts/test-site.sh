@@ -57,7 +57,7 @@ echo "== link rewrites =="
 assert_not_grep .site-src/index.md '](service-audit-full.md)' \
   'bundle link no longer relative'
 assert_grep .site-src/index.md \
-  '](https://raw.githubusercontent.com/dzyanis/service_audit/main/service-audit-full.md)' \
+  '](https://raw.githubusercontent.com/dzyanis/software-project-maturity-assessment/main/service-audit-full.md)' \
   'bundle link points at the raw URL'
 assert_not_grep .site-src/index.md '](assessment/)' \
   'assessment directory link rewritten'
@@ -78,14 +78,14 @@ assert_file site/assessment/04-code-quality/index.html
 assert_file site/coverage/agile-manifesto/index.html
 
 echo "== search engine artefacts =="
-assert_grep site/sitemap.xml 'https://dzyanis.github.io/service_audit/' \
+assert_grep site/sitemap.xml 'https://dzyanis.github.io/software-project-maturity-assessment/' \
   'sitemap uses the canonical site URL'
 assert_grep site/index.html \
-  '<link rel="canonical" href="https://dzyanis.github.io/service_audit/"' \
+  '<link rel="canonical" href="https://dzyanis.github.io/software-project-maturity-assessment/"' \
   'homepage declares a canonical URL'
 assert_grep site/index.html 'name="description"' \
   'homepage carries a meta description'
-assert_grep site/robots.txt 'Sitemap: https://dzyanis.github.io/service_audit/sitemap.xml' \
+assert_grep site/robots.txt 'Sitemap: https://dzyanis.github.io/software-project-maturity-assessment/sitemap.xml' \
   'robots.txt advertises the sitemap'
 assert_grep site/assessment/01-product-vision/index.html \
   '<title>1. Product & Vision' \

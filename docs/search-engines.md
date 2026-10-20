@@ -1,8 +1,8 @@
 # Registering the website with search engines
 
-Site: `https://dzyanis.github.io/service_audit/`
+Site: `https://dzyanis.github.io/software-project-maturity-assessment/`
 
-Sitemap: `https://dzyanis.github.io/service_audit/sitemap.xml`
+Sitemap: `https://dzyanis.github.io/software-project-maturity-assessment/sitemap.xml`
 
 MkDocs generates the sitemap, canonical URLs, page titles, and static HTML.
 Registration requires the site owner's Google and Microsoft accounts. The
@@ -13,7 +13,7 @@ just by building the site.
 
 1. Open [Google Search Console](https://search.google.com/search-console/).
 2. Add a **URL prefix** property using the exact site URL above, including
-   `/service_audit/`. This works without controlling the `github.io` DNS.
+   `/software-project-maturity-assessment/`. This works without controlling the `github.io` DNS.
 3. Choose **HTML tag** verification and copy the `content` value from the
    `google-site-verification` meta tag.
 4. Put that value in `extra.search_engine_verification.google` in `mkdocs.yml`,
@@ -50,7 +50,7 @@ these registrations do not guarantee inclusion in every engine.
 ## GitHub Pages and robots.txt
 
 Crawlers read `https://dzyanis.github.io/robots.txt`, not the file at
-`https://dzyanis.github.io/service_audit/robots.txt`. The project-level file
+`https://dzyanis.github.io/software-project-maturity-assessment/robots.txt`. The project-level file
 does not control crawling or advertise the sitemap to crawlers automatically.
 Submit the sitemap through the webmaster tools above.
 
@@ -61,7 +61,7 @@ root, its root `robots.txt` can also contain:
 User-agent: *
 Allow: /
 
-Sitemap: https://dzyanis.github.io/service_audit/sitemap.xml
+Sitemap: https://dzyanis.github.io/software-project-maturity-assessment/sitemap.xml
 ```
 
 Check existing rules before changing that file: it governs every project on
