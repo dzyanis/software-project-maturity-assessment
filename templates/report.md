@@ -5,7 +5,8 @@
 | **Team / Product** | {{TEAM_NAME}} |
 | **Date** | {{DATE}} |
 | **Spec version** | 0.2.0 |
-| **Participants** | {{NAMES_AND_ROLES}} |
+| **Participants** | {{NAMES_OR_ROLE_LABELS_AS_AGREED}} |
+| **Intended audience / sharing** | {{AUDIENCE_AND_STORAGE_OR_SHARING_EXPECTATIONS}} |
 | **System boundary** | {{SYSTEMS_AND_SERVICES_IN_SCOPE}} |
 | **Environment(s)** | {{ENVIRONMENTS_IN_SCOPE}} |
 | **Profile / categories / items** | {{SELECTED_SCOPE}} |
@@ -22,6 +23,8 @@ Answer status is **Confirmed**, **Unknown**, **Deferred**, **Unconfirmed**, **N/
 Top gaps include confirmed ratings only and are sorted by raw gap priority descending, ties broken by importance. An action plan may sequence work differently for urgency or dependencies; preserve the raw gap values and explain the reason.
 
 Aggregate scores are directly comparable only when both reports are complete and spec version, system boundary, environment, selected items, and importance weights match. Provisional scores are not directly comparable; compare shared confirmed item states and disclose coverage. If weights change, disclose this and compare confirmed item states separately. If scope or item selection changes, mark aggregate scores not directly comparable. Evidence references are optional; do not include secrets or private personnel records.
+
+Summarize sensitive evidence at the team level where possible. Omit unnecessary names and private details. Before sharing, give participants a chance to review the report for factual errors and identifying or sensitive details; record unresolved disagreements neutrally.
 
 ## Summary
 

@@ -18,6 +18,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 - Clarified that importance weights express team priorities while state 4 remains the common score reference. Defined confirmed, unknown, deferred, unconfirmed, N/A, and skipped answers; incomplete category scores are provisional, include coverage counts, and exclude unconfirmed rows from calculations.
 - Added report context for system boundary, environment, selected profile/items, and evidence date, plus rules for changed weights and scope. Existing calculations for complete assessments remain unchanged. Release impact: MINOR; 0.1.1 incomplete reports are not comparable to provisional scores because their missing-answer behavior was undefined.
 - Clarified the boundaries between review interaction and ownership, unit-test quality and release regression confidence, and regression confidence and CI/CD enforcement. Item IDs and assessed practices are unchanged.
+- Set expectations for report audience and participant review, and added guidance for summarizing sensitive interview evidence without unnecessary identifying details.
 
 ## [0.1.1] - 2026-07-18
 

@@ -10,7 +10,8 @@
 | **Team / Product** | Harborlight Order Desk |
 | **Date** | 2026-10-18 |
 | **Spec version** | 0.2.0 |
-| **Participants** | Fictional product manager; engineering lead; two engineers |
+| **Participants** | Fictional product manager; engineering lead; two engineers (role labels only) |
+| **Intended audience / sharing** | Fictional engineering and product leadership; shared internally after participant review |
 | **System boundary** | Customer web app, public API, and order-processing workers |
 | **Environment(s)** | AWS production and staging; local development excluded from operational findings |
 | **Profile / categories / items** | Full assessment; all seven categories |
@@ -197,7 +198,7 @@ ties after gap priority and importance.
 | 7.2 Remote Work / Hybrid Efficiency | 2 | 3 | Confirmed | 2 | Medium: remote norms and async decisions are documented. |
 | 7.3 HR & Recruiting Alignment | N/A | — | N/A | — | The team has no hiring authority, so this practice is outside its remit. |
 | 7.4 Continuous Learning & Growth | 2 | 2 | Confirmed | 4 | Medium: learning time is available; follow-up on development goals varies. |
-| 7.5 Team Health & Culture | 3 | 3 | Confirmed | 3 | Critical: the team uses regular health check-ins and follows up on themes. |
+| 7.5 Team Health & Culture | 3 | 3 | Confirmed | 3 | Critical: anonymous check-in themes flag uneven on-call load; the team discusses workload trends without attributing comments to individuals. |
 | 7.6 Other | N/A | — | N/A | — | No additional culture or external-factor practice was identified. |
 
 ## Calculation check
