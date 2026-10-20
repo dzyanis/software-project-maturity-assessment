@@ -14,6 +14,7 @@ about gaps.
 | [ISO 25010 Software Quality Model](iso-25010.md) | 5/8 full, 3/8 partial |
 | [AWS Well-Architected Framework](aws-well-architected.md) | 1/6 full, 5/6 partial |
 | [CMMI V3.0 Development and Services](cmmi.md) | 0/23 full, 23/23 partial |
+| [PMI OPM3 Third Edition](opm3.md) | 0/10 full, 10/10 partial |
 
 ## Template for new mappings
 
