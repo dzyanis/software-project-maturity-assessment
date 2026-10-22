@@ -25,6 +25,13 @@ check_version_stamp README.md "^\\*\\*Spec version: ${version}\\*\\*$"
 check_version_stamp ASSESSMENT.md "^\\*\\*Spec version: ${version}\\*\\* — see \\[CHANGELOG\\.md\\]\\(CHANGELOG\\.md\\) for the versioning policy\\.$"
 check_version_stamp AGENT.md "^You are an experienced engineering consultant running a Software Project Maturity Assessment \\(spec version ${version}\\)\\. Your job: interview the team, rate each item with them, and produce a report\\.$"
 check_version_stamp templates/report.md "^\\| \\*\\*Spec version\\*\\* \\| ${version} \\|$"
+sample_report="examples/sample-report.md"
+sample_stamp_count=$(grep -Ec '^\| \*\*Spec version\*\* \|' "$sample_report" || true)
+if [[ "$sample_stamp_count" != "1" ]]; then
+  echo "error: $sample_report must contain exactly one spec version stamp (found $sample_stamp_count)" >&2
+  exit 1
+fi
+check_version_stamp "$sample_report" "^\\| \\*\\*Spec version\\*\\* \\| ${version//./[.]} \\|$"
 check_version_stamp profiles/lite.md "^\\*\\*Spec version:\\*\\* ${version}$"
 
 for f in assessment/*.md; do

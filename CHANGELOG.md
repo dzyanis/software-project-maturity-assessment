@@ -8,6 +8,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 ## [Unreleased]
 
 ### Fixed
+- Bundle builds now reject a missing, duplicate, or mismatched spec version stamp in the sample report.
 - Added missing item 1.10 to the fictional full sample report, recalculated category 1's score and coverage, and corrected the category 7 detail heading. Site verification now checks the sample report's standard item IDs against the assessment and calculator.
 
 ## [0.3.0] - 2026-10-20
