@@ -31,6 +31,7 @@ assert_not_grep() { # <file> <literal> <description>
 
 echo "== staging =="
 ./scripts/build-site.sh --stage-only
+python3 scripts/check-sample-report.py
 
 assert_file .site-src/index.md
 assert_file .site-src/ASSESSMENT.md

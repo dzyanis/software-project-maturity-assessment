@@ -36,7 +36,7 @@ practice was identified.
 
 | Category | Score / status | Coverage | Top gap |
 |---|---|---:|---|
-| 1. Product & Vision | 60.2% · complete | 8/8 | 1.2 Product Vision / Mission · 6 |
+| 1. Product & Vision | 59.4% · complete | 9/9 | 1.2 Product Vision / Mission · 6 |
 | 2. Processes & Collaboration | 63.8% · complete | 13/13 | 2.8 Code Reviews · 6 |
 | 3. Architecture & Systems Design | 61.9% · complete | 8/8 | 3.5 Scalability & Performance · 6 |
 | 4. Code & Quality | 63.2% · provisional | 14/15 | 4.5 Error Handling · 6 |
@@ -85,7 +85,7 @@ ties after gap priority and importance.
 
 ## Detailed results
 
-### 1. Product & Vision — 60.2% · complete · 8/8
+### 1. Product & Vision — 59.4% · complete · 9/9
 
 | Item | Importance | State | Answer status | Gap priority | Notes |
 |---|---:|---:|---|---:|---|
@@ -98,6 +98,7 @@ ties after gap priority and importance.
 | 1.7 Product Metrics & Analytics | 2 | 2 | Confirmed | 4 | Medium: activation and failed-order metrics exist; event definitions differ by client. |
 | 1.8 Compliance & Legal Requirements | 3 | 3 | Confirmed | 3 | Critical: privacy and retention obligations are mapped and reviewed for launches. |
 | 1.9 Other | N/A | — | N/A | — | No additional product or vision practice was identified. |
+| 1.10 User Experience & Accessibility | 2 | 2 | Confirmed | 4 | Medium: design guidance includes keyboard access, but checks are inconsistent and the order workflow has not been evaluated with screen-reader users or equivalent evidence. |
 
 ### 2. Processes & Collaboration — 63.8% · complete · 13/13
 
@@ -190,7 +191,7 @@ ties after gap priority and importance.
 | 6.10 Compliance & Data Retention Policies | 3 | 3 | Confirmed | 3 | Critical: obligations are tracked and deletion is verified for primary records. |
 | 6.11 Other | N/A | — | N/A | — | No additional security practice was identified. |
 
-### 7. Culture & External Factors — 89.3% · complete · 4/4
+### 7. Culture & External Factors — 69.4% · complete · 4/4
 
 | Item | Importance | State | Answer status | Gap priority | Notes |
 |---|---:|---:|---|---:|---|
@@ -209,7 +210,7 @@ rounding to one decimal place.
 
 | Category | Weighted calculation | Score |
 |---|---:|---:|
-| 1 | 53 / 88 | 60.2% |
+| 1 | 57 / 96 | 59.4% |
 | 2 | 74 / 116 | 63.8% |
 | 3 | 52 / 84 | 61.9% |
 | 4 | 86 / 136 | 63.2% · provisional, 14/15 |
