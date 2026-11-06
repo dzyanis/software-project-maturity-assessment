@@ -19,6 +19,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 - Lite-v1 retains its existing 15 items across categories 1–7; category 8 is explicitly skipped unless scope is expanded.
 
 ### Fixed
+- Bundle version checks explicitly exclude the coverage index, avoiding locale-dependent matching of `README.md`; the item-proposal dropdown now includes category 8.
 - Bundle builds now reject a missing, duplicate, or mismatched spec version stamp in the sample report.
 - Added missing item 1.10 to the fictional full sample report, recalculated category 1's score and coverage, and corrected the category 7 detail heading. Site verification now checks the sample report's standard item IDs against the assessment and calculator.
 

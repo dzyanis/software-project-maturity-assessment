@@ -22,6 +22,7 @@ body:
         - "5. Engineering Practices & Delivery"
         - "6. Security & Compliance"
         - "7. Culture & External Factors"
+        - "8. AI-Assisted Engineering"
         - "Not sure"
     validations:
       required: true

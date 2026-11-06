@@ -38,7 +38,8 @@ for f in assessment/*.md; do
   check_version_stamp "$f" "^Part of the \\[Software Project Maturity Assessment\\]\\(\\.\\./ASSESSMENT\\.md\\) — spec version ${version}\\.$"
 done
 
-for f in coverage/[a-z]*.md; do
+for f in coverage/*.md; do
+  [[ "$f" == "coverage/README.md" ]] && continue
   check_version_stamp "$f" "^\\*\\*Mapped against spec version:\\*\\* ${version}$"
 done
 
