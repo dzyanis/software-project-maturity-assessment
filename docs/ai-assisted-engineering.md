@@ -26,6 +26,11 @@ Release impact: **MINOR**, spec **0.4.0**. Items 8.1–8.9 are additive; existin
 
 Older reports have no category-8 baseline. Reports spanning changed spec versions or selected scope are not directly comparable under the existing comparison policy. Compare shared confirmed item states separately and disclose versions, scope, coverage, and importance changes. A new category is not evidence of improvement or deterioration.
 
-## Sources
+## Supporting references and neutrality
 
-The practices adapt official [Codex best practices](https://learn.chatgpt.com/guides/best-practices), [ChatGPT prompting](https://learn.chatgpt.com/docs/prompting), [repository instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security), and [result verification](https://learn.chatgpt.com/docs/use-chatgpt). These sources were reviewed on 2026-11-06. The assessment criteria and evidence examples are this project's synthesis, not an OpenAI maturity model. Product settings and data guarantees must be checked for the actual service, account, and connected tools.
+The assessment items are this project's engineering criteria. They evaluate capabilities, controls, and outcomes rather than conformance to a vendor's operating instructions. No provider, instruction-file convention, prompt template, hosted account, or agent interface is required. Apply only the controls relevant to the workflow's actual data access and ability to act.
+
+- [NIST AI Risk Management Framework 1.0](https://airc.nist.gov/airmf-resources/airmf/) provides a voluntary framework for governing, mapping, measuring, and managing AI risks. It supports the risk-based scope and outcome-oriented assessment approach; it does not prescribe these item IDs or scoring anchors.
+- [OWASP LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) describes risks from direct and indirect instructions and recommends controls including least privilege, human approval for high-risk actions, and adversarial testing. It supports the trust-boundary concerns in 8.5; it is not a complete software-engineering maturity model.
+
+References reviewed on 2026-11-06. These links provide supporting context, not a claim of certification or full framework coverage. Teams should use the documentation and configuration evidence for their chosen deployment when establishing what a control actually enforces.

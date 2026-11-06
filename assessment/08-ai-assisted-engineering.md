@@ -2,7 +2,7 @@
 
 Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.4.0.
 
-Assess how the team delegates work to AI assistants and agents across requirements, design, coding, testing, review, documentation, and development operations. Criteria apply across models, vendors, interfaces, and agent architectures. Adoption, generated-code volume, and autonomy are not maturity goals; assess decisions, controls, and outcomes appropriate to project risk.
+Assess how the team delegates work to AI assistants and agents across requirements, design, coding, testing, review, documentation, and development operations. Criteria apply across models, vendors, interfaces, deployment models, and agent architectures, including hosted services, locally operated models, editor suggestions, and automated workflows. Assess the capabilities actually used; no particular instruction file, prompt format, approval interface, or model feature is required. Adoption, generated-code volume, and autonomy are not maturity goals; assess decisions, controls, and outcomes appropriate to project risk.
 
 Choosing not to use AI can be a sound outcome. Discuss that decision under 8.1 and mark genuinely inapplicable operational items N/A with reasons. Unknown usage or missing evidence is not N/A. Chat-only assistance may still require data protection and validation while execution permissions are inapplicable. Neither adopting nor declining AI automatically earns state 4.
 
@@ -28,7 +28,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Why it matters:** A plausible implementation may solve a different problem from the one the team intended.
 
-**What good looks like:** Tasks describe the intended behavior, relevant context, constraints, and observable completion criteria. Complex work begins with a reviewable plan and explicit assumptions. Simple changes use proportionate instructions. This follows the task-framing and planning guidance in [Codex best practices](https://learn.chatgpt.com/guides/best-practices) and the goal, context, output, and boundary guidance in [ChatGPT prompting](https://learn.chatgpt.com/docs/prompting).
+**What good looks like:** Tasks describe the intended behavior, relevant context, constraints, and observable completion criteria. Planning and clarification are proportionate to uncertainty and risk. Acceptance criteria are established by the team and checked independently of the generated solution, whether assistance is requested through an issue, editor, conversation, API, or automated job.
 
 **Evidence examples:** An issue with examples of expected behavior; a migration plan with checkpoints; a task whose ambiguous requirement was resolved before implementation.
 
@@ -44,13 +44,13 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Why it matters:** Missing or stale project knowledge causes repeated mistakes even when generated code is syntactically correct.
 
-**What good looks like:** Assistants receive the relevant source, domain terminology, architecture decisions, and working verification commands. Shared instructions have an owner and follow normal review. Codex supports repository and directory-specific guidance through [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md); equivalent mechanisms are acceptable. Teams verify that the intended instructions actually reach the tool and remove obsolete or conflicting guidance.
+**What good looks like:** Assistants receive the relevant source, domain terminology, architecture decisions, and working verification commands. Project guidance has an owner and follows normal review. Context may be supplied through selected files, repository documentation, retrieval, tool configuration, or a task brief. Teams verify that relevant, current information reaches the workflow and resolve obsolete or conflicting guidance.
 
-**Evidence examples:** Maintained repository instructions; a fresh-session check of setup commands; an instruction update tied to a recurring defect.
+**Evidence examples:** Reviewed project guidance; a check that a new task receives current context; a context or configuration update tied to a recurring defect.
 
 **Questions to ask:**
 
-- Could a fresh session find the correct build and test commands without guessing?
+- How does a new assisted task obtain the correct project conventions and verification commands?
 - Which domain rules are essential but absent from the supplied context?
 - Who notices when instructions conflict with the current code or tool configuration?
 
@@ -60,14 +60,14 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Why it matters:** Prompts, attached files, tool output, and conversation history create additional routes by which project information can leave its intended boundary.
 
-**What good looks like:** The team approves tools and accounts for specific data classes and verifies relevant training-use, retention, deletion, access, and sharing settings for the actual service and workspace. It supplies only needed information, uses synthetic or sanitized examples where possible, and accounts for connected services, logs, and shared conversations. Verify guarantees for the actual service and account rather than assuming they apply to every product.
+**What good looks like:** The team identifies where information is processed and stored, including local runtimes, hosted inference, telemetry, retrieval stores, and connected services. Controls for specific data classes cover access, retention, deletion, sharing, and any reuse for model training, as applicable to the actual deployment. It supplies only needed information, uses synthetic or sanitized examples where possible, and accounts for connected services, logs, and shared conversations. Local execution and hosted-service contracts are each checked against actual data flows and configuration.
 
 **Evidence examples:** A reviewed data-flow inventory; dated configuration evidence; sanitized debugging fixtures; access restrictions for retained task records.
 
 **Questions to ask:**
 
 - Where can source code, customer records, credentials, and task logs travel in this workflow?
-- Which settings or agreements support that use, and when were they checked?
+- Which technical controls, settings, or agreements support that use, and when were they checked?
 - How would the team contain an accidental sensitive-data submission?
 
 **Red flags:** Production secrets appear in prompts; personal accounts bypass project controls; disabling training use is assumed to eliminate retention or third-party access.
@@ -76,7 +76,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Why it matters:** An agent with execution or external-tool access can turn a mistaken instruction into an operational incident.
 
-**What good looks like:** Access is limited to required files, commands, services, and network destinations. Isolation and scoped credentials enforce boundaries. Consequential actions have risk-appropriate human approval, with the proposed action visible before approval. Repository content, retrieved pages, and tool results cannot authorize broader access. Instructions alone are not a security boundary. This applies the distinction between technical sandbox limits and approval policies in [Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security).
+**What good looks like:** Access is limited to required files, commands, services, and network destinations. Isolation and scoped credentials enforce boundaries. Consequential actions have risk-appropriate human approval, with the proposed action visible before approval. Repository content, retrieved pages, and tool results cannot authorize broader access. Instructions alone are not a security boundary. Enforcement may use operating-system isolation, service authorization, network controls, or workflow gates; verify the boundary rather than relying on a tool's label for it.
 
 **Evidence examples:** A permission profile; an isolated test workspace; a blocked access attempt; review of a connected tool's permissions.
 
@@ -92,7 +92,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Why it matters:** Generated code and generated tests can share the same mistaken interpretation of a requirement.
 
-**What good looks like:** Changes meet the project's ordinary review, testing, security, and maintainability standards. Expected behavior comes from requirements, contracts, or independently checked examples. Reviewers inspect the actual diff and execution results, including configuration and documentation. Another model's agreement is supplementary evidence. ChatGPT's official guidance similarly recommends checking sources, assumptions, and finished artifacts before using results. See [Use ChatGPT: make the result ready to use](https://learn.chatgpt.com/docs/use-chatgpt#make-the-result-ready-to-use).
+**What good looks like:** Changes meet the project's ordinary review, testing, security, and maintainability standards. Expected behavior comes from requirements, contracts, or independently checked examples. Reviewers inspect the actual diff and execution results, including configuration and documentation. Another model's agreement is supplementary evidence. Claims, cited sources, dependencies, and execution results are checked against authoritative evidence rather than accepted on the strength of a model's explanation.
 
 **Evidence examples:** A regression that fails before the fix; boundary and failure-case checks; CI results tied to the reviewed revision; a generated suggestion rejected during review.
 
@@ -124,7 +124,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Why it matters:** Faster generation can increase review effort and downstream defects while appearing productive.
 
-**What good looks like:** The team samples representative tasks and tracks outcomes proportionately: accepted delivery time, review effort, escaped defects, security findings, rework, operating cost, and maintainability. Results inform whether to expand, restrict, or stop a workflow. Material changes to models, tools, instructions, permissions, or provider terms trigger relevant rechecks. The team has a proportionate fallback for outages, withdrawal, or unsuitable changes to a tool. Engineers retain the skills needed to question and maintain outputs.
+**What good looks like:** The team samples representative tasks and tracks outcomes proportionately: accepted delivery time, review effort, escaped defects, security findings, rework, operating cost, and maintainability. Results inform whether to expand, restrict, or stop a workflow. Material changes to models, tools, deployment configuration, instructions, permissions, or service terms trigger relevant rechecks. The team has a proportionate fallback for outages, withdrawal, or unsuitable changes to a tool. Engineers retain the skills needed to question and maintain outputs.
 
 **Evidence examples:** A before/after task sample with limitations; a failure converted into a regression check; a tool-upgrade evaluation; shared examples of misleading output.
 

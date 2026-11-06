@@ -15,6 +15,7 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 
 ### Changed
 - Release impact: MINOR. Items 8.1–8.9 are additive; existing item IDs and score calculations remain unchanged. Earlier reports lack a category-8 baseline; compare shared confirmed states with scope, version, coverage, and weight differences disclosed, rather than comparing aggregate scores across versions.
+- AI criteria use deployment-neutral language and supporting NIST/OWASP references; they require no provider-specific instructions or interfaces.
 - Lite-v1 retains its existing 15 items across categories 1–7; category 8 is explicitly skipped unless scope is expanded.
 
 ### Fixed
