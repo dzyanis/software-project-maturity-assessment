@@ -5,12 +5,12 @@ claimed here; record real sessions with [`templates/pilot-record.md`](../templat
 
 ## Current interview size
 
-The current source contains 75 scored items and seven category “Other” prompts.
-The 75 scored items contain 311 bullets under **Questions to ask**. To reproduce
+The current source contains 83 scored items and eight category “Other” prompts.
+The 83 scored items contain 335 bullets under **Questions to ask**. To reproduce
 the count, inspect each `###` item heading in `assessment/*.md`, find its
 `**Questions to ask:**` section, and count each `- ` list entry up to the next
 bold section label or item heading. “Other” prompts do not have question lists
-and are not included in the 311.
+and are not included in the 335.
 
 This is a prompt inventory, not a question or time estimate. A single bullet
 can contain several questions, follow-ups depend on the evidence, and assessors
