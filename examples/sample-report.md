@@ -9,12 +9,12 @@
 |---|---|
 | **Team / Product** | Harborlight Order Desk |
 | **Date** | 2026-10-18 |
-| **Spec version** | 0.3.0 |
+| **Spec version** | 0.4.0 |
 | **Participants** | Fictional product manager; engineering lead; two engineers (role labels only) |
 | **Intended audience / sharing** | Fictional engineering and product leadership; shared internally after participant review |
 | **System boundary** | Customer web app, public API, and order-processing workers |
 | **Environment(s)** | AWS production and staging; local development excluded from operational findings |
-| **Profile / categories / items** | Full assessment; all seven categories |
+| **Profile / categories / items** | Full assessment; all eight categories |
 | **Evidence date or range** | 2026-04-01 to 2026-10-18 |
 
 ## How to read this report
@@ -29,7 +29,7 @@ Category 4 is **provisional**: 14 of 15 applicable items are confirmed, while
 item 4.13 is unknown because the team could not verify ownership and reviewer
 routing for shared components. The unknown answer is excluded from the numeric
 score and remains visible in coverage. Item 7.3 is N/A because the team has no
-recruiting authority. The seven “Other” prompts are N/A because no additional
+recruiting authority. The eight “Other” prompts are N/A because no additional
 practice was identified.
 
 ## Summary
@@ -43,6 +43,7 @@ practice was identified.
 | 5. Engineering Practices & Delivery | 64.7% · complete | 15/15 | 5.10 Recovery Plan · 9 |
 | 6. Security & Compliance | 65.5% · complete | 10/10 | 6.1 Security Requirements · 6 |
 | 7. Culture & External Factors | 69.4% · complete | 4/4 | 7.4 Continuous Learning & Growth · 4 |
+| 8. AI-Assisted Engineering | 75.0% · complete | 8/8 | 8.1 Appropriate Use & Human Accountability · 2 |
 
 ## Top gaps (improvement roadmap)
 
@@ -202,6 +203,20 @@ ties after gap priority and importance.
 | 7.5 Team Health & Culture | 3 | 3 | Confirmed | 3 | Critical: anonymous check-in themes flag uneven on-call load; the team discusses workload trends without attributing comments to individuals. |
 | 7.6 Other | N/A | — | N/A | — | No additional culture or external-factor practice was identified. |
 
+### 8. AI-Assisted Engineering — 75.0% · complete · 8/8
+
+| Item | Importance | State | Answer status | Gap priority | Notes |
+|---|---:|---:|---|---:|---|
+| 8.1 Appropriate Use & Human Accountability | 2 | 3 | Confirmed | 2 | Medium: A shared policy names owners and restrictions; quarterly reviews check its application. |
+| 8.2 Task Definition & Acceptance Criteria | 2 | 3 | Confirmed | 2 | Medium: Sampled task briefs include expected behavior, boundaries, and acceptance checks. |
+| 8.3 Repository Context & Maintained Instructions | 2 | 3 | Confirmed | 2 | Medium: Repository guidance and setup commands are maintained and checked on onboarding. |
+| 8.4 Sensitive Inputs & Information Handling | 2 | 3 | Confirmed | 2 | Medium: Approved workspace settings and sanitized fixtures are reviewed against data classes. |
+| 8.5 Agent Permissions & Untrusted Inputs | 2 | 3 | Confirmed | 2 | Medium: Isolated agents use scoped access; consequential actions have enforced approvals. |
+| 8.6 Independent Validation & Review | 2 | 3 | Confirmed | 2 | Medium: Reviewers inspect contract-derived tests and CI logs for generated changes. |
+| 8.7 Controlled Execution, Handover & Recovery | 2 | 3 | Confirmed | 2 | Medium: Runs have checkpoints and stop controls; handovers record verification and recovery. |
+| 8.8 Outcomes, Learning & Tool Changes | 2 | 3 | Confirmed | 2 | Medium: The team samples rework and defects and checks upgrades; fallback is documented. |
+| 8.9 Other | N/A | — | N/A | — | No additional AI practice was identified. |
+
 ## Calculation check
 
 Each category score uses confirmed rows only; N/A and unknown rows are excluded.
@@ -217,13 +232,14 @@ rounding to one decimal place.
 | 5 | 101 / 156 | 64.7% |
 | 6 | 76 / 116 | 65.5% |
 | 7 | 25 / 36 | 69.4% |
+| 8 | 48 / 64 | 75.0% |
 
 Gap priorities in the top-ten table use importance × (4 − state). The unknown
 4.13 answer has no gap value and is counted in coverage, not as state 0.
 
 ## Appendix
 
-- **N/A items and reasons:** 1.9, 2.14, 3.9, 4.16, 5.16, 6.11, and 7.6: no
+- **N/A items and reasons:** 1.9, 2.14, 3.9, 4.16, 5.16, 6.11, 7.6, and 8.9: no
   additional practice was identified; 7.3: the team has no recruiting authority.
 - **Unknown items:** 4.13; ownership and reviewer routing for shared components could not be confirmed.
 - **Skipped categories or items:** None.

@@ -83,6 +83,7 @@ nav:
       - 5. Engineering Practices & Delivery: assessment/05-practices-delivery.md
       - 6. Security & Compliance: assessment/06-security-compliance.md
       - 7. Culture & External Factors: assessment/07-culture.md
+      - 8. AI-Assisted Engineering: assessment/08-ai-assisted-engineering.md
   - Framework coverage:
       - Overview: coverage/README.md
       - The Joel Test: coverage/joel-test.md
@@ -107,5 +108,7 @@ nav:
       - Pilot method: docs/pilot-method.md
       - Fictional sample report: examples/sample-report.md
   - Project:
+      - AI assessment design: docs/ai-assisted-engineering.md
+      - Contributors: CONTRIBUTORS.md
       - Contributing: CONTRIBUTING.md
       - Changelog: CHANGELOG.md

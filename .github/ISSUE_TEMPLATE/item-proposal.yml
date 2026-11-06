@@ -13,7 +13,7 @@ body:
     id: category
     attributes:
       label: Category
-      description: Which of the seven categories does this belong to?
+      description: Which of the eight categories does this belong to?
       options:
         - "1. Product & Vision"
         - "2. Processes & Collaboration"

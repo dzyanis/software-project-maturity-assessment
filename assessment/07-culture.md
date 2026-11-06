@@ -1,6 +1,6 @@
 # 7. Culture & External Factors
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.3.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.4.0.
 
 ### 7.1 Working Conditions
 

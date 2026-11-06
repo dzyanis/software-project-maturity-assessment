@@ -1,8 +1,8 @@
 # Software Project Maturity Assessment
 
-**Spec version: 0.3.0** — see [CHANGELOG.md](CHANGELOG.md) for the versioning policy.
+**Spec version: 0.4.0** — see [CHANGELOG.md](CHANGELOG.md) for the versioning policy.
 
-This guide evaluates software engineering maturity across seven categories. Each item has a stable ID (e.g. `4.8`), an explanation of why it matters, what good looks like, questions to ask, and red flags. Items live in per-category files:
+This guide evaluates software engineering maturity across eight categories. Each item has a stable ID (e.g. `4.8`), an explanation of why it matters, what good looks like, questions to ask, and red flags. Items live in per-category files:
 
 1. [Product & Vision](assessment/01-product-vision.md)
 2. [Processes & Collaboration](assessment/02-processes-collaboration.md)
@@ -11,6 +11,7 @@ This guide evaluates software engineering maturity across seven categories. Each
 5. [Engineering Practices & Delivery](assessment/05-practices-delivery.md)
 6. [Security & Compliance](assessment/06-security-compliance.md)
 7. [Culture & External Factors](assessment/07-culture.md)
+8. [AI-Assisted Engineering](assessment/08-ai-assisted-engineering.md)
 
 ## How to score
 

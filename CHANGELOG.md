@@ -7,6 +7,16 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-06
+
+### Added
+- Category 8, AI-Assisted Engineering: eight practices and an Other prompt covering accountability, task intent, repository context, sensitive inputs, agent authority, independent validation, controlled execution, and outcome-based learning. Includes evidence examples and supports justified non-use of AI.
+- AI scope and overlap analysis, category 8 report and sample results, website navigation, and generated calculator and bundle content.
+
+### Changed
+- Release impact: MINOR. Items 8.1–8.9 are additive; existing item IDs and score calculations remain unchanged. Earlier reports lack a category-8 baseline; compare shared confirmed states with scope, version, coverage, and weight differences disclosed, rather than comparing aggregate scores across versions.
+- Lite-v1 retains its existing 15 items across categories 1–7; category 8 is explicitly skipped unless scope is expanded.
+
 ### Fixed
 - Bundle builds now reject a missing, duplicate, or mismatched spec version stamp in the sample report.
 - Added missing item 1.10 to the fictional full sample report, recalculated category 1's score and coverage, and corrected the category 7 detail heading. Site verification now checks the sample report's standard item IDs against the assessment and calculator.

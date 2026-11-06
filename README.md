@@ -1,6 +1,6 @@
 # Software Project Maturity Assessment
 
-**Spec version: 0.3.0**
+**Spec version: 0.4.0**
 
 Read it on the web: **<https://dzyanis.github.io/software-project-maturity-assessment/>**
 
@@ -41,7 +41,7 @@ This is a self-assessment, not a grade. It weights maturity gaps by the importan
 
 ## How to use it
 
-1. Read [ASSESSMENT.md](ASSESSMENT.md): the index, scoring scales, and links to the seven category files in [assessment/](assessment/).
+1. Read [ASSESSMENT.md](ASSESSMENT.md): the index, scoring scales, and links to the eight category files in [assessment/](assessment/).
 2. Run the assessment:
     - **Manually:** walk the categories with your team and fill in [templates/report.md](templates/report.md).
     - **With an LLM:** give your AI assistant [AGENT.md](AGENT.md) and the `assessment/` files; it interviews the team one question at a time and produces the report. To pause and resume later, save the current answers in the [interview checkpoint](templates/checkpoint.md).

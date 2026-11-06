@@ -17,14 +17,14 @@ mkdir -p "$stage/assessment" "$stage/coverage" "$stage/templates" "$stage/exampl
 # Relative paths are preserved so that every existing link between these files
 # keeps resolving with no rewriting. MkDocs turns a .md link target into that
 # page's URL by itself.
-cp ASSESSMENT.md AGENT.md CONTRIBUTING.md CHANGELOG.md "$stage/"
+cp ASSESSMENT.md AGENT.md CONTRIBUTING.md CONTRIBUTORS.md CHANGELOG.md "$stage/"
 cp assessment/*.md "$stage/assessment/"
 cp coverage/*.md "$stage/coverage/"
 cp templates/*.md "$stage/templates/"
 cp examples/*.md "$stage/examples/"
 cp tools/calculator.html "$stage/tools/calculator.html"
 cp profiles/*.md "$stage/profiles/"
-cp docs/guided-interview-ui-scope.md docs/pilot-method.md docs/rating-examples.md "$stage/docs/"
+cp docs/ai-assisted-engineering.md docs/guided-interview-ui-scope.md docs/pilot-method.md docs/rating-examples.md "$stage/docs/"
 cp site-assets/robots.txt "$stage/"
 
 # LICENSE is not a documentation page, but index.md (from README.md) links to

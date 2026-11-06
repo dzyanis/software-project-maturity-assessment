@@ -1,14 +1,16 @@
 # Lite assessment profile
 
 **Profile version:** lite-v1
-**Spec version:** 0.3.0
+**Spec version:** 0.4.0
 
 The lite profile is a 30–60 minute first pass for discovery or a focused
-re-check. It selects 15 items across all seven categories to sample product
+re-check. It selects 15 items across categories 1–7 to sample product
 direction, team flow, system design, code quality, delivery, security, and team
 health. The duration is a planning target, not a measured guarantee; actual
 time depends on evidence availability and follow-up. Record the actual duration
 in the report and use issue #10's pilot work to validate the target.
+
+Category 8 (AI-Assisted Engineering) is skipped in lite-v1. Keep the 15-item selection stable for repeat runs; record any explicit scope expansion separately.
 
 ## Selected items
 

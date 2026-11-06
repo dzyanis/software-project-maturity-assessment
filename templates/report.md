@@ -4,7 +4,7 @@
 |---|---|
 | **Team / Product** | {{TEAM_NAME}} |
 | **Date** | {{DATE}} |
-| **Spec version** | 0.3.0 |
+| **Spec version** | 0.4.0 |
 | **Participants** | {{NAMES_OR_ROLE_LABELS_AS_AGREED}} |
 | **Intended audience / sharing** | {{AUDIENCE_AND_STORAGE_OR_SHARING_EXPECTATIONS}} |
 | **System boundary** | {{SYSTEMS_AND_SERVICES_IN_SCOPE}} |
@@ -37,6 +37,7 @@ Summarize sensitive evidence at the team level where possible. Omit unnecessary 
 | 5. Engineering Practices & Delivery | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
 | 6. Security & Compliance | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
 | 7. Culture & External Factors | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
+| 8. AI-Assisted Engineering | {{PCT_COMPLETE_OR_PROVISIONAL_OR_NOT_ASSESSED_OR_SKIPPED}} | {{CONFIRMED_APPLICABLE / APPLICABLE}} | {{ITEM_OR_NONE}} |
 
 ## Top gaps (improvement roadmap)
 
