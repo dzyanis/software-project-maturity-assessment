@@ -1,6 +1,6 @@
 # 3. Architecture & Systems Design
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.3.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 1.0.0.
 
 ### 3.1 System Documentation
 

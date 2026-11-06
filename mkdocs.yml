@@ -8,7 +8,7 @@ site_author: dzyanis
 repo_url: https://github.com/dzyanis/software-project-maturity-assessment
 repo_name: dzyanis/software-project-maturity-assessment
 edit_uri: ""
-copyright: Licensed CC BY 4.0
+copyright: Licensed CC BY 5.0
 
 docs_dir: .site-src
 site_dir: site
@@ -57,7 +57,7 @@ markdown_extensions:
   - attr_list
   - admonition
   # GitHub's slug algorithm, not Python-Markdown's. Six existing
-  # cross-references use anchors such as #414-dependency-security--updates,
+  # cross-references use anchors such as #514-dependency-security--updates,
   # where the double dash is what GitHub leaves behind after stripping the "&".
   # The default slugifier collapses that to one dash and silently breaks them.
   # case: lower is required; without it the original capitalisation survives.
@@ -79,10 +79,11 @@ nav:
       - 1. Product & Vision: assessment/01-product-vision.md
       - 2. Processes & Collaboration: assessment/02-processes-collaboration.md
       - 3. Architecture & Systems Design: assessment/03-architecture-design.md
-      - 4. Code & Quality: assessment/04-code-quality.md
-      - 5. Engineering Practices & Delivery: assessment/05-practices-delivery.md
-      - 6. Security & Compliance: assessment/06-security-compliance.md
-      - 7. Culture & External Factors: assessment/07-culture.md
+      - 4. AI-Assisted Engineering: assessment/04-ai-assisted-engineering.md
+      - 5. Code & Quality: assessment/05-code-quality.md
+      - 6. Engineering Practices & Delivery: assessment/06-practices-delivery.md
+      - 7. Security & Compliance: assessment/07-security-compliance.md
+      - 8. Culture & External Factors: assessment/08-culture.md
   - Framework coverage:
       - Overview: coverage/README.md
       - The Joel Test: coverage/joel-test.md
@@ -107,5 +108,7 @@ nav:
       - Pilot method: docs/pilot-method.md
       - Fictional sample report: examples/sample-report.md
   - Project:
+      - AI assessment design: docs/ai-assisted-engineering.md
+      - Contributors: CONTRIBUTORS.md
       - Contributing: CONTRIBUTING.md
       - Changelog: CHANGELOG.md

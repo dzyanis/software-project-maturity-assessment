@@ -39,16 +39,18 @@ assert_file .site-src/AGENT.md
 assert_file .site-src/CONTRIBUTING.md
 assert_file .site-src/CHANGELOG.md
 assert_file .site-src/assessment/01-product-vision.md
-assert_file .site-src/assessment/07-culture.md
+assert_file .site-src/assessment/08-culture.md
+assert_file .site-src/assessment/04-ai-assisted-engineering.md
+assert_file .site-src/docs/ai-assisted-engineering.md
 assert_file .site-src/coverage/README.md
 assert_file .site-src/coverage/agile-manifesto.md
 assert_file .site-src/templates/report.md
 
 staged_categories=$(find .site-src/assessment -name '*.md' | wc -l | tr -d ' ')
-if [[ "$staged_categories" == "7" ]]; then
-  echo "ok   - all 7 category files staged"
+if [[ "$staged_categories" == "8" ]]; then
+  echo "ok   - all 8 category files staged"
 else
-  echo "FAIL - expected 7 category files, staged $staged_categories"; fail=1
+  echo "FAIL - expected 8 category files, staged $staged_categories"; fail=1
 fi
 
 echo "== the bundle is not published =="
@@ -75,7 +77,8 @@ echo "== strict build =="
 assert_file site/index.html
 assert_file site/sitemap.xml
 assert_file site/robots.txt
-assert_file site/assessment/04-code-quality/index.html
+assert_file site/assessment/05-code-quality/index.html
+assert_file site/assessment/04-ai-assisted-engineering/index.html
 assert_file site/coverage/agile-manifesto/index.html
 
 echo "== search engine artefacts =="
@@ -98,12 +101,12 @@ assert_grep site/assessment/01-product-vision/index.html \
   'assessment prose is present in the static markup'
 
 echo "== GitHub-compatible heading anchors =="
-assert_grep site/assessment/04-code-quality/index.html \
-  'id="414-dependency-security--updates"' \
-  '4.14 anchor keeps the double dash GitHub produces'
-assert_grep site/assessment/06-security-compliance/index.html \
-  'id="610-compliance--data-retention-policies"' \
-  '6.10 anchor keeps the double dash GitHub produces'
+assert_grep site/assessment/05-code-quality/index.html \
+  'id="514-dependency-security--updates"' \
+  '5.14 anchor keeps the double dash GitHub produces'
+assert_grep site/assessment/07-security-compliance/index.html \
+  'id="710-compliance--data-retention-policies"' \
+  '7.10 anchor keeps the double dash GitHub produces'
 assert_grep site/assessment/01-product-vision/index.html \
   'id="18-compliance--legal-requirements"' \
   '1.8 anchor keeps the double dash GitHub produces'

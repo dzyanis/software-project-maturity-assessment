@@ -33,7 +33,7 @@ Each mapping file follows this structure:
 
 | # | Framework point | Our item(s) | Coverage |
 |---|---|---|---|
-| 1 | ... | 4.8 Unit Tests | ✅ Full / ✅ Full (modernized) / ⚠️ Partial / ❌ Not covered |
+| 1 | ... | 5.8 Unit Tests | ✅ Full / ✅ Full (modernized) / ⚠️ Partial / ❌ Not covered |
 
 ## Notes on partial and missing coverage
 

@@ -1,6 +1,6 @@
 # 1. Product & Vision
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.3.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 1.0.0.
 
 ### 1.1 Product Overview
 
@@ -104,7 +104,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Why it matters:** Compliance obligations (GDPR, accessibility, industry-specific regulation) carry legal and financial risk if ignored, and retrofitting them after the fact is far more expensive than designing for them upfront.
 
-**What good looks like:** Applicable obligations are identified explicitly, someone is accountable for tracking them, and they inform product decisions rather than being discovered during an audit or a customer's security questionnaire. How compliance is operated day-to-day is assessed in [6.10](06-security-compliance.md#610-compliance--data-retention-policies).
+**What good looks like:** Applicable obligations are identified explicitly, someone is accountable for tracking them, and they inform product decisions rather than being discovered during an audit or a customer's security questionnaire. How compliance is operated day-to-day is assessed in [7.10](07-security-compliance.md#710-compliance--data-retention-policies).
 
 **Questions to ask:**
 - Which specific regulations or standards apply to this product, and who determined that list?

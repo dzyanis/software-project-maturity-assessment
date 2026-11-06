@@ -1,7 +1,7 @@
 # Coverage: SPACE Developer Productivity Framework
 
 **Source:** [The SPACE of Developer Productivity: There's more to it than you think (ACM Queue, 2021)](https://doi.org/10.1145/3454122.3454124)
-**Mapped against spec version:** 0.3.0
+**Mapped against spec version:** 1.0.0
 **Last reviewed:** 2026-10-20
 
 SPACE describes developer productivity through five connected dimensions:
@@ -14,15 +14,15 @@ dimensions are **Partial**.
 
 | Dimension | What SPACE considers | Closest assessment item(s) | Coverage |
 |---|---|---|---|
-| Satisfaction and well-being | How developers feel about work, health, and the conditions that support them | 7.1 Working Conditions; 7.4 Continuous Learning & Growth; 7.5 Team Health & Culture; 2.8 Code Reviews | ⚠️ Partial |
-| Performance | Outcomes and quality of work relative to intended goals | 1.3 Project Goals; 1.7 Product Metrics & Analytics; 4.8 Unit Tests; 4.9 Integration & E2E Testing; 5.5 Project Testing; 5.12 Monitoring & Alerting Quality | ⚠️ Partial |
-| Activity | Observable actions and outputs, interpreted in context rather than as productivity by themselves | 2.5 Task Management; 2.8 Code Reviews; 5.1 Version Control System; 5.9 Release Management Process | ⚠️ Partial |
-| Communication and collaboration | How people coordinate, share information, and work across individuals and teams | 2.4 Communications; 2.8 Code Reviews; 2.12 Cross-Team Collaboration; 2.13 Stakeholder Management; 7.2 Remote Work / Hybrid Efficiency | ⚠️ Partial |
-| Efficiency and flow | How smoothly work progresses, including friction, interruptions, and the ability to make progress | 2.5 Task Management; 2.7 Project Estimation; 4.6 Technical Debt; 5.2 Project Installation; 5.3 Project Launch; 5.4 Project Build; 5.6 Automation; 5.13 CI/CD | ⚠️ Partial |
+| Satisfaction and well-being | How developers feel about work, health, and the conditions that support them | 8.1 Working Conditions; 8.4 Continuous Learning & Growth; 8.5 Team Health & Culture; 2.8 Code Reviews | ⚠️ Partial |
+| Performance | Outcomes and quality of work relative to intended goals | 1.3 Project Goals; 1.7 Product Metrics & Analytics; 5.8 Unit Tests; 5.9 Integration & E2E Testing; 6.5 Project Testing; 6.12 Monitoring & Alerting Quality | ⚠️ Partial |
+| Activity | Observable actions and outputs, interpreted in context rather than as productivity by themselves | 2.5 Task Management; 2.8 Code Reviews; 6.1 Version Control System; 6.9 Release Management Process | ⚠️ Partial |
+| Communication and collaboration | How people coordinate, share information, and work across individuals and teams | 2.4 Communications; 2.8 Code Reviews; 2.12 Cross-Team Collaboration; 2.13 Stakeholder Management; 8.2 Remote Work / Hybrid Efficiency | ⚠️ Partial |
+| Efficiency and flow | How smoothly work progresses, including friction, interruptions, and the ability to make progress | 2.5 Task Management; 2.7 Project Estimation; 5.6 Technical Debt; 6.2 Project Installation; 6.3 Project Launch; 6.4 Project Build; 6.6 Automation; 6.13 CI/CD | ⚠️ Partial |
 
 ## Notes on partial and missing coverage
 
-- **Satisfaction and well-being.** Items 7.1, 7.4, and 7.5 ask about working
+- **Satisfaction and well-being.** Items 8.1, 8.4, and 8.5 ask about working
   conditions, growth, and team health. They do not measure developer
   satisfaction, autonomy, burnout, or well-being systematically over time.
 - **Performance.** Product outcomes, testing, and operational quality provide

@@ -7,9 +7,23 @@ additive scoring/report behavior, PATCH = wording fixes without semantic change.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-06
+
+### Added
+- AI-Assisted Engineering as category 4, with eight practices and an Other prompt, vendor-neutral evidence examples, assessor questions, and overlap analysis.
+- AI category integration in navigation, reports, sample results, calculator, and bundle.
+
+### Changed
+- Release impact: MAJOR. Category IDs change: Code & Quality 4→5, Engineering Practices & Delivery 5→6, Security & Compliance 6→7, Culture & External Factors 7→8. AI moves from the unreleased PR's category 8 to category 4. Existing item suffixes, meanings, and score formulas are preserved.
+- Updated active item references, coverage mappings, filenames, and heading anchors. Historical changelog entries retain their original IDs.
+- Lite-v2 retains the same 15 practices with remapped IDs and skips category 4. Do not load lite-v1 records under the new IDs without explicit migration.
+- Older reports and exports are not directly comparable by ID or aggregate score. Explicitly map old categories to new ones before comparing shared confirmed item states; disclose scope, weights, coverage, and versions.
+
 ### Fixed
-- Bundle builds now reject a missing, duplicate, or mismatched spec version stamp in the sample report.
-- Added missing item 1.10 to the fictional full sample report, recalculated category 1's score and coverage, and corrected the category 7 detail heading. Site verification now checks the sample report's standard item IDs against the assessment and calculator.
+- Pilot inventory now reports 83 scored practices, eight Other prompts, and 335 question bullets.
+- Bundle version checks explicitly exclude the coverage index across locales; the proposal dropdown includes all eight categories.
+- Staged the contributors page to resolve its homepage link.
+- Bundle builds reject missing, duplicate, or mismatched sample-report version stamps; the sample report includes every standard item.
 
 ## [0.3.0] - 2026-10-20
 

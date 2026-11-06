@@ -1,7 +1,7 @@
 # Coverage: AWS Well-Architected Framework
 
 **Source:** https://docs.aws.amazon.com/wellarchitected/latest/framework/
-**Mapped against spec version:** 0.3.0
+**Mapped against spec version:** 1.0.0
 **Last reviewed:** 2026-10-20
 
 The AWS Well-Architected Framework evaluates cloud workloads through six
@@ -14,12 +14,12 @@ pillar is covered fully and five are covered partially.
 
 | Pillar | Our item(s) | Coverage |
 |---|---|---|
-| Operational excellence | 2.5 Task Management, 2.6 Prioritization and Decision Making, 2.9 Retrospectives and Feedback, 3.1 System Documentation, 5.1 Version Control System, 5.6 Automation, 5.9 Release Management Process, 5.11 Observability, 5.12 Monitoring & Alerting Quality, 5.13 CI/CD | ⚠️ Partial |
-| Security | 1.8 Compliance & Legal Requirements, 4.14 Dependency Security & Updates, 6.1–6.10 Security & Compliance | ⚠️ Partial |
-| Reliability | 3.5 Scalability & Performance, 3.6 Resilience & Fault Tolerance, 5.5 Project Testing, 5.9 Release Management Process, 5.10 Recovery Plan, 5.11 Observability, 5.12 Monitoring & Alerting Quality, 5.13 CI/CD | ✅ Full |
-| Performance efficiency | 3.5 Scalability & Performance, 5.7 Optimizations, 5.11 Observability, 5.12 Monitoring & Alerting Quality | ⚠️ Partial |
-| Cost optimization | 1.3 Project Goals, 2.6 Prioritization and Decision Making, 3.5 Scalability & Performance, 5.7 Optimizations, 5.15 Cost Efficiency / Cloud Optimization (FinOps) | ⚠️ Partial |
-| Sustainability | 3.5 Scalability & Performance, 5.7 Optimizations, 5.15 Cost Efficiency / Cloud Optimization (FinOps) | ⚠️ Partial |
+| Operational excellence | 2.5 Task Management, 2.6 Prioritization and Decision Making, 2.9 Retrospectives and Feedback, 3.1 System Documentation, 6.1 Version Control System, 6.6 Automation, 6.9 Release Management Process, 6.11 Observability, 6.12 Monitoring & Alerting Quality, 6.13 CI/CD | ⚠️ Partial |
+| Security | 1.8 Compliance & Legal Requirements, 5.14 Dependency Security & Updates, 7.1–7.10 Security & Compliance | ⚠️ Partial |
+| Reliability | 3.5 Scalability & Performance, 3.6 Resilience & Fault Tolerance, 6.5 Project Testing, 6.9 Release Management Process, 6.10 Recovery Plan, 6.11 Observability, 6.12 Monitoring & Alerting Quality, 6.13 CI/CD | ✅ Full |
+| Performance efficiency | 3.5 Scalability & Performance, 6.7 Optimizations, 6.11 Observability, 6.12 Monitoring & Alerting Quality | ⚠️ Partial |
+| Cost optimization | 1.3 Project Goals, 2.6 Prioritization and Decision Making, 3.5 Scalability & Performance, 6.7 Optimizations, 6.15 Cost Efficiency / Cloud Optimization (FinOps) | ⚠️ Partial |
+| Sustainability | 3.5 Scalability & Performance, 6.7 Optimizations, 6.15 Cost Efficiency / Cloud Optimization (FinOps) | ⚠️ Partial |
 
 ## Notes on partial and missing coverage
 
@@ -29,7 +29,7 @@ pillar is covered fully and five are covered partially.
   service quotas, or cloud-specific event response. Comparable practices can
   be assessed for Azure and Google Cloud using their own operations guidance;
   provider-specific service choices and controls differ.
-- **Security.** Category 6 assesses application and project security practices,
+- **Security.** Category 7 assesses application and project security practices,
   including requirements, access, data, vulnerability management, incident
   response, and compliance. The assessment does not verify AWS account
   boundaries, organization policies, cloud control-plane configuration, or
@@ -46,7 +46,7 @@ pillar is covered fully and five are covered partially.
   technology selection, compute, storage, database, or network design
   questions. Equivalent services exist across AWS, Azure, and Google Cloud,
   but their capabilities and tuning options are not interchangeable.
-- **Cost optimization.** Item 5.15 addresses cloud cost visibility and
+- **Cost optimization.** Item 6.15 addresses cloud cost visibility and
   optimization, supported by goal setting and prioritization. The assessment
   does not require AWS-specific billing tools, commitment instruments, or
   cost allocation practices. Azure and Google Cloud offer analogous cost

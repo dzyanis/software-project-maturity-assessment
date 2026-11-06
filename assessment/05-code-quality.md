@@ -1,8 +1,8 @@
-# 4. Code & Quality
+# 5. Code & Quality
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.3.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 1.0.0.
 
-### 4.1 Codebase Relevance
+### 5.1 Codebase Relevance
 
 **Why it matters:** Code that no longer reflects current requirements or domain understanding forces every change to fight the existing structure instead of building on it.
 
@@ -16,7 +16,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** entire modules nobody can explain the purpose of; "legacy" code that's actually still load-bearing but treated as untouchable; the domain model in code contradicts how the business actually operates now.
 
-### 4.2 Patterns
+### 5.2 Patterns
 
 **Why it matters:** Consistent use of architectural and design patterns lets engineers transfer intuition from one part of the codebase to another; inconsistency means every module has to be learned from scratch.
 
@@ -30,7 +30,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** the same problem is solved a different way in every module; patterns were copied from a tutorial without adaptation to this codebase; no one can name the patterns in use without looking them up.
 
-### 4.3 Code Style
+### 5.3 Code Style
 
 **Why it matters:** Inconsistent formatting and style turn every code review into a debate about tabs and semicolons instead of substance, and make diffs noisier than the actual change.
 
@@ -44,7 +44,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** style arguments recur in every PR; formatting is "whatever your editor does"; different files clearly reflect different eras or authors with no unifying convention.
 
-### 4.4 Engineering Principles
+### 5.4 Engineering Principles
 
 **Why it matters:** Principles like SOLID, KISS, and DRY exist to keep change cheap; applied as slogans without judgment they produce as much harm as ignoring them — over-abstraction is as costly as duplication.
 
@@ -58,7 +58,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** abstractions with a single implementation "in case we need it later"; the same business rule duplicated in five places with no plan to unify it; principles cited as absolute rules rather than tradeoffs.
 
-### 4.5 Error Handling
+### 5.5 Error Handling
 
 **Why it matters:** How a system handles the unexpected — a failed call, a bad input, a timeout — determines whether a small problem stays small or cascades into an incident nobody can diagnose.
 
@@ -72,7 +72,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** empty catch blocks; errors logged with no context beyond "something went wrong"; the same failure produces a different, inconsistent response depending on which code path hit it.
 
-### 4.6 Technical Debt
+### 5.6 Technical Debt
 
 **Why it matters:** Debt taken on knowingly to move fast is a legitimate tradeoff; debt that's invisible or unmanaged compounds until it silently caps how fast the team can ship.
 
@@ -87,7 +87,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** debt lives only in tribal memory or scattered TODO comments; debt is never paid down until it causes a production incident; every retro mentions the same unaddressed debt as last time.
 
-### 4.7 Package Management
+### 5.7 Package Management
 
 **Why it matters:** Dependencies are code the team didn't write but is still responsible for; unmanaged versions, unpinned ranges, and unclear ownership of what's installed create both stability and security exposure.
 
@@ -101,11 +101,11 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** no lockfile, or a lockfile that's routinely out of sync with what's actually installed; dependencies added on a whim with no review; a dependency the team knows is abandoned but has no plan to replace.
 
-### 4.8 Unit Tests
+### 5.8 Unit Tests
 
 **Why it matters:** Unit tests give fast feedback on logic and edge cases in individual components; without them, small regressions are harder to find and refactoring stalls.
 
-**What good looks like:** Unit tests exercise meaningful behavior and edge cases, finish quickly, and fail reliably when that behavior regresses. Coverage is tracked but not worshipped. Release-level regression confidence is assessed in 5.5; pipeline enforcement is assessed in 5.13.
+**What good looks like:** Unit tests exercise meaningful behavior and edge cases, finish quickly, and fail reliably when that behavior regresses. Coverage is tracked but not worshipped. Release-level regression confidence is assessed in 6.5; pipeline enforcement is assessed in 5.13.
 
 **Questions to ask:**
 - Can you run the unit test suite locally with one command, and how long does it take?
@@ -115,7 +115,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** unit tests are too slow or flaky to provide useful feedback; tests assert implementation details but miss important behavior; failures are routinely re-run without investigation.
 
-### 4.9 Integration & E2E Testing
+### 5.9 Integration & E2E Testing
 
 **Why it matters:** Unit tests verify pieces in isolation, but most real failures happen at the seams — between services, with the database, through the UI — where only integration and end-to-end tests can catch them.
 
@@ -129,7 +129,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** integration tests run against mocks so thoroughly they no longer test integration; E2E suite is so slow or flaky it's routinely skipped; critical user journeys have no test coverage at all.
 
-### 4.10 Scaffolding / Project Layout
+### 5.10 Scaffolding / Project Layout
 
 **Why it matters:** A confusing or inconsistent repository structure slows down every new contributor and every routine task, long after the people who set it up have moved on.
 
@@ -143,7 +143,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** project structure contradicts its own documentation; setup requires a person to walk you through undocumented steps; similar functionality is scattered across the repo with no consistent home.
 
-### 4.11 Documentation & Domain Language
+### 5.11 Documentation & Domain Language
 
 **Why it matters:** Code that uses the same words the business uses is self-documenting; a mismatch between code vocabulary and domain vocabulary means every conversation requires mental translation and invites misunderstanding.
 
@@ -157,7 +157,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** engineers and product routinely have to "translate" between what they call something and what the code calls it; core domain concepts have no documentation anywhere; the same concept has several different names across the codebase.
 
-### 4.12 Static Analysis / Linting
+### 5.12 Static Analysis / Linting
 
 **Why it matters:** Static analysis catches whole classes of bugs and inconsistencies before a human ever has to look at the code, freeing review time for things a machine can't judge.
 
@@ -171,7 +171,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** linter warnings routinely ignored or suppressed with blanket disables; static analysis exists but isn't wired into CI; the ruleset hasn't been touched since the project started and no longer fits how the team writes code.
 
-### 4.13 Code Ownership & Review Process Quality
+### 5.13 Code Ownership & Review Process Quality
 
 **Why it matters:** Clear ownership makes someone accountable for a piece of code's health and helps route changes to people with the right context. Review speed and the substance of feedback are assessed in 2.8.
 
@@ -185,7 +185,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** large areas have no clear owner; ownership records are stale; changes routinely bypass the owning team without an agreed reason; nobody accepts responsibility for maintaining inherited code.
 
-### 4.14 Dependency Security & Updates
+### 5.14 Dependency Security & Updates
 
 **Why it matters:** Vulnerable or outdated dependencies are one of the most common ways systems get compromised, and the risk is invisible until it's exploited or flagged.
 
@@ -199,7 +199,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** vulnerability scan results exist but nobody acts on them; dependencies are years behind current versions with no plan to catch up; a known critical vulnerability has sat unpatched for months.
 
-### 4.15 Copyright & Licenses
+### 5.15 Copyright & Licenses
 
 **Why it matters:** Every dependency and piece of borrowed code carries a license with real legal obligations; getting this wrong can create liability that surfaces only during an acquisition, audit, or lawsuit.
 
@@ -213,6 +213,6 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** no one has ever checked dependency licenses; copy-pasted code of unknown origin exists in the codebase; the project's own license file is missing, wrong, or was never deliberately chosen.
 
-### 4.16 Other
+### 5.16 Other
 
 Anything important to this category that the items above did not cover. Record it here with an importance and state rating like any other item.

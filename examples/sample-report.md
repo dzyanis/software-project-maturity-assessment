@@ -9,12 +9,12 @@
 |---|---|
 | **Team / Product** | Harborlight Order Desk |
 | **Date** | 2026-10-18 |
-| **Spec version** | 0.3.0 |
+| **Spec version** | 1.0.0 |
 | **Participants** | Fictional product manager; engineering lead; two engineers (role labels only) |
 | **Intended audience / sharing** | Fictional engineering and product leadership; shared internally after participant review |
 | **System boundary** | Customer web app, public API, and order-processing workers |
 | **Environment(s)** | AWS production and staging; local development excluded from operational findings |
-| **Profile / categories / items** | Full assessment; all seven categories |
+| **Profile / categories / items** | Full assessment; all eight categories |
 | **Evidence date or range** | 2026-04-01 to 2026-10-18 |
 
 ## How to read this report
@@ -25,11 +25,11 @@ recovery as critical (importance 3); routine engineering practices as medium
 Each note gives a short evidence-based reason for the current state. Importance
 changes the weight and gap priority; state 4 remains the common score reference.
 
-Category 4 is **provisional**: 14 of 15 applicable items are confirmed, while
-item 4.13 is unknown because the team could not verify ownership and reviewer
+Category 5 is **provisional**: 14 of 15 applicable items are confirmed, while
+item 5.13 is unknown because the team could not verify ownership and reviewer
 routing for shared components. The unknown answer is excluded from the numeric
-score and remains visible in coverage. Item 7.3 is N/A because the team has no
-recruiting authority. The seven “Other” prompts are N/A because no additional
+score and remains visible in coverage. Item 8.3 is N/A because the team has no
+recruiting authority. The eight “Other” prompts are N/A because no additional
 practice was identified.
 
 ## Summary
@@ -39,10 +39,11 @@ practice was identified.
 | 1. Product & Vision | 59.4% · complete | 9/9 | 1.2 Product Vision / Mission · 6 |
 | 2. Processes & Collaboration | 63.8% · complete | 13/13 | 2.8 Code Reviews · 6 |
 | 3. Architecture & Systems Design | 61.9% · complete | 8/8 | 3.5 Scalability & Performance · 6 |
-| 4. Code & Quality | 63.2% · provisional | 14/15 | 4.5 Error Handling · 6 |
-| 5. Engineering Practices & Delivery | 64.7% · complete | 15/15 | 5.10 Recovery Plan · 9 |
-| 6. Security & Compliance | 65.5% · complete | 10/10 | 6.1 Security Requirements · 6 |
-| 7. Culture & External Factors | 69.4% · complete | 4/4 | 7.4 Continuous Learning & Growth · 4 |
+| 4. AI-Assisted Engineering | 75.0% · complete | 8/8 | 4.1 Appropriate Use & Human Accountability · 2 |
+| 5. Code & Quality | 63.2% · provisional | 14/15 | 5.5 Error Handling · 6 |
+| 6. Engineering Practices & Delivery | 64.7% · complete | 15/15 | 6.10 Recovery Plan · 9 |
+| 7. Security & Compliance | 65.5% · complete | 10/10 | 7.1 Security Requirements · 6 |
+| 8. Culture & External Factors | 69.4% · complete | 4/4 | 8.4 Continuous Learning & Growth · 4 |
 
 ## Top gaps (improvement roadmap)
 
@@ -51,7 +52,7 @@ when risk or dependencies justify it.
 
 | Rank | Item | Importance | State | Gap priority | Note |
 |---:|---|---:|---:|---:|---|
-| 1 | 5.10 Recovery Plan | 3 | 1 | 9 | Backups exist, but a restore has not been rehearsed. |
+| 1 | 6.10 Recovery Plan | 3 | 1 | 9 | Backups exist, but a restore has not been rehearsed. |
 | 2 | 1.2 Product Vision / Mission | 3 | 2 | 6 | The vision is written but rarely guides release decisions. |
 | 3 | 1.4 Functional and Non-Functional Requirements | 3 | 2 | 6 | Acceptance criteria exist; non-functional requirements lack owners. |
 | 4 | 1.6 User Research & Feedback Loops | 3 | 2 | 6 | Support themes are reviewed, but recent workflows were not usability-tested. |
@@ -59,22 +60,22 @@ when risk or dependencies justify it.
 | 6 | 3.5 Scalability & Performance | 3 | 2 | 6 | Latency is measured; capacity tests are infrequent. |
 | 7 | 3.6 Resilience & Fault Tolerance | 3 | 2 | 6 | Retry patterns exist; failure behavior is not regularly exercised. |
 | 8 | 3.8 APIs & Integrations | 3 | 2 | 6 | API contracts are versioned; consumer compatibility tests are incomplete. |
-| 9 | 4.5 Error Handling | 3 | 2 | 6 | Boundary errors are typed; user-facing errors vary by service. |
-| 10 | 4.8 Unit Tests | 3 | 2 | 6 | Core paths are tested; important data constraints are missing. |
+| 9 | 5.5 Error Handling | 3 | 2 | 6 | Boundary errors are typed; user-facing errors vary by service. |
+| 10 | 5.8 Unit Tests | 3 | 2 | 6 | Core paths are tested; important data constraints are missing. |
 
 Other items also have gap priority 6. The top ten use item ID order to break
 ties after gap priority and importance.
 
 ## Recommendations
 
-1. **Rehearse recovery** (5.10). Owner: fictional platform lead. Review by
+1. **Rehearse recovery** (6.10). Owner: fictional platform lead. Review by
    2026-11-15. Done when a staging restore and rollback rehearsal meet the
    recovery objective and the team records the measured result.
 2. **Make product outcomes guide delivery** (1.2, 1.4, 1.6). Owner: fictional
    product manager. Review by 2026-11-30. Done when the team publishes a small
    set of measurable outcomes, assigns non-functional requirements, and tests
    the highest-risk workflow with users.
-3. **Improve feedback and test confidence** (2.8, 4.5, 4.8, 4.9). Owner:
+3. **Improve feedback and test confidence** (2.8, 5.5, 5.8, 5.9). Owner:
    fictional engineering lead. Review by 2026-12-01. Done when review guidance
    includes substantive feedback, error cases have consistent client behavior,
    and the critical order journey has stable unit, integration, and end-to-end
@@ -133,74 +134,88 @@ ties after gap priority and importance.
 | 3.8 APIs & Integrations | 3 | 2 | Confirmed | 6 | Critical: API contracts are versioned; consumer compatibility tests are incomplete. |
 | 3.9 Other | N/A | — | N/A | — | No additional architecture practice was identified. |
 
-### 4. Code & Quality — 63.2% · provisional · 14/15
+### 4. AI-Assisted Engineering — 75.0% · complete · 8/8
 
 | Item | Importance | State | Answer status | Gap priority | Notes |
 |---|---:|---:|---|---:|---|
-| 4.1 Relevance of Codebase | 2 | 3 | Confirmed | 2 | Medium: active paths are maintained; unused modules were removed this year. |
-| 4.2 Patterns | 2 | 3 | Confirmed | 2 | Medium: common patterns are documented; examples differ between services. |
-| 4.3 Code Style | 2 | 3 | Confirmed | 2 | Medium: formatting is automated; naming conventions rely on review. |
-| 4.4 Engineering Principles | 3 | 3 | Confirmed | 3 | Critical: simple design is encouraged; trade-offs are not always recorded. |
-| 4.5 Error Handling | 3 | 2 | Confirmed | 6 | Critical: API errors are typed; user-facing messages differ by service. |
-| 4.6 Technical Debt | 2 | 2 | Confirmed | 4 | Medium: debt is tagged, but there is no regular allocation to reduce it. |
-| 4.7 Package Management | 3 | 3 | Confirmed | 3 | Critical: lockfiles and automated updates are used; ownership of major upgrades varies. |
-| 4.8 Unit Tests | 3 | 2 | Confirmed | 6 | Critical: core services have unit tests; key data constraints lack coverage. |
-| 4.9 Integration & E2E Testing | 3 | 2 | Confirmed | 6 | Critical: major integrations are tested; end-to-end tests are brittle. |
-| 4.10 Scaffolding / Project Layout | 2 | 3 | Confirmed | 2 | Medium: service scaffolds are documented; new projects sometimes diverge. |
-| 4.11 Documentation & Domain Language | 2 | 2 | Confirmed | 4 | Medium: glossary exists; operational examples are stale. |
-| 4.12 Static Analysis / Linting | 2 | 3 | Confirmed | 2 | Medium: lint and type checks are required in CI. |
-| 4.13 Code Ownership & Review Process Quality | 3 | — | Unknown | — | Critical: ownership and reviewer routing for shared components could not be confirmed. |
-| 4.14 Dependency Security & Updates | 3 | 2 | Confirmed | 6 | Critical: alerts are reviewed monthly; urgent-fix timing is not agreed. |
-| 4.15 Copyright & Licenses | 2 | 3 | Confirmed | 2 | Medium: dependency licenses are inventoried during builds. |
-| 4.16 Other | N/A | — | N/A | — | No additional code or quality practice was identified. |
+| 4.1 Appropriate Use & Human Accountability | 2 | 3 | Confirmed | 2 | Medium: A shared policy names owners and restrictions; quarterly reviews check its application. |
+| 4.2 Task Definition & Acceptance Criteria | 2 | 3 | Confirmed | 2 | Medium: Sampled task briefs include expected behavior, boundaries, and acceptance checks. |
+| 4.3 Repository Context & Maintained Instructions | 2 | 3 | Confirmed | 2 | Medium: Repository guidance and setup commands are maintained and checked on onboarding. |
+| 4.4 Sensitive Inputs & Information Handling | 2 | 3 | Confirmed | 2 | Medium: Approved workspace settings and sanitized fixtures are reviewed against data classes. |
+| 4.5 Agent Permissions & Untrusted Inputs | 2 | 3 | Confirmed | 2 | Medium: Isolated agents use scoped access; consequential actions have enforced approvals. |
+| 4.6 Independent Validation & Review | 2 | 3 | Confirmed | 2 | Medium: Reviewers inspect contract-derived tests and CI logs for generated changes. |
+| 4.7 Controlled Execution, Handover & Recovery | 2 | 3 | Confirmed | 2 | Medium: Runs have checkpoints and stop controls; handovers record verification and recovery. |
+| 4.8 Outcomes, Learning & Tool Changes | 2 | 3 | Confirmed | 2 | Medium: The team samples rework and defects and checks upgrades; fallback is documented. |
+| 4.9 Other | N/A | — | N/A | — | No additional AI practice was identified. |
 
-### 5. Engineering Practices & Delivery — 64.7% · complete · 15/15
+### 5. Code & Quality — 63.2% · provisional · 14/15
 
 | Item | Importance | State | Answer status | Gap priority | Notes |
 |---|---:|---:|---|---:|---|
-| 5.1 Version Control System | 3 | 3 | Confirmed | 3 | Critical: protected branches, reviews, and release tags are standard. |
-| 5.2 Project Installation | 2 | 4 | Confirmed | 0 | Medium: a new engineer can install dependencies from a clean checkout. |
-| 5.3 Project Launch | 3 | 3 | Confirmed | 3 | Critical: local launch is documented; realistic seed data is incomplete. |
-| 5.4 Project Build | 3 | 3 | Confirmed | 3 | Critical: CI builds are repeatable; artifact provenance is not retained. |
-| 5.5 Project Testing | 3 | 2 | Confirmed | 6 | Critical: release checks exist; multi-tenant boundary cases are thin. |
-| 5.6 Automation | 2 | 3 | Confirmed | 2 | Medium: lint, test, and formatting run automatically; release notes are manual. |
-| 5.7 Optimizations | 2 | 2 | Confirmed | 4 | Medium: one high-traffic endpoint was optimized; follow-up is sporadic. |
-| 5.8 Multiple Environments | 3 | 3 | Confirmed | 3 | Critical: staging and production are separate; test data differs from production. |
-| 5.9 Release Management Process | 3 | 2 | Confirmed | 6 | Critical: checklist is used; rollback readiness is not checked before each release. |
-| 5.10 Recovery Plan | 3 | 1 | Confirmed | 9 | Critical: backups run, but the team has never completed a restore rehearsal. |
-| 5.11 Observability | 2 | 3 | Confirmed | 2 | Medium: logs, traces, and metrics cover critical paths; correlation IDs are missing in one worker. |
-| 5.12 Monitoring & Alerting Quality | 3 | 3 | Confirmed | 3 | Critical: availability and error alerts are reviewed quarterly. |
-| 5.13 CI/CD | 3 | 3 | Confirmed | 3 | Critical: tests gate deployments; production promotion has a manual approval. |
-| 5.14 Infrastructure as Code (IaC) | 2 | 2 | Confirmed | 4 | Medium: core infrastructure is Terraform-managed; console drift is not checked. |
-| 5.15 Cost Efficiency / Cloud Optimization (FinOps) | 2 | 2 | Confirmed | 4 | Medium: monthly bill review exists; service-owner budgets are not set. |
-| 5.16 Other | N/A | — | N/A | — | No additional delivery practice was identified. |
+| 5.1 Relevance of Codebase | 2 | 3 | Confirmed | 2 | Medium: active paths are maintained; unused modules were removed this year. |
+| 5.2 Patterns | 2 | 3 | Confirmed | 2 | Medium: common patterns are documented; examples differ between services. |
+| 5.3 Code Style | 2 | 3 | Confirmed | 2 | Medium: formatting is automated; naming conventions rely on review. |
+| 5.4 Engineering Principles | 3 | 3 | Confirmed | 3 | Critical: simple design is encouraged; trade-offs are not always recorded. |
+| 5.5 Error Handling | 3 | 2 | Confirmed | 6 | Critical: API errors are typed; user-facing messages differ by service. |
+| 5.6 Technical Debt | 2 | 2 | Confirmed | 4 | Medium: debt is tagged, but there is no regular allocation to reduce it. |
+| 5.7 Package Management | 3 | 3 | Confirmed | 3 | Critical: lockfiles and automated updates are used; ownership of major upgrades varies. |
+| 5.8 Unit Tests | 3 | 2 | Confirmed | 6 | Critical: core services have unit tests; key data constraints lack coverage. |
+| 5.9 Integration & E2E Testing | 3 | 2 | Confirmed | 6 | Critical: major integrations are tested; end-to-end tests are brittle. |
+| 5.10 Scaffolding / Project Layout | 2 | 3 | Confirmed | 2 | Medium: service scaffolds are documented; new projects sometimes diverge. |
+| 5.11 Documentation & Domain Language | 2 | 2 | Confirmed | 4 | Medium: glossary exists; operational examples are stale. |
+| 5.12 Static Analysis / Linting | 2 | 3 | Confirmed | 2 | Medium: lint and type checks are required in CI. |
+| 5.13 Code Ownership & Review Process Quality | 3 | — | Unknown | — | Critical: ownership and reviewer routing for shared components could not be confirmed. |
+| 5.14 Dependency Security & Updates | 3 | 2 | Confirmed | 6 | Critical: alerts are reviewed monthly; urgent-fix timing is not agreed. |
+| 5.15 Copyright & Licenses | 2 | 3 | Confirmed | 2 | Medium: dependency licenses are inventoried during builds. |
+| 5.16 Other | N/A | — | N/A | — | No additional code or quality practice was identified. |
 
-### 6. Security & Compliance — 65.5% · complete · 10/10
-
-| Item | Importance | State | Answer status | Gap priority | Notes |
-|---|---:|---:|---|---:|---|
-| 6.1 Security Requirements | 3 | 2 | Confirmed | 6 | Critical: security requirements exist; project risk review is irregular. |
-| 6.2 Sensitive Data Protection | 3 | 3 | Confirmed | 3 | Critical: data is classified and encrypted; support exports need shorter retention. |
-| 6.3 Input Validation | 3 | 3 | Confirmed | 3 | Critical: API validation is consistent; one async worker has weaker schema checks. |
-| 6.4 Authentication / Authorization | 3 | 3 | Confirmed | 3 | Critical: SSO and roles are used; access reviews happen quarterly. |
-| 6.5 Credentials | 3 | 3 | Confirmed | 3 | Critical: production secrets use a managed store; local development exceptions remain. |
-| 6.6 Key Management | 3 | 2 | Confirmed | 6 | Critical: managed KMS is in place; rotation evidence is not reviewed routinely. |
-| 6.7 Vulnerability Management & Dependency Scanning | 3 | 3 | Confirmed | 3 | Critical: CI scans dependencies and assigns findings to owners. |
-| 6.8 Penetration Testing / Audits | 2 | 2 | Confirmed | 4 | Medium: annual external testing occurs; remediation retests are inconsistent. |
-| 6.9 Incident Response Process | 3 | 2 | Confirmed | 6 | Critical: roles are documented; the team has not run a tabletop this year. |
-| 6.10 Compliance & Data Retention Policies | 3 | 3 | Confirmed | 3 | Critical: obligations are tracked and deletion is verified for primary records. |
-| 6.11 Other | N/A | — | N/A | — | No additional security practice was identified. |
-
-### 7. Culture & External Factors — 69.4% · complete · 4/4
+### 6. Engineering Practices & Delivery — 64.7% · complete · 15/15
 
 | Item | Importance | State | Answer status | Gap priority | Notes |
 |---|---:|---:|---|---:|---|
-| 7.1 Working Conditions | 2 | 3 | Confirmed | 2 | Medium: workload and focus time are discussed in regular check-ins. |
-| 7.2 Remote Work / Hybrid Efficiency | 2 | 3 | Confirmed | 2 | Medium: remote norms and async decisions are documented. |
-| 7.3 HR & Recruiting Alignment | N/A | — | N/A | — | The team has no hiring authority, so this practice is outside its remit. |
-| 7.4 Continuous Learning & Growth | 2 | 2 | Confirmed | 4 | Medium: learning time is available; follow-up on development goals varies. |
-| 7.5 Team Health & Culture | 3 | 3 | Confirmed | 3 | Critical: anonymous check-in themes flag uneven on-call load; the team discusses workload trends without attributing comments to individuals. |
-| 7.6 Other | N/A | — | N/A | — | No additional culture or external-factor practice was identified. |
+| 6.1 Version Control System | 3 | 3 | Confirmed | 3 | Critical: protected branches, reviews, and release tags are standard. |
+| 6.2 Project Installation | 2 | 4 | Confirmed | 0 | Medium: a new engineer can install dependencies from a clean checkout. |
+| 6.3 Project Launch | 3 | 3 | Confirmed | 3 | Critical: local launch is documented; realistic seed data is incomplete. |
+| 6.4 Project Build | 3 | 3 | Confirmed | 3 | Critical: CI builds are repeatable; artifact provenance is not retained. |
+| 6.5 Project Testing | 3 | 2 | Confirmed | 6 | Critical: release checks exist; multi-tenant boundary cases are thin. |
+| 6.6 Automation | 2 | 3 | Confirmed | 2 | Medium: lint, test, and formatting run automatically; release notes are manual. |
+| 6.7 Optimizations | 2 | 2 | Confirmed | 4 | Medium: one high-traffic endpoint was optimized; follow-up is sporadic. |
+| 6.8 Multiple Environments | 3 | 3 | Confirmed | 3 | Critical: staging and production are separate; test data differs from production. |
+| 6.9 Release Management Process | 3 | 2 | Confirmed | 6 | Critical: checklist is used; rollback readiness is not checked before each release. |
+| 6.10 Recovery Plan | 3 | 1 | Confirmed | 9 | Critical: backups run, but the team has never completed a restore rehearsal. |
+| 6.11 Observability | 2 | 3 | Confirmed | 2 | Medium: logs, traces, and metrics cover critical paths; correlation IDs are missing in one worker. |
+| 6.12 Monitoring & Alerting Quality | 3 | 3 | Confirmed | 3 | Critical: availability and error alerts are reviewed quarterly. |
+| 6.13 CI/CD | 3 | 3 | Confirmed | 3 | Critical: tests gate deployments; production promotion has a manual approval. |
+| 6.14 Infrastructure as Code (IaC) | 2 | 2 | Confirmed | 4 | Medium: core infrastructure is Terraform-managed; console drift is not checked. |
+| 6.15 Cost Efficiency / Cloud Optimization (FinOps) | 2 | 2 | Confirmed | 4 | Medium: monthly bill review exists; service-owner budgets are not set. |
+| 6.16 Other | N/A | — | N/A | — | No additional delivery practice was identified. |
+
+### 7. Security & Compliance — 65.5% · complete · 10/10
+
+| Item | Importance | State | Answer status | Gap priority | Notes |
+|---|---:|---:|---|---:|---|
+| 7.1 Security Requirements | 3 | 2 | Confirmed | 6 | Critical: security requirements exist; project risk review is irregular. |
+| 7.2 Sensitive Data Protection | 3 | 3 | Confirmed | 3 | Critical: data is classified and encrypted; support exports need shorter retention. |
+| 7.3 Input Validation | 3 | 3 | Confirmed | 3 | Critical: API validation is consistent; one async worker has weaker schema checks. |
+| 7.4 Authentication / Authorization | 3 | 3 | Confirmed | 3 | Critical: SSO and roles are used; access reviews happen quarterly. |
+| 7.5 Credentials | 3 | 3 | Confirmed | 3 | Critical: production secrets use a managed store; local development exceptions remain. |
+| 7.6 Key Management | 3 | 2 | Confirmed | 6 | Critical: managed KMS is in place; rotation evidence is not reviewed routinely. |
+| 7.7 Vulnerability Management & Dependency Scanning | 3 | 3 | Confirmed | 3 | Critical: CI scans dependencies and assigns findings to owners. |
+| 7.8 Penetration Testing / Audits | 2 | 2 | Confirmed | 4 | Medium: annual external testing occurs; remediation retests are inconsistent. |
+| 7.9 Incident Response Process | 3 | 2 | Confirmed | 6 | Critical: roles are documented; the team has not run a tabletop this year. |
+| 7.10 Compliance & Data Retention Policies | 3 | 3 | Confirmed | 3 | Critical: obligations are tracked and deletion is verified for primary records. |
+| 7.11 Other | N/A | — | N/A | — | No additional security practice was identified. |
+
+### 8. Culture & External Factors — 69.4% · complete · 4/4
+
+| Item | Importance | State | Answer status | Gap priority | Notes |
+|---|---:|---:|---|---:|---|
+| 8.1 Working Conditions | 2 | 3 | Confirmed | 2 | Medium: workload and focus time are discussed in regular check-ins. |
+| 8.2 Remote Work / Hybrid Efficiency | 2 | 3 | Confirmed | 2 | Medium: remote norms and async decisions are documented. |
+| 8.3 HR & Recruiting Alignment | N/A | — | N/A | — | The team has no hiring authority, so this practice is outside its remit. |
+| 8.4 Continuous Learning & Growth | 2 | 2 | Confirmed | 4 | Medium: learning time is available; follow-up on development goals varies. |
+| 8.5 Team Health & Culture | 3 | 3 | Confirmed | 3 | Critical: anonymous check-in themes flag uneven on-call load; the team discusses workload trends without attributing comments to individuals. |
+| 8.6 Other | N/A | — | N/A | — | No additional culture or external-factor practice was identified. |
 
 ## Calculation check
 
@@ -213,19 +228,20 @@ rounding to one decimal place.
 | 1 | 57 / 96 | 59.4% |
 | 2 | 74 / 116 | 63.8% |
 | 3 | 52 / 84 | 61.9% |
-| 4 | 86 / 136 | 63.2% · provisional, 14/15 |
-| 5 | 101 / 156 | 64.7% |
-| 6 | 76 / 116 | 65.5% |
-| 7 | 25 / 36 | 69.4% |
+| 4 | 48 / 64 | 75.0% |
+| 5 | 86 / 136 | 63.2% · provisional, 14/15 |
+| 6 | 101 / 156 | 64.7% |
+| 7 | 76 / 116 | 65.5% |
+| 8 | 25 / 36 | 69.4% |
 
 Gap priorities in the top-ten table use importance × (4 − state). The unknown
-4.13 answer has no gap value and is counted in coverage, not as state 0.
+5.13 answer has no gap value and is counted in coverage, not as state 0.
 
 ## Appendix
 
-- **N/A items and reasons:** 1.9, 2.14, 3.9, 4.16, 5.16, 6.11, and 7.6: no
-  additional practice was identified; 7.3: the team has no recruiting authority.
-- **Unknown items:** 4.13; ownership and reviewer routing for shared components could not be confirmed.
+- **N/A items and reasons:** 1.9, 2.14, 3.9, 5.16, 6.16, 7.11, 8.6, and 4.9: no
+  additional practice was identified; 8.3: the team has no recruiting authority.
+- **Unknown items:** 5.13; ownership and reviewer routing for shared components could not be confirmed.
 - **Skipped categories or items:** None.
 - **Free-form “Other” items:** None identified.
 - **Comparison limits:** This report is fictional. A real comparison requires

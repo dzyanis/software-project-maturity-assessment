@@ -13,15 +13,16 @@ body:
     id: category
     attributes:
       label: Category
-      description: Which of the seven categories does this belong to?
+      description: Which of the eight categories does this belong to?
       options:
         - "1. Product & Vision"
         - "2. Processes & Collaboration"
         - "3. Architecture & Systems Design"
-        - "4. Code & Quality"
-        - "5. Engineering Practices & Delivery"
-        - "6. Security & Compliance"
-        - "7. Culture & External Factors"
+        - "4. AI-Assisted Engineering"
+        - "5. Code & Quality"
+        - "6. Engineering Practices & Delivery"
+        - "7. Security & Compliance"
+        - "8. Culture & External Factors"
         - "Not sure"
     validations:
       required: true
@@ -29,7 +30,7 @@ body:
     id: item
     attributes:
       label: Existing item number
-      description: If this adds a question to an item that already exists, give its number (for example 5.8). Leave blank for a brand new item.
+      description: If this adds a question to an item that already exists, give its number (for example 6.8). Leave blank for a brand new item.
   - type: textarea
     id: practice
     attributes:

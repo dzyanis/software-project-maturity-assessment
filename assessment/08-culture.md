@@ -1,8 +1,8 @@
-# 7. Culture & External Factors
+# 8. Culture & External Factors
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.3.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 1.0.0.
 
-### 7.1 Working Conditions
+### 8.1 Working Conditions
 
 **Why it matters:** Tooling friction, noisy environments, and poor ergonomics are a constant tax on attention; engineers who fight their environment every day have less left for the actual problem.
 
@@ -16,7 +16,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** engineers self-fund tools or hardware because expensing them is too much friction; long-standing environment complaints nobody owns; "just deal with it" is the answer to raised friction.
 
-### 7.2 Remote Work / Hybrid Efficiency
+### 8.2 Remote Work / Hybrid Efficiency
 
 **Why it matters:** Distributed and hybrid teams either build deliberate habits for asynchronous work and inclusive meetings, or they quietly become two-tier organizations where whoever is in the room (physical or first-to-type) has more influence and better information.
 
@@ -30,7 +30,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** "you had to be there" is a recurring phrase; async updates are theater while the real decisions happen in a side channel or in-person; one timezone consistently absorbs the inconvenient meeting times.
 
-### 7.3 HR & Recruiting Alignment
+### 8.3 HR & Recruiting Alignment
 
 **Why it matters:** Engineering and people operations that don't talk to each other produce mismatched hiring bars, roles that don't match the work, and attrition nobody sees coming until it's an exit interview.
 
@@ -45,7 +45,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** engineers learn about org changes affecting them from HR announcements rather than any prior conversation; hiring bar is set unilaterally by whichever function runs the process; exit interviews surface the same complaint repeatedly with no visible change.
 
-### 7.4 Continuous Learning & Growth
+### 8.4 Continuous Learning & Growth
 
 **Why it matters:** A team that stops learning stagnates technically and loses its best people to teams that don't; growth has to be a structural investment (time, budget, paths) rather than something squeezed into whatever's left of a person's own time.
 
@@ -60,7 +60,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** training budget exists on paper but is never actually spent or approved; growth paths are undocumented and depend on informal advocacy; knowledge-sharing sessions were tried once and quietly died from lack of attendance.
 
-### 7.5 Team Health & Culture
+### 8.5 Team Health & Culture
 
 **Why it matters:** Morale, psychological safety, and wellbeing aren't soft add-ons — they're leading indicators; teams that feel unsafe to speak up or are quietly burning out will show the damage in quality and attrition long before it shows up in a survey.
 
@@ -75,6 +75,6 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** disagreement with leadership is rare or happens only privately, never in open forums; burnout is discovered at resignation, not before; DEI exists on paper with no accountability or visible outcomes; concerns can only be raised through the person the concern is about.
 
-### 7.6 Other
+### 8.6 Other
 
 Anything important to this category that the items above did not cover. Record it here with an importance and state rating like any other item.

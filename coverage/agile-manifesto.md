@@ -1,7 +1,7 @@
 # Coverage: The Agile Manifesto
 
 **Source:** https://agilemanifesto.org/
-**Mapped against spec version:** 0.3.0
+**Mapped against spec version:** 1.0.0
 **Last reviewed:** 2026-07-31
 
 The assessment covers 7 of the 12 principles in full (one of those through the
@@ -21,16 +21,16 @@ security frameworks, and categories 2 and 7 barely appear in them.
 
 | # | Agile principle | Our item(s) | Coverage |
 |---|---|---|---|
-| 1 | Satisfy the customer through early and continuous delivery of valuable software | 5.13 CI/CD, 5.9 Release Management Process, 1.7 Product Metrics & Analytics | ✅ Full |
+| 1 | Satisfy the customer through early and continuous delivery of valuable software | 6.13 CI/CD, 6.9 Release Management Process, 1.7 Product Metrics & Analytics | ✅ Full |
 | 2 | Welcome changing requirements, even late in development | 2.6 Prioritization and Decision Making, 1.5 Product Roadmap, 3.4 Loose Coupling / High Cohesion | ⚠️ Partial |
-| 3 | Deliver working software frequently | 5.9 Release Management Process, 5.13 CI/CD | ✅ Full |
+| 3 | Deliver working software frequently | 6.9 Release Management Process, 6.13 CI/CD | ✅ Full |
 | 4 | Business people and developers must work together daily | 2.13 Stakeholder Management, 2.12 Cross-Team Collaboration | ⚠️ Partial |
-| 5 | Build projects around motivated individuals, give them the environment and support they need, and trust them | 7.1 Working Conditions, 7.5 Team Health & Culture, 2.2 Roles and Responsibilities | ✅ Full |
-| 6 | Face-to-face conversation is the most efficient method of conveying information | 7.2 Remote Work / Hybrid Efficiency, 2.4 Communications | ✅ Full (modernized) |
+| 5 | Build projects around motivated individuals, give them the environment and support they need, and trust them | 8.1 Working Conditions, 8.5 Team Health & Culture, 2.2 Roles and Responsibilities | ✅ Full |
+| 6 | Face-to-face conversation is the most efficient method of conveying information | 8.2 Remote Work / Hybrid Efficiency, 2.4 Communications | ✅ Full (modernized) |
 | 7 | Working software is the primary measure of progress | 2.5 Task Management, 1.7 Product Metrics & Analytics | ⚠️ Partial |
-| 8 | Sustainable development, a constant pace maintained indefinitely | 7.5 Team Health & Culture, 7.1 Working Conditions | ✅ Full |
-| 9 | Continuous attention to technical excellence and good design | 4.6 Technical Debt, 4.4 Engineering Principles, 4.2 Patterns, 3.3 Architecture Patterns | ✅ Full |
-| 10 | Simplicity, the art of maximizing the amount of work not done | 4.4 Engineering Principles, 5.7 Optimizations, 2.6 Prioritization and Decision Making | ⚠️ Partial |
+| 8 | Sustainable development, a constant pace maintained indefinitely | 8.5 Team Health & Culture, 8.1 Working Conditions | ✅ Full |
+| 9 | Continuous attention to technical excellence and good design | 5.6 Technical Debt, 5.4 Engineering Principles, 5.2 Patterns, 3.3 Architecture Patterns | ✅ Full |
+| 10 | Simplicity, the art of maximizing the amount of work not done | 5.4 Engineering Principles, 6.7 Optimizations, 2.6 Prioritization and Decision Making | ⚠️ Partial |
 | 11 | The best architectures, requirements, and designs emerge from self-organizing teams | 2.6 Prioritization and Decision Making, 2.2 Roles and Responsibilities, 2.11 Decision Records (ADR) | ⚠️ Partial |
 | 12 | At regular intervals the team reflects and adjusts its behavior | 2.9 Retrospectives and Feedback | ✅ Full |
 
@@ -42,13 +42,13 @@ principles; the fourth is a place where this assessment openly leans the other
 way.
 
 - **Individuals and interactions over processes and tools.** Assessed through
-  7.5 (psychological safety, whether disagreement surfaces in the open), 2.3
+  8.5 (psychological safety, whether disagreement surfaces in the open), 2.3
   (whether the process on the wall matches the work on the ground), and 2.10
   Ground Rules.
 - **Working software over comprehensive documentation.** The assessment does
   not adopt this preference. It puts substantial weight on documentation in
-  3.1 System Documentation, 4.11 Documentation & Domain Language, 2.11
-  Decision Records, and 5.3 Project Launch. The tension is smaller than it
+  3.1 System Documentation, 5.11 Documentation & Domain Language, 2.11
+  Decision Records, and 6.3 Project Launch. The tension is smaller than it
   looks, since every one of those items scores documentation by whether it is
   current, findable, and actually used rather than by how comprehensive it is,
   and a stale doc is a red flag in all four. But a team reading the Manifesto
@@ -63,11 +63,11 @@ way.
 ## Notes on modernized coverage
 
 - **#6 Face-to-face conversation.** This is the principle the industry moved
-  furthest from, and 7.2 Remote Work / Hybrid Efficiency inverts it on
+  furthest from, and 8.2 Remote Work / Hybrid Efficiency inverts it on
   purpose: it treats capturing decisions and context in writing by default as
   what good looks like, and "you had to be there" as a red flag. The
   underlying concern, that information has to actually reach the people who
-  need it, is assessed directly in 7.2 and 2.4 Communications. The Manifesto's
+  need it, is assessed directly in 8.2 and 2.4 Communications. The Manifesto's
   answer to that concern was co-location, which distributed and hybrid teams
   cannot use. Recorded as modernized rather than partial because the ground is
   fully assessed, just from the opposite premise.
@@ -93,7 +93,7 @@ way.
   is missing is the direct question: what does this team point at when asked
   how much progress it made last month, and is that working software or a
   velocity number? Candidate question for 2.5 or 2.7 Project Estimation.
-- **#10 Simplicity.** 4.4 covers half of this well, and sharply: it asks for
+- **#10 Simplicity.** 5.4 covers half of this well, and sharply: it asks for
   the most over-engineered part of the codebase and treats abstractions with a
   single implementation as a red flag. That is simplicity in code. The other
   half, maximizing the work not done, is scope discipline, and 2.6 assesses
