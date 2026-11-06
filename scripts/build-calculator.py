@@ -41,7 +41,7 @@ if len({item["id"] for item in items}) != len(items):
 lite_text = (ROOT / "profiles" / "lite.md").read_text(encoding="utf-8")
 lite_ids = re.findall(r"(?m)^\|\s*\d+\s*\|\s*(\d+\.\d+)\s+", lite_text)
 if len(lite_ids) != 15 or not set(lite_ids).issubset({item["id"] for item in items}):
-    raise SystemExit("error: lite-v1 profile must select 15 existing assessment items")
+    raise SystemExit("error: lite-v2 profile must select 15 existing assessment items")
 
 template = TEMPLATE.read_text(encoding="utf-8")
 output = (

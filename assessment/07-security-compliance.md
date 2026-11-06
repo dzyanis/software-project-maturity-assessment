@@ -1,8 +1,8 @@
-# 6. Security & Compliance
+# 7. Security & Compliance
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.4.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 1.0.0.
 
-### 6.1 Security Requirements
+### 7.1 Security Requirements
 
 **Why it matters:** Security bolted on after design is always more expensive and less complete than security considered from the start; without an explicit threat model, teams defend against whatever they happened to think of rather than what actually threatens the system.
 
@@ -19,7 +19,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** no threat model exists in any form, written or verbal; security is "whatever the framework does by default"; security requirements are discovered retroactively, after an incident or audit.
 
-### 6.2 Sensitive Data Protection
+### 7.2 Sensitive Data Protection
 
 **Why it matters:** Data that's exposed, over-collected, or under-protected turns a routine breach into a reportable, reputation-damaging incident, and the cost of getting this wrong is borne long after the original engineering decision is forgotten.
 
@@ -33,7 +33,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** sensitive fields show up unmasked in application logs or error trackers; "we encrypt the database" is the entire answer with no detail on what, how, or key ownership; data is retained indefinitely because deleting it was never someone's job.
 
-### 6.3 Input Validation
+### 7.3 Input Validation
 
 **Why it matters:** Every external entry point — API, form, file upload, webhook, message queue — is a place an attacker or a malformed client can inject something the system wasn't built to handle; validation at the boundary is what keeps bad input from becoming a bad outcome deeper in the system.
 
@@ -47,7 +47,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** validation exists on some endpoints but not others, with no consistent standard; client-side validation is trusted as sufficient on its own; user-controlled input is concatenated directly into queries, commands, or templates.
 
-### 6.4 Authentication / Authorization
+### 7.4 Authentication / Authorization
 
 **Why it matters:** Authentication answers "who is this," authorization answers "what can they do" — get either wrong and every other control is moot, because the wrong party is standing in front of the system with the wrong level of access.
 
@@ -61,7 +61,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** authorization checks are duplicated ad hoc in each handler instead of centralized; roles were assigned once and never revisited; a homegrown password or session scheme exists instead of a standard library or provider.
 
-### 6.5 Credentials
+### 7.5 Credentials
 
 **Why it matters:** Passwords, API keys, and service tokens that are hardcoded, shared, or never rotated turn a single leaked value into standing, often invisible access — and the leak is frequently discovered only after it's been exploited.
 
@@ -75,7 +75,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** secrets found in git history, config files, or Slack messages; a shared credential used across multiple services or environments with no way to revoke one without breaking the others; rotation has never happened for a long-lived credential.
 
-### 6.6 Key Management
+### 7.6 Key Management
 
 **Why it matters:** Cryptographic keys are what make encryption meaningful — a well-encrypted system with poorly managed keys is only as secure as wherever those keys sit unprotected, and losing or leaking a key can be as damaging as never encrypting at all.
 
@@ -89,11 +89,11 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** encryption keys stored alongside the data they protect, or in the same secrets store with no distinction from application credentials; no audit trail of key usage or access; a key has been in use since the system launched with no rotation ever performed.
 
-### 6.7 Vulnerability Management & Dependency Scanning
+### 7.7 Vulnerability Management & Dependency Scanning
 
 **Why it matters:** Exploitable weaknesses show up across containers, base images, running infrastructure, and cloud configuration — not just application dependencies — and without an org-wide program for finding and triaging them, coverage gaps go unnoticed until an attacker finds them first.
 
-**What good looks like:** Automated scanning covers every surface — container images, infrastructure, cloud configuration, running services — on a regular cadence, findings roll up to a single triage process with clear ownership and severity-based SLAs, and escalation for critical findings is documented and governed at the organization level rather than left to whichever team owns the affected system. Day-to-day dependency patching hygiene is assessed in [4.14](04-code-quality.md#414-dependency-security--updates); this item covers the organization-wide scanning and triage program.
+**What good looks like:** Automated scanning covers every surface — container images, infrastructure, cloud configuration, running services — on a regular cadence, findings roll up to a single triage process with clear ownership and severity-based SLAs, and escalation for critical findings is documented and governed at the organization level rather than left to whichever team owns the affected system. Day-to-day dependency patching hygiene is assessed in [5.14](05-code-quality.md#514-dependency-security--updates); this item covers the organization-wide scanning and triage program.
 
 **Questions to ask:**
 - What surfaces are covered by the scanning program — containers, infrastructure, cloud config, running services — and which ones, if any, aren't?
@@ -103,7 +103,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** scanning exists for code dependencies but nothing covers containers, infrastructure, or cloud configuration; each team runs its own ad hoc scanning with no org-wide rollup or shared SLA; a critical infrastructure or container finding sat unactioned because no one owned triage outside the application layer.
 
-### 6.8 Penetration Testing / Audits
+### 7.8 Penetration Testing / Audits
 
 **Why it matters:** Automated scanning catches known vulnerability patterns, but only an adversarial human test — internal or external — reliably surfaces the logic flaws, chained exploits, and business-context weaknesses that tools miss.
 
@@ -117,7 +117,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** the most recent test is more than a year old, or one has never been performed; findings from the last test are still open with no remediation plan; testing exists solely to produce a document for a customer or auditor, with no intent to act on it.
 
-### 6.9 Incident Response Process
+### 7.9 Incident Response Process
 
 **Why it matters:** Every system eventually has a security incident; whether that incident is contained in hours or festers for weeks depends entirely on whether detection, response, and communication were planned before the pressure was on, not improvised during it.
 
@@ -131,7 +131,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** no written incident response plan exists, or one exists but has never been rehearsed; the last incident was discovered by a customer or the public before the team noticed internally; post-mortems happen but their action items are rarely followed up on.
 
-### 6.10 Compliance & Data Retention Policies
+### 7.10 Compliance & Data Retention Policies
 
 **Why it matters:** Regulatory and contractual obligations carry real legal and financial consequences, and retention policies that are undefined or unenforced mean the organization is either holding data it has no right to keep or unable to produce data it's obligated to retain.
 
@@ -145,6 +145,6 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** retention policy exists as a document but no automated or manual process enforces it; data past its retention date is still sitting in production or backups; compliance evidence has to be reconstructed from scratch every time it's requested rather than being readily available.
 
-### 6.11 Other
+### 7.11 Other
 
 Anything important to this category that the items above did not cover. Record it here with an importance and state rating like any other item.

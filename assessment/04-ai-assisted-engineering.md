@@ -1,14 +1,14 @@
-# 8. AI-Assisted Engineering
+# 4. AI-Assisted Engineering
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.4.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 1.0.0.
 
 Assess how the team delegates work to AI assistants and agents across requirements, design, coding, testing, review, documentation, and development operations. Criteria apply across models, vendors, interfaces, deployment models, and agent architectures, including hosted services, locally operated models, editor suggestions, and automated workflows. Assess the capabilities actually used; no particular instruction file, prompt format, approval interface, or model feature is required. Adoption, generated-code volume, and autonomy are not maturity goals; assess decisions, controls, and outcomes appropriate to project risk.
 
-Choosing not to use AI can be a sound outcome. Discuss that decision under 8.1 and mark genuinely inapplicable operational items N/A with reasons. Unknown usage or missing evidence is not N/A. Chat-only assistance may still require data protection and validation while execution permissions are inapplicable. Neither adopting nor declining AI automatically earns state 4.
+Choosing not to use AI can be a sound outcome. Discuss that decision under 4.1 and mark genuinely inapplicable operational items N/A with reasons. Unknown usage or missing evidence is not N/A. Chat-only assistance may still require data protection and validation while execution permissions are inapplicable. Neither adopting nor declining AI automatically earns state 4.
 
 Use the standard importance, state, confirmation, and coverage rules. Sample a recent task and, where available, a rejected or failed task: trace inputs, permissions, resulting changes, verification, and acceptance. Reference existing evidence without retaining unnecessary sensitive conversations. For placement rationale and overlap, see [AI assessment design notes](../docs/ai-assisted-engineering.md).
 
-### 8.1 Appropriate Use & Human Accountability
+### 4.1 Appropriate Use & Human Accountability
 
 **Why it matters:** Delegating implementation does not delegate responsibility for the resulting behavior or its maintenance.
 
@@ -24,7 +24,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** “The model decided” substitutes for an engineering decision; nobody owns generated code; usage quotas encourage inappropriate delegation.
 
-### 8.2 Task Definition & Acceptance Criteria
+### 4.2 Task Definition & Acceptance Criteria
 
 **Why it matters:** A plausible implementation may solve a different problem from the one the team intended.
 
@@ -40,7 +40,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** Broad requests lack a completion condition; unexpected behavior is accepted because the result looks polished; scope grows without review.
 
-### 8.3 Repository Context & Maintained Instructions
+### 4.3 Repository Context & Maintained Instructions
 
 **Why it matters:** Missing or stale project knowledge causes repeated mistakes even when generated code is syntactically correct.
 
@@ -56,7 +56,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** Essential rules live only in private chats; copied instructions refer to missing commands; indiscriminate context sharing exposes unrelated information.
 
-### 8.4 Sensitive Inputs & Information Handling
+### 4.4 Sensitive Inputs & Information Handling
 
 **Why it matters:** Prompts, attached files, tool output, and conversation history create additional routes by which project information can leave its intended boundary.
 
@@ -72,7 +72,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** Production secrets appear in prompts; personal accounts bypass project controls; disabling training use is assumed to eliminate retention or third-party access.
 
-### 8.5 Agent Permissions & Untrusted Inputs
+### 4.5 Agent Permissions & Untrusted Inputs
 
 **Why it matters:** An agent with execution or external-tool access can turn a mistaken instruction into an operational incident.
 
@@ -88,7 +88,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** Unrestricted access is the default; approval is a reflexive click; tool output is treated as authorization; security controls are disabled to finish a task.
 
-### 8.6 Independent Validation & Review
+### 4.6 Independent Validation & Review
 
 **Why it matters:** Generated code and generated tests can share the same mistaken interpretation of a requirement.
 
@@ -104,7 +104,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** A claim that tests passed replaces logs; assertions are weakened to obtain a pass; high-risk changes rely exclusively on automated approval; invented APIs survive review.
 
-### 8.7 Controlled Execution, Handover & Recovery
+### 4.7 Controlled Execution, Handover & Recovery
 
 **Why it matters:** Long-running work can drift, overwrite concurrent changes, consume excessive resources, or leave a partially applied operation.
 
@@ -120,7 +120,7 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** Agents repeatedly retry without new evidence; partial failures are hidden; automation can deploy changes but nobody knows how to disable it.
 
-### 8.8 Outcomes, Learning & Tool Changes
+### 4.8 Outcomes, Learning & Tool Changes
 
 **Why it matters:** Faster generation can increase review effort and downstream defects while appearing productive.
 
@@ -136,6 +136,6 @@ Use the standard importance, state, confirmation, and coverage rules. Sample a r
 
 **Red flags:** Generated lines or accepted suggestions are the main success measure; individual usage rankings replace outcome assessment; tool upgrades receive no verification.
 
-### 8.9 Other
+### 4.9 Other
 
 Record an important AI-assisted engineering practice not covered above. Use the existing [custom-practice rules](../ASSESSMENT.md#custom-practices-under-other) for multiple distinct practices, with stable report-local IDs and separate supplemental scoring.

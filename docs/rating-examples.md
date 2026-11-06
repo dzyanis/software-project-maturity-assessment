@@ -8,7 +8,7 @@ team size, architecture, risk, and operating needs can make different methods
 equally effective. A team does not need a particular tool or ceremony to earn
 a state.
 
-## Code review (item 4.13)
+## Code review (item 5.13)
 
 | State | Example evidence |
 |---|---|
@@ -17,7 +17,7 @@ a state.
 | **3 — Managed** | The team can show that its review approach is followed over time, checks exceptions, and addresses recurring delays or missed reviews. |
 | **4 — Optimizing** | The team examines review outcomes and friction, makes changes based on evidence, and checks whether those changes improve quality or flow without undermining review effectiveness. |
 
-## Recovery plan (item 5.10)
+## Recovery plan (item 6.10)
 
 | State | Example evidence |
 |---|---|

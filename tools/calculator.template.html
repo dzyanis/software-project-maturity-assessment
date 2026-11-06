@@ -71,7 +71,7 @@
     <p class="hint small">Selected item IDs are determined by the In scope checkboxes below. Importance: 1 Low, 2 Medium, 3 Critical. State: 0 Absent through 4 Optimizing.</p>
     <div class="actions">
       <button id="recalculate">Recalculate</button>
-      <button id="lite-profile" class="secondary">Use lite-v1 profile</button>
+      <button id="lite-profile" class="secondary">Use lite-v2 profile</button>
       <button id="export" class="secondary">Export current assessment JSON</button>
       <label class="small">Compare with prior JSON<input id="import-prior" type="file" accept="application/json,.json"></label>
     </div>
@@ -274,6 +274,8 @@ function renderComparison(rows, summaries, customRows, customSummary) {
   const warnings = [];
   const prevCtx = prior.context || {};
   for (const [key,label] of [["specVersion","spec version"],["systemBoundary","system boundary"],["environment","environment"],["profile","profile"]]) if ((now.context[key]||"") !== (prevCtx[key]||"")) warnings.push(`Reports use a different ${label}.`);
+  const sameMajor = String(now.context.specVersion || "").split(".")[0] === String(prevCtx.specVersion || "").split(".")[0];
+  if (!sameMajor) warnings.push("Item IDs may have different meanings across major spec versions. Migrate prior records explicitly before comparing item states.");
   const prevRows = new Map((prior.rows||[]).map(r=>[r.id,r]));
   const nowIds = now.selectedItems.slice().sort().join(",");
   const prevIds = (prior.selectedItems||[]).slice().sort().join(",");
@@ -283,10 +285,10 @@ function renderComparison(rows, summaries, customRows, customSummary) {
   const prevCustomIds = (prior.customRows||[]).map(r=>`${r.id}:${r.title}`).sort().join(",");
   const customSetMatches = nowCustomIds === prevCustomIds;
   if (!customSetMatches) warnings.push("Custom supplemental scores are not directly comparable because the custom ID/title set changed.");
-  const shared = rows.filter(r=>r.inScope && r.status === "Confirmed" && r.state !== null && prevRows.has(r.id) && prevRows.get(r.id).status === "Confirmed" && prevRows.get(r.id).state !== null);
+  const shared = rows.filter(r=>sameMajor && r.inScope && r.status === "Confirmed" && r.state !== null && prevRows.has(r.id) && prevRows.get(r.id).title === r.title && prevRows.get(r.id).status === "Confirmed" && prevRows.get(r.id).state !== null);
   const weightChanges = shared.filter(r=>r.importance !== prevRows.get(r.id).importance);
   if (weightChanges.length) warnings.push(`Importance weights differ for ${weightChanges.length} shared confirmed item(s).`);
-  const sharedCustom = customRows.filter(r=>r.status === "Confirmed" && r.title && prevCustom.has(r.id) && prevCustom.get(r.id).title === r.title && prevCustom.get(r.id).status === "Confirmed");
+  const sharedCustom = customRows.filter(r=>sameMajor && r.status === "Confirmed" && r.title && prevCustom.has(r.id) && prevCustom.get(r.id).title === r.title && prevCustom.get(r.id).status === "Confirmed");
   const customWeightChanges = sharedCustom.filter(r=>r.importance !== prevCustom.get(r.id).importance);
   if (customWeightChanges.length) warnings.push(`Custom supplemental scores are not directly comparable because importance weights differ for ${customWeightChanges.length} shared practice(s).`);
   const priorCustomStatus = prior.customSummary?.status || ((prior.customRows||[]).length ? "Provisional" : "None identified");
@@ -295,7 +297,7 @@ function renderComparison(rows, summaries, customRows, customSummary) {
   const prevComplete = prevCats.length > 0 && prevCats.every(c=>["Complete","Not assessed","Skipped"].includes(c.status));
   const currentComplete = now.categories.every(c=>["Complete","Not assessed","Skipped"].includes(c.status));
   if (!prevComplete || !currentComplete) warnings.push("At least one report is provisional; compare shared confirmed item states, not aggregate scores.");
-  if (!warnings.some(w=>w.includes("Spec version") || w.includes("system boundary") || w.includes("environment") || w.includes("profile") || w.includes("selected item scope") || w.includes("weight") || w.includes("provisional"))) warnings.push("Spec version, scope, profile, environment, and importance weights match; both standard reports are complete. Aggregate standard scores can be compared.");
+  if (!warnings.some(w=>w.includes("spec version") || w.includes("system boundary") || w.includes("environment") || w.includes("profile") || w.includes("selected item scope") || w.includes("weight") || w.includes("provisional"))) warnings.push("Spec version, scope, profile, environment, and importance weights match; both standard reports are complete. Aggregate standard scores can be compared.");
   const stateChanges = shared.filter(r=>r.state !== prevRows.get(r.id).state).length;
   const customStateChanges = sharedCustom.filter(r=>r.state !== prevCustom.get(r.id).state).length;
   target.innerHTML = `<h3>Comparison with prior assessment</h3>${warnings.map(w=>`<div class="warning">${esc(w)}</div>`).join("")}<p class="small">Shared confirmed standard items: ${shared.length}; changed states: ${stateChanges}. Shared confirmed custom practices: ${sharedCustom.length}; changed states: ${customStateChanges}. Compare standard and custom scores separately.</p>`;
@@ -315,7 +317,7 @@ document.querySelectorAll(".meta input").forEach(el=>el.addEventListener("input"
 document.getElementById("recalculate").addEventListener("click",calculate);
 document.getElementById("lite-profile").addEventListener("click",()=>{
   document.querySelectorAll(".in-scope").forEach(input=>{input.checked=LITE_IDS.includes(input.closest("tr").dataset.id);updateRow(input.closest("tr"));});
-  document.getElementById("profile").value="Lite profile lite-v1";
+  document.getElementById("profile").value="Lite profile lite-v2";
   calculate();
 });
 document.getElementById("export").addEventListener("click",exportAssessment);

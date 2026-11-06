@@ -1,8 +1,8 @@
-# 5. Engineering Practices & Delivery
+# 6. Engineering Practices & Delivery
 
-Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 0.4.0.
+Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec version 1.0.0.
 
-### 5.1 Version Control System
+### 6.1 Version Control System
 
 **Why it matters:** The branching strategy and history shape how safely and quickly changes move from a developer's machine to production; a confused strategy creates merge pain and hides what's actually deployed where.
 
@@ -16,7 +16,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** long-lived branches that drift for months before merging; tags that don't correspond to what's actually deployed; commit history full of "fix," "wip," and "asdf" with no way to reconstruct why a change was made.
 
-### 5.2 Project Installation
+### 6.2 Project Installation
 
 **Why it matters:** How easily a new machine can be brought to a working local setup determines onboarding speed and how often "works on my machine" derails a debugging session.
 
@@ -30,7 +30,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** setup docs that are known to be stale; "ask Dave" is the actual onboarding process; setup only works because of undocumented local state on existing developers' machines.
 
-### 5.3 Project Launch
+### 6.3 Project Launch
 
 **Why it matters:** Standing up a new environment or deploying the product for the first time is a rare enough event that undocumented tribal knowledge disappears exactly when it's needed most.
 
@@ -44,7 +44,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** the playbook exists but hasn't been executed by anyone except its author; steps that only work because one person remembers an undocumented gotcha; no playbook at all — launches happen "by feel."
 
-### 5.4 Project Build
+### 6.4 Project Build
 
 **Why it matters:** The build is the boundary between source code and a deployable artifact; if it's slow, inconsistent, or opaque, every downstream step inherits that uncertainty.
 
@@ -59,9 +59,9 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** builds that only work on one person's machine; no artifact retention beyond the current release; build steps that silently depend on external network state or unpinned tool versions.
 
-### 5.5 Project Testing
+### 6.5 Project Testing
 
-**Why it matters:** Release-level regression testing checks that critical user paths still work across the system as it will run. Unit and integration test design is assessed in 4.8 and 4.9; this item focuses on the confidence the release candidate provides.
+**Why it matters:** Release-level regression testing checks that critical user paths still work across the system as it will run. Unit and integration test design is assessed in 5.8 and 5.9; this item focuses on the confidence the release candidate provides.
 
 **What good looks like:** The team knows which critical user paths and system interactions its release-level regression checks cover, how representative their environment and data are, and what gaps remain. The results inform a deliberate release-confidence decision. Automated gates and deployment enforcement are assessed in 5.13.
 
@@ -73,7 +73,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** critical user paths have no release-level regression evidence; the suite is stale or unlike production; known test gaps are not considered in release decisions.
 
-### 5.6 Automation
+### 6.6 Automation
 
 **Why it matters:** Manual, repetitive operational work is slow, inconsistent between people, and a constant source of small mistakes that automation would eliminate entirely.
 
@@ -87,7 +87,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** automation scripts nobody currently on the team understands or maintains; the same manual, error-prone task performed by hand every single release; bots or automation that fail silently with no alerting.
 
-### 5.7 Performance and Efficiency
+### 6.7 Performance and Efficiency
 
 **Why it matters:** Without deliberate attention, systems tend toward accumulating waste — slow paths, redundant work, unnecessary resource use — that compounds as the system grows.
 
@@ -101,7 +101,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** optimization work driven entirely by anecdote rather than profiling or metrics; a known-slow critical path nobody has scheduled time to address; premature optimization that added complexity without measurable benefit.
 
-### 5.8 Environment Parity
+### 6.8 Environment Parity
 
 **Why it matters:** The gap between staging (or any pre-production environment) and production is where "it worked in testing" bugs come from; the closer the parity, the more the team can trust results from earlier environments.
 
@@ -116,7 +116,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** staging configuration diverges so much from production that passing there means little; an environment that exists but no one remembers why or trusts; promotion between environments is ad hoc rather than a repeatable process.
 
-### 5.9 Release Management Process
+### 6.9 Release Management Process
 
 **Why it matters:** How a release gets approved, scheduled, and communicated determines whether shipping is a routine, low-stress event or a high-anxiety scramble every time.
 
@@ -130,7 +130,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** releases happen with no consistent process — different every time depending on who's driving; approval gates that exist on paper but are routinely skipped under deadline pressure; no communication to stakeholders about what shipped or when.
 
-### 5.10 Recovery Plan
+### 6.10 Recovery Plan
 
 **Why it matters:** Every deployment pipeline eventually ships something broken; what separates a minor blip from a prolonged outage is whether rollback and recovery are rehearsed rather than improvised under pressure.
 
@@ -144,7 +144,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** rollback has never actually been tested, only assumed to work; recovery procedures exist only as a document nobody has rehearsed; a single person is the only one who knows how to execute recovery.
 
-### 5.11 Observability
+### 6.11 Observability
 
 **Why it matters:** Without logs, traces, and dashboards that reflect what the system is actually doing, diagnosing a production problem becomes guesswork under pressure instead of a directed investigation.
 
@@ -158,7 +158,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** logs exist but lack the context needed to actually diagnose anything; dashboards that were built once and never revisited as the system changed; tracing that stops at the first service boundary with no cross-service visibility.
 
-### 5.12 Monitoring & Alerting Quality
+### 6.12 Monitoring & Alerting Quality
 
 **Why it matters:** Monitoring and alerting are what turn observability data into action — the difference between a well-tuned alerting system and a noisy one is the difference between fast incident response and alert fatigue that causes real problems to be ignored.
 
@@ -172,11 +172,11 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** alert fatigue so bad that pages get muted or ignored by default; no defined SLOs, so "alert-worthy" is whatever someone decided in the moment; the same noisy alert firing for months with nobody fixing its root cause.
 
-### 5.13 CI/CD
+### 6.13 CI/CD
 
 **Why it matters:** The CI/CD pipeline is the automated gate between a commit and a deployed change; how much it actually enforces — versus how much it merely reports — determines how much the team can trust "green" to mean "safe to ship."
 
-**What good looks like:** Every change passes through automated quality gates (tests, linting, security checks) before merge, deployment is automated and repeatable rather than a manual sequence of commands, and pipeline failures block progress rather than being routinely overridden. Test-suite quality is assessed in 4.8 and 4.9; release regression confidence is assessed in 5.5.
+**What good looks like:** Every change passes through automated quality gates (tests, linting, security checks) before merge, deployment is automated and repeatable rather than a manual sequence of commands, and pipeline failures block progress rather than being routinely overridden. Test-suite quality is assessed in 5.8 and 5.9; release regression confidence is assessed in 5.5.
 
 **Questions to ask:**
 - What quality gates actually block a merge or deploy, versus which ones just report status that people ignore?
@@ -186,7 +186,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** pipeline failures routinely overridden under deadline pressure; deployment still requires a human to run manual steps in the right order; quality gates exist but are advisory rather than blocking.
 
-### 5.14 Infrastructure as Code (IaC)
+### 6.14 Infrastructure as Code (IaC)
 
 **Why it matters:** Infrastructure that exists only as manual console clicks is undocumented, unreviewable, and impossible to reliably reproduce; treating infrastructure as versioned code brings it the same rigor as application code.
 
@@ -200,7 +200,7 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** critical infrastructure configured by hand and never captured in code; infrastructure changes made directly in a console with no review trail; known drift between declared infrastructure and actual running state.
 
-### 5.15 Cost Efficiency / Cloud Optimization (FinOps)
+### 6.15 Cost Efficiency / Cloud Optimization (FinOps)
 
 **Why it matters:** Cloud and infrastructure spend that goes unexamined tends to grow faster than usage justifies, and by the time it becomes a visible problem it's often deeply entangled with the architecture.
 
@@ -214,6 +214,6 @@ Part of the [Software Project Maturity Assessment](../ASSESSMENT.md) — spec ve
 
 **Red flags:** nobody can explain what's driving a significant fraction of the cloud bill; cost review happens rarely or never, only reported after the fact with no one acting on it; known idle or oversized resources left running because addressing them isn't anyone's job.
 
-### 5.16 Other
+### 6.16 Other
 
 Anything important to this category that the items above did not cover. Record it here with an importance and state rating like any other item.
