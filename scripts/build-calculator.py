@@ -48,6 +48,7 @@ output = (
     template.replace("__SPEC_VERSION__", version_match.group(1))
     .replace("__ITEM_DATA__", json.dumps(items, ensure_ascii=False).replace("<", "\\u003c"))
     .replace("__LITE_ITEMS__", json.dumps(lite_ids))
+    .replace("__CALCULATOR_CORE__", (ROOT / "tools/calculator-core.cjs").read_text(encoding="utf-8"))
 )
 OUTPUT.write_text(output, encoding="utf-8")
 print(f"wrote {OUTPUT.relative_to(ROOT)} with {len(items)} items at spec {version_match.group(1)}")
