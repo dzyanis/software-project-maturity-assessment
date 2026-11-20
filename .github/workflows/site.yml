@@ -24,6 +24,9 @@ jobs:
       - name: Install the build toolchain
         run: python -m pip install -r requirements-docs.txt
 
+      - name: Test calculator scoring and imports
+        run: node --test tests/calculator.test.cjs
+
       - name: Build and verify the site
         run: ./scripts/test-site.sh
 

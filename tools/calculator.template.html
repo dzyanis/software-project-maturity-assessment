@@ -112,7 +112,7 @@ const LITE_IDS = __LITE_ITEMS__;
 document.getElementById("spec-label").textContent = SPEC_VERSION;
 document.getElementById("spec").value = SPEC_VERSION;
 document.getElementById("date").value = new Date().toISOString().slice(0, 10);
-const statusOptions = ["Confirmed", "Unknown", "Deferred", "Unconfirmed", "N/A", "Skipped"];
+__CALCULATOR_CORE__
 let prior = null;
 let nextCustomId = 1;
 
@@ -218,93 +218,61 @@ function calculate() {
     if (!row.title) errors.push(`${row.id} needs a practice description.`);
     if (row.status === "Confirmed" && (row.importance === null || row.state === null)) errors.push(`${row.id} is Confirmed but needs both importance and state.`);
   }
-  const categoryNames = [...new Set(ITEMS.map(i => i.category))];
-  const summaries = categoryNames.map(category => {
-    const inScope = rows.filter(r => r.category === category && r.inScope);
-    const applicable = inScope.filter(r => r.status !== "N/A" && r.status !== "Skipped");
-    const confirmed = applicable.filter(r => r.status === "Confirmed" && r.importance !== null && r.state !== null);
-    const numerator = confirmed.reduce((s, r) => s + r.importance * r.state, 0);
-    const denominator = confirmed.reduce((s, r) => s + r.importance * 4, 0);
-    let status;
-    let score = null;
-    if (inScope.length === 0) status = "Skipped";
-    else if (applicable.length === 0) status = "Not assessed";
-    else {
-      status = confirmed.length === applicable.length ? "Complete" : "Provisional";
-      if (denominator > 0) score = numerator / denominator;
-    }
-    const catGaps = confirmed.map(r => ({...r, gap: r.importance * (4 - r.state)})).sort(gapSort);
-    return {category, inScope: inScope.length, applicable: applicable.length, confirmed: confirmed.length, numerator, denominator, status, score, topGap: catGaps[0] || null};
-  });
-  const allApplicable = rows.filter(r => r.inScope && r.status !== "N/A" && r.status !== "Skipped");
-  const allConfirmed = allApplicable.filter(r => r.status === "Confirmed" && r.importance !== null && r.state !== null);
-  const totalGaps = allConfirmed.map(r => ({...r, gap: r.importance * (4 - r.state)})).sort(gapSort);
-  const customApplicable = customRows.filter(r => r.status !== "N/A" && r.status !== "Skipped");
-  const customConfirmed = customApplicable.filter(r => r.status === "Confirmed" && r.title && r.importance !== null && r.state !== null);
-  const customNumerator = customConfirmed.reduce((sum, r) => sum + r.importance * r.state, 0);
-  const customDenominator = customConfirmed.reduce((sum, r) => sum + r.importance * 4, 0);
-  const customStatus = customRows.length === 0 ? "None identified" : customApplicable.length === 0 ? (customRows.every(r=>r.status === "Skipped") ? "Skipped" : "Not assessed") : customConfirmed.length === customApplicable.length ? "Complete" : "Provisional";
-  const customScore = customDenominator > 0 ? customNumerator / customDenominator : null;
-  const customGaps = customConfirmed.map(r => ({...r, gap:r.importance * (4-r.state)})).sort(gapSort);
+  const assessment = scoreAssessment(context(), rows, customRows);
+  const summaries = assessment.categories;
+  const confirmed = summaries.reduce((sum, c) => sum + c.confirmed, 0);
+  const applicable = summaries.reduce((sum, c) => sum + c.applicable, 0);
+  const totalGaps = rankedGaps(rows.filter(row => row.inScope));
+  const customGaps = rankedGaps(customRows);
+  const topGap = new Map();
+  for (const gap of totalGaps) if (!topGap.has(gap.category)) topGap.set(gap.category, gap);
+  const {score: customScore, status: customStatus} = assessment.customSummary;
+  document.getElementById("export").disabled = errors.length > 0;
   document.getElementById("validation").innerHTML = errors.map(e => `<div class="warning error">${esc(e)}</div>`).join("");
-  document.getElementById("summary").innerHTML = [card(`${allConfirmed.length}`, "Confirmed applicable items"),card(`${allConfirmed.length}/${allApplicable.length}`, "Coverage: confirmed / applicable"),card(`${totalGaps.length}`, "Confirmed items with scores"),card(`${rows.filter(r => r.inScope && r.status === "N/A").length}`, "N/A items")].join("");
-  document.getElementById("category-results").innerHTML = summaries.map(s => `<tr><td>${esc(s.category)}</td><td>${s.score === null ? esc(s.status === "Provisional" ? "No score · provisional" : s.status) : `${(s.score*100).toFixed(1)}%${s.status === "Provisional" ? " · provisional" : " · complete"}`}</td><td>${s.confirmed}/${s.applicable}</td><td>${s.topGap ? `${esc(s.topGap.id)} · ${s.topGap.gap}` : "—"}</td></tr>`).join("");
+  document.getElementById("summary").innerHTML = [card(`${confirmed}`, "Confirmed applicable items"),card(`${confirmed}/${applicable}`, "Coverage: confirmed / applicable"),card(`${totalGaps.length}`, "Confirmed items with scores"),card(`${rows.filter(r => r.inScope && r.status === "N/A").length}`, "N/A items")].join("");
+  document.getElementById("category-results").innerHTML = summaries.map(s => `<tr><td>${esc(s.category)}</td><td>${s.score === null ? esc(s.status === "Provisional" ? "No score · provisional" : s.status) : `${(s.score*100).toFixed(1)}%${s.status === "Provisional" ? " · provisional" : " · complete"}`}</td><td>${s.confirmed}/${s.applicable}</td><td>${topGap.get(s.category) ? `${esc(topGap.get(s.category).id)} · ${topGap.get(s.category).gap}` : "—"}</td></tr>`).join("");
   document.getElementById("gaps").innerHTML = totalGaps.slice(0,10).map((r,i) => `<tr><td>${i+1}</td><td>${esc(r.id)} ${esc(r.title)}</td><td>${r.importance}</td><td>${r.state}</td><td>${r.gap}</td><td>${esc(r.note)}</td></tr>`).join("") || `<tr><td colspan="6">No confirmed gap ratings yet.</td></tr>`;
   document.getElementById("custom-summary").innerHTML = [
     card(customScore === null ? customStatus : `${(customScore*100).toFixed(1)}% · ${customStatus.toLowerCase()}`, "Supplemental custom score"),
-    card(`${customConfirmed.length}/${customApplicable.length}`, "Custom coverage: confirmed / applicable"),
+    card(`${assessment.customSummary.confirmed}/${assessment.customSummary.applicable}`, "Custom coverage: confirmed / applicable"),
     card(`${customGaps.length}`, "Confirmed custom gaps"),
   ].join("");
   document.getElementById("custom-gaps").innerHTML = customGaps.length ? `<table class="score-table"><thead><tr><th>ID</th><th>Category</th><th>Practice</th><th>Importance</th><th>State</th><th>Gap priority</th><th>Note</th></tr></thead><tbody>${customGaps.map(r=>`<tr><td>${esc(r.id)}</td><td>${esc(r.category)}</td><td>${esc(r.title)}</td><td>${r.importance}</td><td>${r.state}</td><td>${r.gap}</td><td>${esc(r.note)}</td></tr>`).join("")}</tbody></table>` : "";
-  const customSummary = {confirmed:customConfirmed.length, applicable:customApplicable.length, numerator:customNumerator, denominator:customDenominator, score:customScore, status:customStatus};
-  window.currentAssessment = makeAssessment(rows, summaries, customRows, customSummary);
-  renderComparison(rows, summaries, customRows, customSummary);
+  window.currentAssessment = assessment;
+  renderComparison(assessment);
 }
-function gapSort(a,b) { return b.gap-a.gap || b.importance-a.importance || a.id.localeCompare(b.id, undefined, {numeric:true}); }
 function context() {
   return {team:document.getElementById("team").value.trim(), specVersion:document.getElementById("spec").value.trim(), profile:document.getElementById("profile").value.trim(), systemBoundary:document.getElementById("boundary").value.trim(), environment:document.getElementById("environment").value.trim(), date:document.getElementById("date").value};
 }
-function makeAssessment(rows, summaries, customRows, customSummary) {
-  return {calculatorVersion:1, context:context(), selectedItems:rows.filter(r=>r.inScope).map(r=>r.id), rows:rows.map(({id,title,category,inScope,importance,state,status,note})=>({id,title,category,inScope,importance,state,status,note})), categories:summaries.map(({category,inScope,applicable,confirmed,numerator,denominator,status,score})=>({category,inScope,applicable,confirmed,numerator,denominator,status,score})), customRows:customRows.map(({id,title,category,importance,state,status,note})=>({id,title,category,importance,state,status,note})), customSummary};
-}
-function renderComparison(rows, summaries, customRows, customSummary) {
+let importError = "";
+function renderComparison(current) {
   const target = document.getElementById("comparison");
-  if (!prior) { target.innerHTML = ""; return; }
-  const now = makeAssessment(rows, summaries, customRows, customSummary);
-  const warnings = [];
-  const prevCtx = prior.context || {};
-  for (const [key,label] of [["specVersion","spec version"],["systemBoundary","system boundary"],["environment","environment"],["profile","profile"]]) if ((now.context[key]||"") !== (prevCtx[key]||"")) warnings.push(`Reports use a different ${label}.`);
-  const sameMajor = String(now.context.specVersion || "").split(".")[0] === String(prevCtx.specVersion || "").split(".")[0];
-  if (!sameMajor) warnings.push("Item IDs may have different meanings across major spec versions. Migrate prior records explicitly before comparing item states.");
-  const prevRows = new Map((prior.rows||[]).map(r=>[r.id,r]));
-  const nowIds = now.selectedItems.slice().sort().join(",");
-  const prevIds = (prior.selectedItems||[]).slice().sort().join(",");
-  if (nowIds !== prevIds) warnings.push("Reports use a different selected item scope.");
-  const prevCustom = new Map((prior.customRows||[]).map(r=>[r.id,r]));
-  const nowCustomIds = customRows.map(r=>`${r.id}:${r.title}`).sort().join(",");
-  const prevCustomIds = (prior.customRows||[]).map(r=>`${r.id}:${r.title}`).sort().join(",");
-  const customSetMatches = nowCustomIds === prevCustomIds;
-  if (!customSetMatches) warnings.push("Custom supplemental scores are not directly comparable because the custom ID/title set changed.");
-  const shared = rows.filter(r=>sameMajor && r.inScope && r.status === "Confirmed" && r.state !== null && prevRows.has(r.id) && prevRows.get(r.id).title === r.title && prevRows.get(r.id).status === "Confirmed" && prevRows.get(r.id).state !== null);
-  const weightChanges = shared.filter(r=>r.importance !== prevRows.get(r.id).importance);
-  if (weightChanges.length) warnings.push(`Importance weights differ for ${weightChanges.length} shared confirmed item(s).`);
-  const sharedCustom = customRows.filter(r=>sameMajor && r.status === "Confirmed" && r.title && prevCustom.has(r.id) && prevCustom.get(r.id).title === r.title && prevCustom.get(r.id).status === "Confirmed");
-  const customWeightChanges = sharedCustom.filter(r=>r.importance !== prevCustom.get(r.id).importance);
-  if (customWeightChanges.length) warnings.push(`Custom supplemental scores are not directly comparable because importance weights differ for ${customWeightChanges.length} shared practice(s).`);
-  const priorCustomStatus = prior.customSummary?.status || ((prior.customRows||[]).length ? "Provisional" : "None identified");
-  if (customSummary.status === "Provisional" || priorCustomStatus === "Provisional") warnings.push("At least one custom supplemental score is provisional; compare shared confirmed custom practices individually.");
-  const prevCats = prior.categories || [];
-  const prevComplete = prevCats.length > 0 && prevCats.every(c=>["Complete","Not assessed","Skipped"].includes(c.status));
-  const currentComplete = now.categories.every(c=>["Complete","Not assessed","Skipped"].includes(c.status));
-  if (!prevComplete || !currentComplete) warnings.push("At least one report is provisional; compare shared confirmed item states, not aggregate scores.");
-  if (!warnings.some(w=>w.includes("spec version") || w.includes("system boundary") || w.includes("environment") || w.includes("profile") || w.includes("selected item scope") || w.includes("weight") || w.includes("provisional"))) warnings.push("Spec version, scope, profile, environment, and importance weights match; both standard reports are complete. Aggregate standard scores can be compared.");
-  const stateChanges = shared.filter(r=>r.state !== prevRows.get(r.id).state).length;
-  const customStateChanges = sharedCustom.filter(r=>r.state !== prevCustom.get(r.id).state).length;
-  target.innerHTML = `<h3>Comparison with prior assessment</h3>${warnings.map(w=>`<div class="warning">${esc(w)}</div>`).join("")}<p class="small">Shared confirmed standard items: ${shared.length}; changed states: ${stateChanges}. Shared confirmed custom practices: ${sharedCustom.length}; changed states: ${customStateChanges}. Compare standard and custom scores separately.</p>`;
-}
-function loadAssessment(data) {
-  if (!data || data.calculatorVersion !== 1 || !Array.isArray(data.rows)) throw new Error("This file is not a supported calculator export.");
-  prior = data;
+  if (!prior) {
+    target.innerHTML = importError ? `<div class="warning error">${esc(importError)}</div>` : "";
+    return;
+  }
+  const {contextChanges, standard, custom, complete, customComplete} = compareAssessments(current, prior);
+  const labels = {specVersion: "spec version", systemBoundary: "system boundary", environment: "environment", profile: "profile"};
+  const messages = contextChanges.map(key => `Reports use a different ${labels[key]}.`);
+  if (!standard.sameSet) messages.push("Selected standard items differ.");
+  if (!standard.weightsMatch) messages.push("Standard item weights or contributing items differ.");
+  if (!complete) messages.push("At least one standard report is provisional.");
+  messages.push(standard.eligible ? "Aggregate standard scores can be compared." : "Aggregate standard scores cannot be directly compared.");
+  if (current.customRows.length || prior.customRows.length) {
+    if (!custom.sameSet) messages.push("The set of custom practices changed.");
+    if (!custom.weightsMatch) messages.push("Custom weights or contributing practices differ.");
+    if (custom.changedStates) messages.push("Shared custom practices have different state ratings.");
+    if (!customComplete) messages.push("A complete supplemental score is unavailable for at least one report.");
+    messages.push(custom.eligible ? "Supplemental scores can be compared." : "Supplemental scores cannot be directly compared.");
+  }
+  function coverage(report) {
+    const counts = report.categories.reduce((sum, c) => [sum[0] + c.confirmed, sum[1] + c.applicable], [0, 0]);
+    return counts.join("/");
+  }
+  target.innerHTML = `<h3>Comparison with prior assessment</h3>${messages.map(message => `<div class="warning">${esc(message)}</div>`).join("")}
+    <p>Standard coverage (confirmed / applicable): prior ${coverage(prior)}, current ${coverage(current)}.</p>
+    <p>Shared confirmed standard items: ${standard.shared}. Changed states: ${standard.changedStates}.</p>
+    <p>Shared confirmed custom practices: ${custom.shared}. Changed states: ${custom.changedStates}.</p>`;
 }
 function exportAssessment() {
   const data = JSON.stringify(window.currentAssessment, null, 2);
@@ -325,10 +293,21 @@ document.getElementById("add-custom").addEventListener("click",addCustomRow);
 document.getElementById("custom-rows").addEventListener("input",event=>{ if(event.target.matches("input,select")) calculate(); });
 document.getElementById("custom-rows").addEventListener("change",event=>{ if(event.target.matches("input,select")) calculate(); });
 document.getElementById("custom-rows").addEventListener("click",event=>{ if(event.target.closest(".remove-custom")){event.target.closest("tr").remove();calculate();} });
+let importAttempt = 0;
 document.getElementById("import-prior").addEventListener("change",async event=>{
   const file=event.target.files[0]; if(!file)return;
-  try { loadAssessment(JSON.parse(await file.text())); calculate(); }
-  catch(error) { document.getElementById("comparison").innerHTML=`<div class="warning error">${esc(error.message)}</div>`; }
+  const attempt = ++importAttempt;
+  try {
+    const contents = await file.text();
+    if (attempt !== importAttempt) return;
+    prior = importAssessment(JSON.parse(contents), SPEC_VERSION, ITEMS);
+    importError = "";
+  } catch (error) {
+    if (attempt !== importAttempt) return;
+    prior = null;
+    importError = error.message;
+  }
+  calculate();
 });
 calculate();
 </script>
